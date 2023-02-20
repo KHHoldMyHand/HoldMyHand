@@ -19,15 +19,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	@RequestMapping(value="/home", method = RequestMethod.GET)
-	public String main() {
+	public String homeGET() {
 		return "home";
 	}
 
 	@RequestMapping(value="")
-	public String main2(){
+	public String main(){
 		return "index";
 	}
 
+	//영빈이
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String loginGET() {
+		return "login";
+	}
+	//근주
+	@RequestMapping(value="/join", method = RequestMethod.GET)
+	public String joinGET() {
+		return "join";
+	}
+	//해란이(자주묻는질문)
+	@RequestMapping(value="/faq", method = RequestMethod.GET)
+	public String faqGET() {
+		return "faq";
+	}
+	//창민이
+	@RequestMapping(value="/qna", method = RequestMethod.GET)
+	public String qnaGET() {
+		return "qna";
+	}
+	//경현이
+	@RequestMapping(value="/credit", method = RequestMethod.GET)
+	public String creditGET() {
+		return "credit";
+	}
+	//비오
+	@RequestMapping(value="/creditresult", method = RequestMethod.GET)
+	public String crGET() {
+		return "creditresult";
+	}
+	//종훈
+	@RequestMapping(value="/userModify", method = RequestMethod.GET)
+	public String umGET() {
+		return "userModify";
+	}
 
 
 	

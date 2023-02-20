@@ -28,8 +28,8 @@
   <link href="resources/css/styles.css" rel="stylesheet" />
   <!-- 조건문으로 세션이 유지되어있으면 마이페이지 / 로그아웃으로 변경 -->
   <div class="head_li">
-    <li><a href="">로그인</a></li>
-    <li><a href="">회원가입</a></li>
+    <li><a href="<%=request.getContextPath()%>/login">로그인</a></li>
+    <li><a href="<%=request.getContextPath()%>/join">회원가입</a></li>
   </div>
 </head>
 <body class="d-flex flex-column h-100">
@@ -37,7 +37,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
     <div class="container px-5">
-      <a class="navbar-brand" href="index.html">신용을자바</a>
+      <a class="navbar-brand" href="<%=request.getContextPath()%>/">신용을자바</a>
       <button
               class="navbar-toggler"
               type="button"
@@ -52,13 +52,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">신용조회</a>
+            <a class="nav-link" href="<%=request.getContextPath() %>/creditresult">신용조회</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">신용평가</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">리스크 솔루션</a>
+            <a class="nav-link" href="../dummy/contact.html">리스크 솔루션</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -76,13 +76,13 @@
                     aria-labelledby="navbarDropdownBlog"
             >
               <li>
-                <a class="dropdown-item" href="blog-home.html">공지사항</a>
+                <a class="dropdown-item" href="../dummy/blog-home.html">공지사항</a>
               </li>
               <li>
-                <a class="dropdown-item" href="blog-post.html">Q&A</a>
+                <a class="dropdown-item" href="<%=request.getContextPath()%>/qna">Q&A</a>
               </li>
               <li>
-                <a class="dropdown-item" href="blog-post.html"
+                <a class="dropdown-item" href="<%=request.getContextPath()%>/faq"
                 >자주묻는 질문</a
                 >
               </li>
