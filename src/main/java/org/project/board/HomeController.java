@@ -15,12 +15,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/")
 public class HomeController {
 	
-	@RequestMapping("/")
+	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public String main() {
+		return "home";
+	}
+
+	@RequestMapping(value="")
+	public String main2(){
 		return "index";
 	}
+
+
 
 	
 }
