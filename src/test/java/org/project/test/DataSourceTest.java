@@ -25,6 +25,7 @@ public class DataSourceTest {
 			System.out.println("/* con="+con);
 			
 		}catch(Exception e){
+			System.out.println("익셉션으로왔다................");
 			e.printStackTrace();
 		}
 	}
