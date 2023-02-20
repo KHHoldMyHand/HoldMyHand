@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jspf" %>
 <%--   @@@@@@@@@@여기까지 헤더@@@@@@@@@   --%>
       <!-- Header-->
       <header class="bg-warning py-5">
@@ -310,4 +310,4 @@
     </main>
     <!-- Footer-->
 <%--   @@@@@@@@@@@여기부터 푸터@@@@@@@@@--%>
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+    <%@ include file="/WEB-INF/views/include/footer.jspf" %>

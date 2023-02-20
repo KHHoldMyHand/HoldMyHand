@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jspf" %>
 
 
 <section class="py-5" id="features">
@@ -11,13 +11,13 @@
                 <h2 class="fw-bolder mb-0">이 부분에 각자 맡은 기능을 구현하면 됨</h2>
             </div>
             <div>
-                여기는 로그인 화면
+                여기는 로그인 화면이다!
             </div>
 
         </div>
     </div>
 <%--    --%>
 </section>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jspf" %>
 
 
