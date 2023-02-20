@@ -7,7 +7,7 @@
     <div class="container px-5 my-5">
         <div class="row gx-5">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <h2 class="fw-bolder mb-0">이 부분에 각자 맡은 기능을 구현하면 됨</h2>
+                <h2 class="fw-bolder mb-0">이 부분에 각자 맡은 기능을 구현하면 됨(신용정보등록)</h2>
             </div>
 <%--            <div class="col-lg-8">--%>
 <%--                <div class="row gx-5 row-cols-1 row-cols-md-2">--%>

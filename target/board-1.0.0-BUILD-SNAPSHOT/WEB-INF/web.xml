@@ -9,7 +9,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-	
+
 	<!-- DB에 연동하기(context-param 읽기)위한 클래스 생성 -->
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -28,7 +28,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -54,7 +54,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!-- 한글설정 END -->
-	
+
 	<!-- HiddenHttpMethodFilter -->
 	<!-- PUT, PATCH, DELETE 방식의 메소드를 지원하지 않는 브라우저에서 -->
 	<!-- POST 방식으로 전송하고, 추가적인 정보를 이용해 
