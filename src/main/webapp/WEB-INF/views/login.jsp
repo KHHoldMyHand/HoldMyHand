@@ -4,19 +4,39 @@
 
 
 <section class="py-5" id="features">
-<%--    아래 주석까지 코드 삭제해서 새로 짜는게 편할 거야--%>
-    <div class="container px-5 my-5">
-        <div class="row gx-5">
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h2 class="fw-bolder mb-0">이 부분에 각자 맡은 기능을 구현하면 됨</h2>
-            </div>
-            <div>
-                여기는 로그인 화면이다!
-            </div>
 
-        </div>
-    </div>
-<%--    --%>
+           <head>
+               <meta charset="UTF-8">
+               <title>로그인화면</title>
+               <link href="../resources/css/login.css" rel="stylesheet" type="text/css">
+           </head>
+           <body>
+           <div class="login">
+           <div>
+                   <h1><img src="../resources/images/1243928.png" width="150"></h1>
+
+                   <h2>Hold My Hand</h2>
+                   <form action="<%=request.getContextPath()%>/">
+                       <div class="login-area">
+                           <input type="text" name="userID" id="userID" autocomplete="off" required>
+                           <label for="userID">사업자등록번호(ID)</label>
+                       </div>
+                       <div class="login-area">
+                           <input type="password" name="userPW" id="userPW" autocomplete="off" required>
+                           <label for="userPW">비밀번호입력(PW)</label>
+                       </div>
+                       <div class = "button-area">
+                           <button id="btn" type="submit">LOGIN</button>
+                       </div>
+                   </form>
+                   <div class = "join-area">
+                       <a href="<%=request.getContextPath()%>/join">회원가입</a>
+                   </div>
+           </div>
+           </div>
+           </body>
+           </html>
+
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
 
