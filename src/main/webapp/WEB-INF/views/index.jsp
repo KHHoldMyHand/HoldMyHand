@@ -32,7 +32,7 @@
             <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
               <img
                 class="img-fluid rounded-3 my-5"
-                src="https://dummyimage.com/600x400/343a40/6c757d"
+                src="https://www.seoulcredit.co.kr/wp-content/uploads/2023/02/m_bank.webp"
                 alt="..."
               />
             </div>

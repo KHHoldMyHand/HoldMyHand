@@ -150,9 +150,7 @@ overflow:auto;
 height:124px;
 padding: 26px 19px;
 font-size : 13px;
-color: black;
-ine-height : 16px;
- background-color: white;
+
 }
 
 #ctn-btn:active{
@@ -171,3 +169,4 @@ ine-height : 16px;
 margin-top : 8px; !important;
 margin-bottom : 8px; !important;
 }
+
