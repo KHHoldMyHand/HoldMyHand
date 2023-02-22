@@ -1,0 +1,173 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Mynerve&display=swap');
+body{font-family: 'Jua', sans-serif;}
+.container{
+
+}
+
+#line {
+margin-top: 30px;
+border-radius: 10px;
+height: 5px;
+background-color: gold;
+}
+
+#line2 {
+margin-top: 30px;
+border-radius: 10px;
+height: 5px;
+background-color: gold;
+}
+
+h1 {
+font-weight: bold;
+font-size: xx-large;
+}
+
+h4 {
+color: black margin: 80px;
+margin-top: 26px;
+margin-bottom: 10px;
+}
+
+#enpNm {
+width: 272px;
+height: 45px;
+border: solid 1px #dadada;
+padding: 10px 10px 14px 10px;
+background: white;
+vertical-align: middle;
+border-radius: 6px;
+}
+
+#searchSvcGrpCd {
+box-sizing: border-box;
+border: 1px solid var(--gray_500);
+border-radius: 6px;
+height: 40px;
+width: 100;
+border: solid 1px #dadada;
+padding: 10px 10px 14px 10px;
+letter-spacing: -0.32px;
+}
+
+#searchSvcGrpCd:active{
+box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+.btn_del{
+margin-left:0px;
+}
+
+.btn_del:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+
+#postcodify_search_button{
+margin-left:0px;
+margin-top:20px;
+border-radius: 10px;
+}
+
+#postcodify_search_button:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+#idCheck {
+margin-top: 16px;
+margin-left: 0px;
+margin-bottom: 0px;
+}
+
+#idCheck:active{
+box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+.outer {
+width: 60%;
+min-width: 650px;
+background: rgba(255, 247, 137, 0.132);
+box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 4px 0px;
+margin: auto;
+margin-top: 70px;
+margin-bottom: 70px;
+}
+
+#joinForm {
+width: 400px;
+margin: auto;
+padding: 10px;
+}
+
+#joinForm h1 {
+text-align: center;
+}
+
+
+.input_area {
+border: solid 1px #dadada;
+padding: 10px 10px 14px 10px;
+background: white;
+border-radius: 6px;
+}
+
+.input_area input:not([type=checkbox]) {
+width: 250px;
+height: 30px;
+border: 0px;
+}
+
+.btnArea {
+text-align: center;
+padding: 50px;
+}
+
+button {
+width: 100px;
+height: 35px;
+border: 5px;
+color: black;
+background: gold;
+margin: 10px;
+border-radius: 10px;
+}
+
+.scroll_type{
+
+}
+
+.scroll_type > .agreement_area {
+overflow:auto;
+height:124px;
+padding: 26px 19px;
+font-size : 13px;
+color: black;
+ine-height : 16px;
+ background-color: white;
+}
+
+#ctn-btn:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+.btnArea:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+.mt8{
+margin-top : 8px; !important;
+margin-bottom : 8px; !important;
+}
