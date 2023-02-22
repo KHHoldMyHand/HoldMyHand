@@ -1,3 +1,5 @@
+Join.jsp
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
@@ -105,7 +107,7 @@ class="postcodify_details"></span>
 <dt>
 <div>
 <input type="checkbox" id="allChk" name="checkBoxAll"
-
+    class="checkBoxAll" value='selectall' onclick='selectAll(this)'>
 <label for="allChk">전체동의</label>
 </div>
 </dt>
@@ -120,7 +122,7 @@ class="postcodify_details"></span>
 
 <dd>
 <!-- 약관 샘플 -->
-
+<div class="scroll_type" tabindex="0" id="myDIV" style="display:none;">
 <div class="agreement_area">
     <h5 class="tit_least">제1조 (목적)</h5>
     <p>본 약관은 내손을자바팀의 근짱과 이용 고객(이하 ‘회원’이라 합니다)
@@ -205,7 +207,6 @@ class="postcodify_details"></span>
             다른 목적으로 사용을 금합니다.
         </li>
     </ol>
-
 
     <h5 class="tit_least">제8조 (회원의 의무)</h5>
     <ol>
@@ -374,3 +375,4 @@ function selectAll(selectAll)  {
 </div>
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
+
