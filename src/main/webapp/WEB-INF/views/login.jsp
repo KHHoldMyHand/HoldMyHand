@@ -35,9 +35,31 @@
            </div>
            </div>
            </body>
+           <script type="text/javascript">
+                   let id = document.querySelector('#userID')
+                   let pw = document.querySelector('#userPW')
+                   let btn = document.querySelector('#btn')
+
+                   btn.addEventListener('click', () => {
+                       if(id.value == "") {
+                           label = id.nextElementSibling
+                           label.classList.add('warning')
+                           setTimeout(() => {
+                               label.classList.remove('warning')
+                           }, 1500)
+                       } else if(pw.value == "") {
+                           label = pw.nextElementSibling
+                           label.classList.add('warning')
+                           setTimeout(() => {
+                               label.classList.remove('warning')
+                           }, 1500)
+                       }
+                   })
+           </script>
            </html>
 
 </section>
+
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
 
 
