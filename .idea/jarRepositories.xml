@@ -21,10 +21,5 @@
       <option name="name" value="oracle" />
       <option name="url" value="http://maven.jahia.org/maven2" />
     </remote-repository>
-    <remote-repository>
-      <option name="id" value="oracle" />
-      <option name="name" value="oracle" />
-      <option name="url" value="http://maven.jahia.org/maven4" />
-    </remote-repository>
   </component>
 </project>

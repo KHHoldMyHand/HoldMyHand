@@ -1,3 +1,5 @@
+Join.css
+
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Mynerve&display=swap');
 body{font-family: 'Jua', sans-serif;}
@@ -142,8 +144,7 @@ border-radius: 10px;
 }
 
 .scroll_type{
-border:1px solid #e6e6e6;
-display:none;
+
 }
 
 .scroll_type > .agreement_area {
@@ -151,8 +152,9 @@ overflow:auto;
 height:124px;
 padding: 26px 19px;
 font-size : 13px;
-color: #555;
+color: black;
 ine-height : 16px;
+ background-color: white;
 }
 
 #ctn-btn:active{

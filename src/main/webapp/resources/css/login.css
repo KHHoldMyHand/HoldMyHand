@@ -45,6 +45,13 @@ font-family: 'Jua', sans-serif;
     font-size: 15px; color: rgb(187, 187, 187);
 }
 
+.login-area label.warning{
+    color : orange  !important;
+    animation : warning .3s ease;
+    animation-iteration-count : 3;
+}
+
+
 .button-area{
             margin-top: 30px;
             }
@@ -81,3 +88,10 @@ font-family: 'Jua', sans-serif;
     position: relative;
     top:2px;
 }
+
+@keyframes warning{
+    0%{transform : translateX(-8px);}
+    25%{transform : translateX(8px);}
+    50%{transform : translateX(-8px);}
+    75%{transform : translateX(8px);}
+    }

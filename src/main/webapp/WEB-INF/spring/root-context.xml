@@ -9,8 +9,8 @@
 <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" /> 
-		<property name="username" value="scott" />
-		<property name="password" value="tiger"/>
+		<property name="username" value="HOLD" />
+		<property name="password" value="HOLD"/>
 	</bean> 
 	
 
