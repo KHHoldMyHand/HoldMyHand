@@ -8,7 +8,7 @@
         <table class="table table-hover">
             <tr>
                 <th>기업이름</th>
-                <th>유저아이디</th>
+                <th>유저ID</th>
                 <th>휴대전화</th>
             </tr>
 
