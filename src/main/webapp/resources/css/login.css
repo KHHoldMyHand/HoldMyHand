@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Mynerve&display=swap');
+*{margin:0; padding: 0; box-sizing: border-box;}
+
+body{
+font-family: 'Jua', sans-serif;
+}
+
+.login{position: relative; z-index: 2;}
+.login h1{
+    font-size: 32px; color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 60px;
+}
+.login h2{
+    font-size: 15;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.login-area{width: 400px;
+           position: relative;
+           margin:auto;
+           margin-top : 20px;
+
+          }
+.login-area:first-child{margin-top: 0px; }
+.login-area input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    border-radius: 10px;
+    background-color : transparent;
+    border-color : black;
+    }
+
+.login-area label{
+    position: absolute; left: 10px; top:15px;
+    font-size: 15px; color: rgb(73, 73, 72);
+    transition: all .5s ease;
+
+}
+
+.login-area input:focus + label,
+.login-area input:valid + label{
+    top : 2px;
+    font-size: 15px; color: rgb(187, 187, 187);
+}
+
+.login-area label.warning{
+    color : orange  !important;
+    animation : warning .3s ease;
+    animation-iteration-count : 3;
+}
+
+
+.button-area{
+            margin-top: 30px;
+            }
+.button-area button{
+    width: 27%; height: 50px;
+    margin:auto;
+    display:block;
+    background: rgb(253, 249, 0);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+}
+.button-area:active{
+    position: relative;
+    top:2px;
+    border-radius: 25px;
+}
+.join-area{
+    margin-top: 20px;
+    text-align: center;
+}
+.join-area a{
+    font-size: 15px; color: gray;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+}
+.join-area:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+    position: relative;
+    top:2px;
+}
+
+@keyframes warning{
+    0%{transform : translateX(-8px);}
+    25%{transform : translateX(8px);}
+    50%{transform : translateX(-8px);}
+    75%{transform : translateX(8px);}
+    }
