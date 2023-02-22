@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/oracle/")
+@RequestMapping("/")
 public class OracleController {
 
     @Autowired
     private CustomerMapper customerMapper;
 
-    @RequestMapping("/dept")
+    @RequestMapping("/oracle")
     public String dept(Model model) {
         List<CustomerVO> list = customerMapper.listCustomer();
         model.addAttribute("list", list);
-        return "oracle/dept";
+        return "oracle";
     }
 }
 

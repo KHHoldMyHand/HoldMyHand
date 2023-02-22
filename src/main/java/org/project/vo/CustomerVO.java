@@ -17,5 +17,5 @@ public class CustomerVO {
     String corpName;
     String corpType;
     String corpManager;
-    Integer phoneNo;
+    String phoneNo;
 }
