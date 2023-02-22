@@ -19,35 +19,37 @@
 <section class="py-5" id="features">
     <div class="container px-5 my-5">
         <div class="row gx-5">
-            <%-- 기업 회원 약관 --%>
+            <title>회원가입</title>
+            <link href="../resources/css/join.css" rel="stylesheet" type="text/css" />
+
+            <body>
+            <!-- 기업 회원 약관 -->
             <!-- Page content-->
-            <section class="p-0">
                 <div class="bg-white rounded-3 py-5 px-4 px-md-5 mb-5">
                     <div class="text-center mb-5">
                         <h2 class="fw-bolder">기업 회원 이용 약관</h2>
                     </div>
                     <form id="contactForm" action="<%=request.getContextPath()%>/creditForm" method="POST">
+                        <!-- 약관 내용 -->
                         <div style="overflow-y:scroll; width: 100%; height: 300px; padding: 10px; margin: auto; border: 1px solid #ababab">
                             <div class="package_wrap w740 help_reset wrap_terms">
-                                <!-- 약관 내용 -->
                                 <h3>제1장 총칙</h3>
                                 <h4 id="termsCompany001">제1조 (목적)</h4>
                                 <p>
-                                    본 약관은 ㈜사람인에이치알(이하 "회사"라 합니다)이 운영하는 웹사이트(이하 "사이트"라 합니다) 및 모바일 어플리케이션(이하 "어플리케이션"이라 하며, 사이트와 어플리케이션을 총칭하여 "사이트 등"이라 합니다)을 통해 서비스를 제공함에 있어 회사와 이용자의 이용조건 및 제반 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.
+                                    본 약관은 ㈜신용을자바(이하 "회사"라 합니다)이 운영하는 웹사이트(이하 "사이트"라 합니다) 및 모바일 어플리케이션(이하 "어플리케이션"이라 하며, 사이트와 어플리케이션을 총칭하여 "사이트 등"이라 합니다)을 통해 서비스를 제공함에 있어 회사와 이용자의 이용조건 및 제반 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.
                                 </p>
                                 <h4 id="termsCompany002">제2조 (용어의 정의)</h4>
                                 <p>본 약관에서 사용하는 용어의 정의는 아래와 같습니다.</p>
                                 <ol>
                                     <li>①	"사이트"라 함은 회사와 계열사가 서비스를 이용자에게 제공하기 위하여 제작, 운영하는 사이트를 말합니다. 현재 회사가 운영하는 사이트의 접속 주소는 아래와 같습니다.
                                         <ol>
-                                            <li>-	www.saramin.co.kr</li>
-                                            <li>-	m.saramin.co.kr</li>
+                                            <li>-	localhost:8082</li>
                                         </ol>
                                     </li>
                                     <li>
                                         ②	"어플리케이션"이라 함은 회사와 계열사가 서비스를 이용자에게 제공하기 위하여 IOS, 안드로이드 등 운영체제와 관계없이 스마트폰 또는 기타 휴대용 단말기에서 이용할 수 있도록 제작, 운영하는 프로그램을 말합니다. 현재 회사가 운영하는 어플리케이션의 이름은 아래와 같습니다.
                                         <ol>
-                                            <li>-	사람인 등</li>
+                                            <li>-	신용을자바 등</li>
                                         </ol>
                                     </li>
                                     <li>
@@ -284,7 +286,7 @@
                                         ⑦	회사는 기업회원이 등록한 기업정보 및 채용공고를 회사가 정한 방법에 따라 노출시킬 수 있으며, 지정된 마감기간이 지난 채용공고를 임의로 마감시킬 수 있습니다.
                                     </li>
                                     <li>
-                                        ⑧	기업회원은 유·무료로 사람인 개인회원이 등록한 이력서를 검색할 수 있으며, 회사가 제시하는 별도의 커뮤니케이션 수단을 통하여 개인회원에게 연락을 취할 수 있습니다. 이 때, 이력서상 기재된 개인회원의 연락처의 열람 및 연락의 목적은 채용활동에 국한되어야 하며, 기업의 영업·마케팅을 위하여 활용하거나 제3자에 대한 개인정보 제공 시에는 정보통신망 이용 촉진 및 정보 보호 등 관련 법률, 개인정보 보호법, 직업안정법 위반에 따른 법적 책임을 전적으로 부담합니다.
+                                        ⑧	기업회원은 유·무료로 신용을자바 개인회원이 등록한 이력서를 검색할 수 있으며, 회사가 제시하는 별도의 커뮤니케이션 수단을 통하여 개인회원에게 연락을 취할 수 있습니다. 이 때, 이력서상 기재된 개인회원의 연락처의 열람 및 연락의 목적은 채용활동에 국한되어야 하며, 기업의 영업·마케팅을 위하여 활용하거나 제3자에 대한 개인정보 제공 시에는 정보통신망 이용 촉진 및 정보 보호 등 관련 법률, 개인정보 보호법, 직업안정법 위반에 따른 법적 책임을 전적으로 부담합니다.
                                     </li>
                                     <li>
                                         ⑨	회사는 기업회원이 등록된 개인회원의 이력서를 검색하고, 개인회원에게 연락할 수 있는 권한에 적정한 제한을 둘 수 있으며, 기업회원이 적절하지 않은 방법이나 채용활동 이외의 목적으로 개인회원에게 연락하거나 서비스 이용에 불편을 끼친 경우, 기업회원의 채용공고 및 기업정보를 임의로 수정/삭제 등의 조치를 취할 수 있습니다.
@@ -820,23 +822,26 @@
                                         ②	제1항에도 불구하고 회사와 기업회원 간에 발생한 분쟁에 관한 소송이 제기될 경우, 민사소송법에 따른 관할법원을 제1심 관할법원으로 지정합니다.
                                     </li>
                                 </ol>
-                                <p>2022. 11. 15<br>(주)사람인에이치알</p>
+                                <p>2022. 11. 15<br>(주)신용을자바</p>
                                 <div class="wrap_button align_right">
                                     <a href="/zf_user/help/terms-of-service/company-archives" class="btn_system_font">기업회원약관 개정이력 보기</a>
                                 </div>
                             </div>
                         </div>
-                        <%-- 약관 동의 버튼 --%>
-                        <div style="text-align: center; margin: 20px">
-                            <label style="margin: 0 50px"><input type="radio" name="AgreementYesNo" value="y" > 약관에 동의합니다.</label>
-                            <label><input type="radio" name="AgreementYesNo" id="AgreementYes" value="n" checked> 약관에 동의하지 않습니다.</label>
+                        <!-- 약관 동의 버튼 -->
+                        <div>
+                            <div style="text-align: center; margin: 20px">
+                                <label style="margin: 0 50px"><input type="radio" name="AgreementYesNo" value="y" > 약관에 동의합니다.</label>
+                                <label><input type="radio" name="AgreementYesNo" id="AgreementYes" value="n" checked> 약관에 동의하지 않습니다.</label>
+                            </div>
+                            <div style="text-align:  center;">
+                                <button type="button" style="display: inline-block; padding: 10px 20px; background: #dddddd; border: 0.5px solid #777777; border-radius: 8px" onclick="AgreementYesNoCheck()">다음</button>
+                            </div>
                         </div>
-                        <div style="text-align:  center;">
-                            <button type="button" style="display: inline-block; padding: 10px 20px; background: #dddddd; border: 0.5px solid #777777; border-radius: 8px" onclick="AgreementYesNoCheck()">다음</button>
-                        </div>
+
                     </form>
                 </div>
-            </section>
+            </body>
         </div>
     </div>
 </section>
