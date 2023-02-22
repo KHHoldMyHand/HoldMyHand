@@ -1,4 +1,3 @@
-Join.jsp
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -22,7 +21,7 @@ method="post" onsubmit="return validate();">
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<span class="input_area"><input type="text" maxlength="13" name="userId"
+<span class="input_area"><input type="text" maxlength="13" name="userId" id="useId"
 required placeholder="(-없이) 000-00-00000"></span>
 <button id="idCheck" type="button">중복확인</button>
 <hr id="line2">
@@ -50,7 +49,7 @@ required="required" class>
 업체명을 입력해 주세요.</p>
 <div class="mt8">
 <div class="select w240">
-<select name="searchSvcGrpCd" id="searchSvcGrpCd"
+<select name="corpType" id="searchSvcGrpCd"
 class="necessary" title="기업종류" style>
 <option value="">기업종류</option>
 <option value="01">주식회사</option>
@@ -80,14 +79,14 @@ class="necessary" title="기업종류" style>
 <hr id="line2">
 <h4>* 대표자명</h4>
 <span class="input_area"><input type="text" maxlength="5"
-name="userName" required placeholder="대표자명"></span>
+name="corpManager" required placeholder="대표자명"></span>
 
 <h4>대표 연락처</h4>
 <span class="input_area"><input type="tel" maxlength="11"
-name="phone" placeholder="(-없이)01012345678"></span>
+name="phoneNo" placeholder="(-없이)01012345678"></span>
 
 <h4>이메일</h4>
-<span class="input_area"><input type="email" name="email"
+<span class="input_area"><input type="email" name="userEmail"
 placeholder="대표 이메일"></span>
 <hr id="line2">
 <h4>우편번호</h4>
@@ -95,7 +94,7 @@ placeholder="대표 이메일"></span>
 class="postcodify_postcode5" placeholder="우편번호 검색"></span>
 <button type="button" id="postcodify_search_button">검색</button>
 <h4>사업자등록상 주소</h4>
-<span class="input_area"><input type="text" name="address"
+<span class="input_area"><input type="text" name="userAddress"
 class="postcodify_address"></span>
 <h4>상세주소</h4>
 <span class="input_area"><input type="text" name="address"
@@ -369,6 +368,8 @@ function selectAll(selectAll)  {
   })
 }
 </script>
+
+
 
 
 </html>
