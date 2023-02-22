@@ -23,8 +23,8 @@
 <!--	BoardMapper interface의 구현클래스 생성 SqlSessionFactoryBean(SQL을 실행하는 API)-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-<!--		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>-->
-<!--		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>-->
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.xml"></property>
 	</bean>
 	<!--
 
@@ -35,6 +35,6 @@
 	Mapper interface들을 메모리에 올리는 방법(scan)
 	상황에 따라 추가해야됨
 	 -->
-	<mybatis-spring:scan base-package="org.board.mapper"/>
+	<mybatis-spring:scan base-package="org.project.dao"/>
 	
 </beans>
