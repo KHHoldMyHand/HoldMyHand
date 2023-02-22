@@ -105,7 +105,7 @@ class="postcodify_details"></span>
 <dt>
 <div>
 <input type="checkbox" id="allChk" name="checkBoxAll"
-    class="checkBoxAll">
+
 <label for="allChk">전체동의</label>
 </div>
 </dt>
@@ -120,7 +120,7 @@ class="postcodify_details"></span>
 
 <dd>
 <!-- 약관 샘플 -->
-<div class="scroll_type" tabindex="0" id="myDIV">
+
 <div class="agreement_area">
     <h5 class="tit_least">제1조 (목적)</h5>
     <p>본 약관은 내손을자바팀의 근짱과 이용 고객(이하 ‘회원’이라 합니다)
@@ -206,6 +206,7 @@ class="postcodify_details"></span>
         </li>
     </ol>
 
+
     <h5 class="tit_least">제8조 (회원의 의무)</h5>
     <ol>
         <li>회원은 회원가입 신청 또는 회원정보 변경 시 모든 사항을 사실에 근거하여 회원의
@@ -265,7 +266,7 @@ class="postcodify_details"></span>
 </dt>
 <dd>
 <!-- 개인정보 샘플 -->
-<div class="scroll_type" tabindex="0" id="myDIV1">
+<div class="scroll_type" tabindex="0" id="myDIV1" style="display:none;">
     <div class="agreement_area">
      <h5 class="tit_least">1. 개인정보 수집 목적</h5>
          <p>내손을자바 팀프로젝트는 공공용 신용평가, 민간용 평가, 당좌용 평가, 기술평가,
@@ -285,17 +286,18 @@ class="postcodify_details"></span>
 
 <!-- //개인정보 샘플 -->
 </dd>
+
+
 <dt>
 <input type="checkbox" id="d4" name="chk">
 <label for="d4">[선택] 마케팅 정보 수신 동의</label>
 <a href="javascript:doDisplay2();">
-<button type="button" id="ctn-btn"><span class="blind">내용보기</span></button>
+<button type="button" id="ctn-btn">내용보기</button>
 </a>
 </dt>
 <dd>
-
 <!-- 마케팅 수신 샘플 -->
-<div class="scroll_type" tabindex="0" id="myDIV2">
+<div class="scroll_type" tabindex="0" id="myDIV2" style="display:none;">
 <div class="agreement_area">
     <h5 class="tit_least">프로모션 정보수신 동의</h5>
     <p>내손을자바 팀프로젝트가 제공하는 신규 서비스/이벤트/혜택 등 다양한 정보를 문자,
@@ -304,6 +306,7 @@ class="postcodify_details"></span>
 </div>
 <!-- //마케팅 수신 샘플 -->
 </dd>
+
 </dl>
 <div class="btnArea">
 <button id="joinBtn">가입하기</button>
@@ -320,16 +323,7 @@ class="postcodify_details"></span>
 
 <!— "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 —>
 <script> $(function () { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-<script>
-function doDisplay(){
-            var con = document.getElementById("myDIV");
-            if(con.style.display=='none'){
-                con.style.display = 'block';
-            }else{
-                con.style.display = 'none';
-            }
-}
-</script>
+
 <script type="text/javascript">
 var bDisplay = true; function doDisplay(){
         var con = document.getElementById("myDIV");
@@ -340,18 +334,10 @@ var bDisplay = true; function doDisplay(){
         }
 }
 </script>
-<script>
-function doDisplay1(){
-            var con = document.getElementById("myDIV1");
-            if(con.style.display=='none'){
-                con.style.display = 'block';
-            }else{
-                con.style.display = 'none';
-            }
-}
-</script>
+
+
 <script type="text/javascript">
-var bDisplay = true; function doDisplay1(){
+var bDisplay = ture; function doDisplay1(){
         var con = document.getElementById("myDIV1");
         if(con.style.display=='none'){
             con.style.display = 'block';
@@ -361,20 +347,10 @@ var bDisplay = true; function doDisplay1(){
 }
 </script>
 
-<script>
-function doDisplay2(){
-            var con = document.getElementById("myDIV2");
-            if(con.style.display=='none'){
-                con.style.display = 'block';
-            }else{
-                con.style.display = 'none';
-            }
-}
-</script>
 <script type="text/javascript">
-var bDisplay = true; function doDisplay2(){
+function doDisplay2(){
         var con = document.getElementById("myDIV2");
-        if(con.style.display=='none'){
+        if(con.style.display == 'none'){
             con.style.display = 'block';
         }else{
             con.style.display = 'none';
@@ -382,8 +358,19 @@ var bDisplay = true; function doDisplay2(){
 }
 </script>
 
+<script type="text/javascript">
+function selectAll(selectAll)  {
+  const checkboxes
+       = document.getElementsByName('chk');
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
+</script>
+
+
 </html>
 </div>
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
-
