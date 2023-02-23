@@ -2,11 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
-<html>
-
-<head>
-    <title>글 상세보기</title>
-
     <style>
         body {
             background-color: beige;
@@ -35,10 +30,6 @@
             width: 100%;
         }
     </style>
-
-</head>
-
-<body>
 
     <section class="py-5">
         <div class="container px-5 my-5">
@@ -137,8 +128,7 @@
             </table>
         </div>
     </div>
+    </section>
 
-</body>
 
-</html>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

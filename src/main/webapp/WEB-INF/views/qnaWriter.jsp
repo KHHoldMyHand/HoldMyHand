@@ -7,8 +7,7 @@
         body {
             background-color: beige;
         }
-        .board_write .title,
-        .board_write .info {
+        .board_write .title {
             padding: 15px;
 
         }
@@ -23,36 +22,31 @@
         }
 
         .board_write .title dt,
-        .board_write .title dd,
-        .board_write .info dt,
-        .board_write .info dd {
+        .board_write .title dd {
             display: inline-block;
             vertical-align: middle;
             font-size: 1.4rem;
         }
 
-        .board_write .title dt,
-        .board_write .info dt {
-            width: 90px;
+        .board_write .title dt {
+            width: 100px;
 
         }
 
         .board_write .title dd {
-            width: 80%
+            width: 90%
+
         }
 
 
-        .board_write .title input[type="text"],
-        .board_write .info input[type="text"],
-        .board_write .info input[type="password"],
-        .board_write .info input[type="email"] {
+        .board_write .title input[type="text"] {
             padding: 10px;
             box-sizing: border-box;
 
         }
 
 
-        .board_write .title input[type="text"] {
+        .board_write [type="text"] {
             width: 100%;
         }
 
@@ -61,20 +55,14 @@
             font-size: 0;
         }
 
-        .board_write .info dl {
-            display: inline-block;
-            width: 100%;
-            vertical-align: middle;
-        }
-
-        .board_write .title, .info, .cont{
-            border-color: white;
-            border-style: groove;
+        .board_write .title, .cont{
+            border-color: #FFC007;
+            border-style: solid;
         }
 
         .bt_wrap {
             text-align:right;
-            font-size:16px;
+            font-size:20px;
         }
     </style>
 
@@ -83,7 +71,7 @@
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
-                    <h1 class="fw-bolder">Q&A</h1>
+                    <h1 class="fw-bolder">QNA</h1>
                     <p class="lead fw-normal text-muted mb-0">게시글 작성</p>
                 </div>
                 <div class="board_write_wrap">
@@ -94,30 +82,15 @@
                                 <dd><input type="text" placeholder="제목을 입력하세요."></dd>
                             </dl>
                         </div>
-                        <div class="info">
-                            <dl>
-                                <dt>작성자</dt>
-                                <dd><input type="text" placeholder="작성자" disabled></dd>
-                            </dl>
-                            <dl>
-                                <dt>비밀번호</dt>
-                                <dd><input type="password" placeholder="비밀번호 입력"></dd>
-                            </dl>
-                            <dl>
-                                <input type="radio" name="open" checked>
-                                <dt style="font-size: 20px;">공개</dt>
-                                <input type="radio" name="open" checked>
-                                <dt style="font-size: 20px;">비공개</dt>
-                            </dl>
-                        </div>
+                        <br>
                         <div class="cont">
                             <h3>내용<h3>
-                                    <textarea placeholder="내용 입력" cols="30" rows="10"></textarea>
+                                    <textarea placeholder="내용 입력" cols="50" rows="50"></textarea>
                         </div>
                         <br>
                         <div class="bt_wrap">
-                            <button>등록</button>
-                            <button>취소</button>
+                            <input type="button" value="등록" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
+                            <input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
                         </div>
 
                     </div>
