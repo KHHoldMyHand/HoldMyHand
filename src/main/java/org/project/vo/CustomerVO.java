@@ -1,11 +1,11 @@
 package org.project.vo;
 
 import lombok.Data;
-import oracle.sql.CHAR;
-
+import lombok.ToString;
 import java.util.Date;
 
 @Data
+@ToString
 public class CustomerVO {
     Integer userNo;
     Integer userID;

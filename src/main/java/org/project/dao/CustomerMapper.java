@@ -9,3 +9,4 @@ import java.util.List;
 public interface CustomerMapper {
     public List<CustomerVO> listCustomer();
 }
+
