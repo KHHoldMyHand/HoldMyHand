@@ -66,7 +66,7 @@
             <form id="modiForm" action="<%= request.getContextPath() %>/mypage/userModify"
                   method="post">
                 <h1>회원정보수정</h1>
-
+                <span class="input_area" style="display: none"><input type="text" maxlength="13" name="userNo" value="${customerVO.userNo}" readonly></span>
                 <h5>아이디</h5>
                 <span class="input_area"><input type="text" maxlength="13"  value="${customerVO.userID}" readonly></span>
                 <p></p>
