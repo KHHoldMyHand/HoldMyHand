@@ -26,9 +26,9 @@ public class CustomerController {
 
     //dto받아올때 @RequestBody로 받으면 안됨.. Json이라 그런듯?
     @RequestMapping(value="/userModify", method = RequestMethod.POST)
-    public String modPOST(CustomerModifyDTO dto) {
-        System.out.println("RequestBody로 받아온 파라미터들1 : "+dto.toString());
-//        service.modify(dto);
+    public String modPOST(CustomerModifyDTO dto) throws Exception {
+        System.out.println("받아온 파라미터들1 : "+dto.toString());
+        service.modify(dto);
         return "redirect:/";
 //        ResponseEntity<String> entity=null;
 //        try{
