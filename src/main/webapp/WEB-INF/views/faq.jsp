@@ -19,7 +19,7 @@
 
         <body>
             <div class="text-center mb-5">
-                <h1 class="fw-bolder">자주 하는 질문 모아봤어요 ~!</h1>
+                <h1 class="fw-bolder">자주 하는 질문 모아봤어요~!</h1>
             </div>
 
             <div class="search_wrap ">
