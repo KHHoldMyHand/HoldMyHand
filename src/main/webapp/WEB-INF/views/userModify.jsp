@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
-
 <section>
     <style>
         .outer{
@@ -15,13 +14,13 @@
             margin-bottom : 70px;
         }
 
-        #joinForm {
+        #modiForm {
             width : 400px;
             margin: auto;
             padding: 10px;
         }
 
-        #joinForm h1 {
+        #modiForm h1 {
             text-align:center;
         }
 
@@ -63,45 +62,45 @@
     <!-- index.jsp 생성 후 모든 페이지에 include할 menubar.jsp 생성 -->
 
     <div class="outer">
-        <div id="joinInfoArea">
-            <form id="joinForm" action="<%= request.getContextPath() %>/login"
-                  method="post" onsubmit="return validate();">
+        <div id="modiInfoArea">
+            <form id="modiForm" action="<%= request.getContextPath() %>/mypage/userModify"
+                  method="post">
                 <h1>회원정보수정</h1>
 
                 <h5>아이디</h5>
-                <span class="input_area"><input type="text" maxlength="13" name="userId" readonly></span>
+                <span class="input_area"><input type="text" maxlength="13"  value="${customerVO.userID}" readonly></span>
                 <p></p>
                 <h5>비밀번호</h5>
                 <span class="input_area"><input type="password" maxlength="15" name="userPwd" required></span>
                 <p></p>
 
-                <h5>비밀번호 확인</h5>
-                <span class="input_area"><input type="password" maxlength="15" name="userPwd2" required></span>
-                <label id="pwdResult"></label>
+<%--                <h5>비밀번호 확인</h5>--%>
+<%--                <span class="input_area"><input type="password" maxlength="15" name="userPwd2" required></span>--%>
+<%--                <label id="pwdResult"></label>--%>
+<%--                <p></p>--%>
+                <h5>이메일</h5>
+                <span class="input_area"><input type="email" name="userEmail" value="${customerVO.userEmail}"></span>
                 <p></p>
 
-                <h5>이름</h5>
-                <span class="input_area"><input type="text" maxlength="5" name="userName" required></span>
+                <h5>기업명</h5>
+                <span class="input_area"><input type="text" maxlength="5" value="${customerVO.corpName}" readonly></span>
+                <p></p>
+
+                <h5>기업종류</h5>
+                <span class="input_area"><input type="text" maxlength="5" value="${customerVO.corpType}" readonly></span>
                 <p></p>
 
                 <h5>연락처</h5>
-                <span class="input_area"><input type="tel" maxlength="11" name="phone"
-                                                placeholder="(-없이)01012345678"></span>
+                <span class="input_area"><input type="tel" maxlength="11" name="phoneNo"
+                                                placeholder="(-없이)01012345678" value="${customerVO.phoneNo}"></span>
                 <p></p>
 
-                <h5>이메일</h5>
-                <span class="input_area"><input type="email" name="email"></span><button>인증번호 전송</button>
-                <p></p>
 
-                <h5>이메일 인증번호</h5>
-                <span class="input_area"><input type="email" name="email"></span>
-                <p></p>
-
-                <div class="btnArea">
-                    <button id="modifyBtn">회원정보수정</button>
-                    <button id="delBtn">회원탈퇴</button>
-                </div>
+                <button type="submit" class="btnArea">회원정보수정</button>
             </form>
+            <div class="btnArea">
+                <a href="/index"><button type="submit" class="cancelBtn">취소</button></a>
+            </div>
         </div>
     </div>
 
@@ -110,11 +109,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
-    <script>
-        function validate(){
-            return true;
-        }
-    </script>
+<%--    <script>--%>
+<%--        function validate(){--%>
+<%--            return true;--%>
+<%--        }--%>
+<%--    </script>--%>
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
 

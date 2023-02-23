@@ -3,10 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.project.dao.CustomerMapper">
+<mapper namespace="org.project.dao.CustomerDAO">
 
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select * from Customer
     </select>
+
+    <select id="read" resultType="org.project.vo.CustomerVO">
+        select
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+            from Customer
+            where userNo = #{userNo}
+    </select>
+
+
 </mapper>
