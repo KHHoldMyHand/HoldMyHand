@@ -8,12 +8,13 @@ import java.util.Date;
 @Data
 @ToString
 public class CorporationVO {
-    Integer corpNo;
     String establishmentName;
-    Date establishmentDate;
+    Integer establishmentDate;
+    String companyName;
     String companyScale;
     Integer employeers;
-    Character file;
+    String addfile;
     Integer score;
     String tax;
+    Integer corpNo;
 }
