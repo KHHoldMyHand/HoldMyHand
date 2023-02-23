@@ -17,7 +17,7 @@ public interface CustomerService {
     public void modify(CustomerModifyDTO dto) throws Exception;
 //
 //    //회원탈퇴
-//    public void remove(Integer userNo) throws Exception;
+    public void remove(Integer userNo) throws Exception;
 
 
 }
