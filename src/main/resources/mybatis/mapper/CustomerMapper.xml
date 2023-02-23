@@ -22,4 +22,9 @@
         where userNo=#{userNo}
     </update>
 
+    <delete id="delete">
+        delete from Customer
+        where userNo=#{userNo}
+    </delete>
+
 </mapper>

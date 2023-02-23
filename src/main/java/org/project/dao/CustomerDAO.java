@@ -21,6 +21,6 @@ public interface CustomerDAO {
     public void update(CustomerModifyDTO dto) throws Exception;
 //
 //    //회원탈퇴
-//    public void delete(Integer userNo) throws Exception;
+    public void delete(Integer userNo) throws Exception;
 }
 

@@ -32,13 +32,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void modify(CustomerModifyDTO dto) throws Exception {
         dao.update(dto);
-//    }
+    }
 //
 //
 //    //회원탈퇴
-//    @Override
-//    public void remove(Integer userNo) throws Exception {
-//
-//    }
+    @Override
+    public void remove(Integer userNo) throws Exception {
+        dao.delete(userNo);
     }
+
 }
