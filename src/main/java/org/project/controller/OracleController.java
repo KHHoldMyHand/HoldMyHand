@@ -1,6 +1,6 @@
 package org.project.controller;
 
-import org.project.dao.CustomerMapper;
+import org.project.dao.CustomerDAO;
 import org.project.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,11 @@ import java.util.List;
 public class OracleController {
 
     @Autowired
-    private CustomerMapper customerMapper;
+    private CustomerDAO customerDAO;
 
     @RequestMapping("/oracle")
     public String dept(Model model) {
-        List<CustomerVO> list = customerMapper.listCustomer();
+        List<CustomerVO> list = customerDAO.listCustomer();
         model.addAttribute("list", list);
         return "oracle";
     }
