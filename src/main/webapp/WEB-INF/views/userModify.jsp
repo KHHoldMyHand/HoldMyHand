@@ -100,6 +100,8 @@
             </form>
             <div class="btnArea">
                 <a href="/index"><button type="submit" class="cancelBtn">취소</button></a>
+                <a href="/mypage/userDelete?userNo=${customerVO.userNo}"><button type="submit" class="cancelBtn">회원탈퇴</button></a>
+
             </div>
         </div>
     </div>

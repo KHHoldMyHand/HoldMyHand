@@ -28,7 +28,7 @@
   <link href="resources/css/styles.css" rel="stylesheet" />
   <!-- 조건문으로 세션이 유지되어있으면 마이페이지 / 로그아웃으로 변경 -->
   <div class="head_li">
-    <li><a href="<%=request.getContextPath()%>/userModify?userNo=2">회원정보수정</a></li>
+    <li><a href="<%=request.getContextPath()%>/userModify?userNo=3">회원정보수정</a></li>
     <li><a href="<%=request.getContextPath()%>/login">로그인</a></li>
     <li><a href="<%=request.getContextPath()%>/join">회원가입</a></li>
   </div>

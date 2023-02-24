@@ -40,8 +40,8 @@ public class CustomerDAOImpl implements CustomerDAO{
         session.update(namespace + ".update",dto);
     }
 //    //회원탈퇴
-//    @Override
-//    public void delete(Integer userNo) throws Exception {
-//        session.delete(namespace + ".delete",userNo);
-//    }
+    @Override
+    public void delete(Integer userNo) throws Exception {
+        session.delete(namespace + ".delete",userNo);
+    }
 }

@@ -19,26 +19,34 @@ public class CustomerController {
     @Inject
     private CustomerService service;
 
-    @RequestMapping(value ="userModify",method = RequestMethod.GET)
-    public void modGET(@ModelAttribute("dto") CustomerModifyDTO dto){
+    @RequestMapping(value ="/userModify",method = RequestMethod.GET)
+    public void modCustomerGET(@ModelAttribute("dto") CustomerModifyDTO dto){
 
     }
 
     //dto받아올때 @RequestBody로 받으면 안됨.. Json이라 그런듯?
     @RequestMapping(value="/userModify", method = RequestMethod.POST)
-    public String modPOST(CustomerModifyDTO dto) throws Exception {
+    public String modCustomerPOST(CustomerModifyDTO dto) {
         System.out.println("받아온 파라미터들1 : "+dto.toString());
-        service.modify(dto);
+        //아래와 같은 방법은 인터셉트 방식
+        try{
+            service.modify(dto);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
-//        ResponseEntity<String> entity=null;
-//        try{
-//            System.out.println("RequestBody로 받아온 파라미터들2 : "+dto.toString());
-//            entity=new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
-//        }
-//        return entity;
+    }
+    @RequestMapping(value ="userDelete",method = RequestMethod.GET)
+    public String delCustomerGET(Integer userNo){
+        try {
+            System.out.println("받아온 유저넘버"+userNo);
+            service.remove(userNo);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //여기서 세션 날려도 됨.
+        return "redirect:/";
     }
 
 }
