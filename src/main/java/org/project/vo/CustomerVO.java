@@ -8,7 +8,7 @@ import java.util.Date;
 @ToString
 public class CustomerVO {
     Integer userNo;
-    Integer userID;
+    String userID;
     String userPwd;
     String userEmail;
     Date userJoinDate;
