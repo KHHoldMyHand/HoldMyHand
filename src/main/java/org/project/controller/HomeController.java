@@ -71,10 +71,7 @@ public class HomeController {
 		return "userModify";
 	}
 
-	@RequestMapping(value="/creditForm", method = RequestMethod.POST)
-	public String crfGET() {
-		return "creditForm";
-	}
+
 
 	
 }
