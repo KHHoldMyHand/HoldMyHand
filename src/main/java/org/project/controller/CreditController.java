@@ -22,6 +22,12 @@ public class CreditController {
     public String creditGET() {
         return "credit/credit";
     }
+
+    @RequestMapping(value="/creditwait", method = RequestMethod.GET)
+    public String creditWaitGET() {
+        return "credit/creditWait";
+    }
+
     @RequestMapping(value="/creditresult", method = RequestMethod.GET)
     public String crGET() {
         return "credit/creditresult";

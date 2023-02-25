@@ -1,3 +1,4 @@
+-- Customer 테이블 생성& userNo 시퀀스 생성
 drop table Customer;
 drop sequence userNo;
 
@@ -20,17 +21,18 @@ CREATE TABLE Customer(
                          corpName	VARCHAR2(20)		NOT NULL,
                          corpType	VARCHAR2(10)		NOT NULL,
                          corpManager	VARCHAR2(10)		NOT NULL,
-                         phoneNo	VARCHAR(20)		NOT NULL
+                         phoneNo	VARCHAR(20)		NOT NULL,
+                         creditStatus NUMBER NOT NULL
 );
 
 ALTER TABLE Customer ADD CONSTRAINT PK_CUSTOMER PRIMARY KEY (
                                                              userNo
     );
-INSERT INTO Customer (userNo,userID, userPwd, userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo)
-values(userNo.NEXTVAL,'100407',123,'jju@tistory.com','2023-02-22',0,'yongin','coupang','transport','geunju','01042933016');
+INSERT INTO Customer (userNo,userID, userPwd, userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus)
+values(userNo.NEXTVAL,'100407',123,'jju@tistory.com',SYSDATE,0,'yongin','coupang','transport','geunju','01042933016',0);
 
-INSERT INTO Customer (userNo,userID, userPwd, userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo)
-values(userNo.NEXTVAL,'950913',1234,'mm@tistory.com','2023-02-22',1,'yongin','coupang','transport','주종훈','01068898243');
+INSERT INTO Customer (userNo,userID, userPwd, userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus)
+values(userNo.NEXTVAL,'950913',1234,'mm@tistory.com',SYSDATE,1,'yongin','coupang','transport','주종훈','01068898243',0);
 
 alter table Customer add sessionKey varchar(50) default 'none' not null ;
 alter table Customer add sessionLimit timestamp;
