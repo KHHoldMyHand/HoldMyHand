@@ -12,7 +12,7 @@ public class CustomerVO {
     String userPwd;
     String userEmail;
     Date userJoinDate;
-    Character managerClassification;
+    Integer managerClassification;
     String userAddress;
     String corpName;
     String corpType;
