@@ -1,12 +1,19 @@
 package org.project.service;
 
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 
 public interface CustomerService {
+    public CustomerVO login(LoginDTO dto) throws Exception;
+    public void keepLogin(String userID, String sessionId, Date next)throws Exception;
+    public CustomerVO checkLoginBefore(String value);
+
     //회원가입
 //    public void regist(CustomerVO vo) throws Exception;
 

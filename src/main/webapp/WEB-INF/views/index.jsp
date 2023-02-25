@@ -9,6 +9,9 @@
             <div class="col-lg-8 col-xl-7 col-xxl-6">
               <div class="my-5 text-center text-xl-start">
                 <h1 class="display-5 fw-bolder text-white mb-2">
+                  <c:if test="${login!=null}">
+                    ${login.corpManager}님 환영합니다!<br>
+                  </c:if>
                   신용평가가 처음이신가요?
                 </h1>
                 <p class="lead fw-normal text-white-50 mb-4">

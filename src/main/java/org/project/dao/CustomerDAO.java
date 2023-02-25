@@ -1,16 +1,22 @@
 package org.project.dao;
 
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface CustomerDAO {
     //회원정보 전부 받아오기
     public List<CustomerVO> listCustomer();
+    //로그인
+    public CustomerVO login(LoginDTO dto) throws Exception;
 
+    public void keepLogin(String userID, String sessionId, Date next);
+    public CustomerVO checkUserWithSessionKey(String value);
     //회원가입
 //    public void create(CustomerVO vo) throws Exception;
 

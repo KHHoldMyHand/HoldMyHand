@@ -1,24 +1,58 @@
 package org.project.controller;
 
+import lombok.extern.java.Log;
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.LoginDTO;
 import org.project.service.CustomerService;
+import org.project.vo.CustomerVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.WebUtils;
 
 import javax.inject.Inject;
+import javax.servlet.http.*;
+import java.util.Date;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/user")
 public class CustomerController {
 
     @Inject
     private CustomerService service;
     @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String loginGET() {
-        return "user/login";
+    public void loginGET(@ModelAttribute("dto")LoginDTO dto) {
+    }
+    @RequestMapping(value = "/loginPost",method = RequestMethod.POST)
+    public void loginPost(LoginDTO dto, HttpSession session, Model model) throws Exception{
+        CustomerVO vo = service.login(dto);
+        if(vo==null)return;
+        model.addAttribute("customerVO",vo);
+        if(dto.isUseCookie()){
+            int amount = 60*60*24*7;
+            Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
+            System.out.println("loginPost에서 service의 keepLogin수행.");
+            service.keepLogin(vo.getUserID(),session.getId(),sessionLimit);
+        }
+    }
+    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+        Object obj = session.getAttribute("login");
+        if(obj!=null){
+            CustomerVO vo = (CustomerVO)obj;
+            session.removeAttribute("login");
+            session.invalidate();
+            Cookie loginCookie = WebUtils.getCookie(request,"loginCookie");
+            if(loginCookie!=null){
+                loginCookie.setPath("/");
+                loginCookie.setMaxAge(0);
+                response.addCookie(loginCookie);
+                service.keepLogin(vo.getUserID(),session.getId(),new Date());
+            }
+        }
+        return "user/logout";
     }
 
     @RequestMapping(value="/join", method = RequestMethod.GET)
