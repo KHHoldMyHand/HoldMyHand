@@ -7,7 +7,7 @@
 
     <select id="login" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
         from Customer
         where userID=#{userID} and userPwd=#{userPwd}
     </select>
@@ -25,13 +25,13 @@
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
         from Customer
     </select>
 
     <select id="read" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
             from Customer
             where userNo = #{userNo}
     </select>

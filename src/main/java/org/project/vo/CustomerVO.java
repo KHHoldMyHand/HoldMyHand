@@ -18,4 +18,5 @@ public class CustomerVO {
     String corpType;
     String corpManager;
     String phoneNo;
+    Integer creditStatus;
 }
