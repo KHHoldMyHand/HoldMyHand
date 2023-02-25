@@ -27,6 +27,8 @@ public class CreditController {
         return "credit/creditresult";
     }
 
+    @RequestMapping(value="/risksolution", method = RequestMethod.GET)
+    public String rsGET(){return "credit/risksolution";};
     // 약관 동의 후 신용정보입력 화면 출력
     @RequestMapping(value="/creditForm", method = RequestMethod.POST)
     public String crfGET() {
