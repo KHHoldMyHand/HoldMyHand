@@ -32,14 +32,10 @@ public class CustomerDAOImpl implements CustomerDAO{
     }
 
     @Override
-    public void keepLogin(String userID, String sessionId, Date next) {
+    public void keepLogin(Map<String,Object> map) {
         System.out.println("dao에서 keeplogin 내용 수행해서 mapper로 보낼준비.");
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("userID",userID);
-        paramMap.put("sessionId",sessionId);
-        paramMap.put("next",next);
-        System.out.println("세션아이디 : "+paramMap.get("sessionId"));
-        session.update(namespace+".keepLogin",paramMap);
+        System.out.println("세션아이디 : "+map.get("sessionId"));
+        session.update(namespace+".keepLogin",map);
     }
 
     @Override

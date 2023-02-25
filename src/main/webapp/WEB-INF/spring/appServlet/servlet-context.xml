@@ -33,7 +33,8 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/credit/"/>
+			<mapping path="/credit"/>
+			<mapping path="/creditresult"/>
 			<mapping path="/user/userModify"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>

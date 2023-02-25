@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CustomerDAO {
@@ -15,7 +16,7 @@ public interface CustomerDAO {
     //로그인
     public CustomerVO login(LoginDTO dto) throws Exception;
 
-    public void keepLogin(String userID, String sessionId, Date next);
+    public void keepLogin(Map<String,Object> map);
     public CustomerVO checkUserWithSessionKey(String value);
     //회원가입
 //    public void create(CustomerVO vo) throws Exception;

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.Map;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -23,9 +24,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void keepLogin(String userID, String sessionId, Date next) throws Exception {
+    public void keepLogin(Map<String,Object> map) throws Exception {
         System.out.println("service에서 dao의 keepLogin수행.");
-        dao.keepLogin(userID,sessionId,next);
+        dao.keepLogin(map);
 //        try{dao.keepLogin(userID,sessionId,next);}
 //        catch (Exception e){
 //            System.out.println("service - dao에러..");

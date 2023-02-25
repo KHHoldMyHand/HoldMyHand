@@ -15,6 +15,8 @@ import org.springframework.web.util.WebUtils;
 import javax.inject.Inject;
 import javax.servlet.http.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -34,7 +36,11 @@ public class CustomerController {
             int amount = 60*60*24*7;
             Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
             System.out.println("loginPost에서 service의 keepLogin수행.");
-            service.keepLogin(vo.getUserID(),session.getId(),sessionLimit);
+            Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("userID",vo.getUserID());
+            paramMap.put("sessionId",session.getId());
+            paramMap.put("next",sessionLimit);
+            service.keepLogin(paramMap);
         }
     }
     @RequestMapping(value="/logout",method = RequestMethod.GET)
@@ -49,7 +55,11 @@ public class CustomerController {
                 loginCookie.setPath("/");
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
-                service.keepLogin(vo.getUserID(),session.getId(),new Date());
+                Map<String,Object> paramMap = new HashMap<>();
+                paramMap.put("userID",vo.getUserID());
+                paramMap.put("sessionId",session.getId());
+                paramMap.put("next",new Date());
+                service.keepLogin(paramMap);
             }
         }
         return "user/logout";
