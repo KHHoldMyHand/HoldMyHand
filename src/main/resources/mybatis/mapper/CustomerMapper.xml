@@ -5,9 +5,28 @@
 
 <mapper namespace="org.project.dao.CustomerDAO">
 
+    <select id="login" resultType="org.project.vo.CustomerVO">
+        select
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+        from Customer
+        where userID=#{userID} and userPwd=#{userPwd}
+    </select>
+
+    <update id="keepLogin">
+        update Customer
+        set sessionKey = #{sessionId}, sessionLimit = #{next}
+        where userID=#{userID}
+    </update>
+
+    <select id="checkUserWithSessionKey" resultType="org.project.vo.CustomerVO">
+        select * from Customer where sessionKey = #{value} and sessionLimit > now()
+    </select>
+
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
-        select * from Customer
+        select
+            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo
+        from Customer
     </select>
 
     <select id="read" resultType="org.project.vo.CustomerVO">
