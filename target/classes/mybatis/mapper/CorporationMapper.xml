@@ -3,130 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.project.dao.CorporationMapper">
+<mapper namespace="org.project.dao.CorporationDAO">
 
-    <insert id="create" parameterType="org.project.vo.CorporationVO">
-        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers, addfile)
-        values(#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers},#{addfile})
+    <insert id="create" parameterType="org.project.dto.CorporationDTO">
+        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers)
+        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})
     </insert>
 
-<!--    <select id="read" resultType="org.project.vo.CorporationVO">-->
-<!--        select-->
-<!--            corpNo, establishmentName, file-->
-<!--        from-->
-<!--            Corporation-->
-<!--        where corpNo = #{corpNo}-->
-<!--    </select>-->
 
-<!--    <update id="update">-->
-<!--        update tbl_board set title =#{title}, content =#{content}-->
-<!--        where bno = #{bno}-->
-<!--    </update>-->
-
-<!--    <delete id="delete">-->
-<!--        delete from tbl_board where bno = #{bno}-->
-<!--    </delete>-->
-
- <!--   <select id="listAllCorp" resultType="org.project.vo.CorporationVO">
- <![CDATA[
-        select
-            corpNo, establishmentName, file
-        from
-            Corporation
-        where corpNo > 0
-        order by corpNo desc
-        ]]>
- </select>
-
-    <select id="listPage" resultType="CorporationVO">
- <![CDATA[
-        select
-            corpNo, establishmentName, file
-        from
-            Corporation
-        where corpNo > 0
-        order by corpNo desc
-            limit #{page}, 10
-        ]]>
- </select>
-
-    <select id="listCriteria" resultType="CorporationVO">
- <![CDATA[
-        select
-            corpNo, establishmentName, file
-        from
-            Corporation
-        where corpNo > 0
-        order by corpNo desc
-            limit #{pageStart}, #{perPageNum}
-        ]]>
- </select>
-
-
-
-    <select id="countPaging" resultType="int">
- <![CDATA[
-        select
-            count(corpNo)
-        from
-            Corporation
-        where
-            corpNo > 0
-        ]]>
- </select>
-
-
-
-    <sql id="search">
-        <if test="searchType != null" >
-            <if test="searchType == 't'.toString()">
-                and title like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'c'.toString()">
-                and content like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'w'.toString()">
-                and writer like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType == 'tc'.toString()">
-                and ( title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
-            </if>
-            <if test="searchType == 'cw'.toString()">
-                and ( content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
-            </if>
-            <if test="searchType == 'tcw'.toString()">
-                and (   title like CONCAT('%', #{keyword}, '%')
-                OR
-                content like CONCAT('%', #{keyword}, '%')
-                OR
-                writer like CONCAT('%', #{keyword}, '%'))
-            </if>
-        </if>
-    </sql>
-
-    <select id="listSearch" resultType="CorporationVO">
-        <![CDATA[
-  select *
-  from Corporation
-  where corpNo > 0
-]]>
-
-        <include refid="search"></include>
-
-        <![CDATA[
-  order by corpNo desc
-  limit #{pageStart}, #{perPageNum}
-]]>
-    </select>
-
-    <select id="listSearchCount" resultType="int">
-        <![CDATA[
-  select count(corpNo)
-  from Corporation
-  where corpNo > 0
-]]>
-        <include refid="search"></include>
-
-    </select>-->
 
 </mapper>

@@ -24,7 +24,21 @@
 	<context:component-scan base-package="org.project.controller"/>
 	<context:component-scan base-package="org.project.service"/>
 
+	<beans:bean id="loginInterceptor" class="org.project.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" class="org.project.interceptor.AuthInterceptor"></beans:bean>
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/credit"/>
+			<mapping path="/creditresult"/>
+			<mapping path="/user/userModify"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
 
 
 

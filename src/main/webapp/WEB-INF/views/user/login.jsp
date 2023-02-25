@@ -16,15 +16,18 @@
                    <h1><img src="../resources/images/1243928.png" width="150"></h1>
 
                    <h2>Hold My Hand</h2>
-                   <form action="<%=request.getContextPath()%>/">
+                   <form action="<%=request.getContextPath()%>/user/loginPost" method="post">
                        <div class="login-area">
                            <input type="text" name="userID" id="userID" autocomplete="off" required>
                            <label for="userID">사업자등록번호(ID)</label>
                        </div>
                        <div class="login-area">
-                           <input type="password" name="userPW" id="userPW" autocomplete="off" required>
+                           <input type="password" name="userPwd" id="userPW" autocomplete="off" required>
                            <label for="userPW">비밀번호입력(PW)</label>
                        </div>
+                       <label>
+                           <input type="checkbox" name="useCookie">자동로그인
+                       </label>
                        <div class = "button-area">
                            <button id="btn" type="submit">LOGIN</button>
                        </div>
