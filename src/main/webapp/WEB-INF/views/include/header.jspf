@@ -32,7 +32,7 @@
     <c:choose>
       <c:when test="${login!=null}"> <!-- if와 동일 -->
         <%--세션이 존재한다면--%>
-        <li><a href="<%=request.getContextPath()%>/user/userModify?userNo=${login.userNo}">마이페이지</a></li>
+        <li><a href="<%=request.getContextPath()%>/user/userModify">마이페이지</a></li>
         <li><a href="<%=request.getContextPath()%>/user/logout">로그아웃</a></li>
       </c:when>
       <c:otherwise> <!-- 세션이 존재하지 않다면 -->

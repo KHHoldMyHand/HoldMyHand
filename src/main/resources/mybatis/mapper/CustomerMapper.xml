@@ -19,7 +19,7 @@
     </update>
 
     <select id="checkUserWithSessionKey" resultType="org.project.vo.CustomerVO">
-        select * from Customer where sessionKey = #{value} and sessionLimit > now()
+        select * from Customer where sessionKey = #{value} and sessionLimit > SYSDATE
     </select>
 
     <!-- 유저 조회 -->
