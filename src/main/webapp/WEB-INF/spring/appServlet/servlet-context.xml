@@ -26,6 +26,7 @@
 
 	<beans:bean id="loginInterceptor" class="org.project.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" class="org.project.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="mainInterceptor" class="org.project.interceptor.MainInterceptor"></beans:bean>
 
 	<interceptors>
 		<interceptor>
@@ -33,11 +34,14 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/"/>
 			<mapping path="/credit"/>
 			<mapping path="/creditresult"/>
 			<mapping path="/user/userModify"/>
 			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:ref bean="mainInterceptor"/>
 		</interceptor>
 	</interceptors>
 
