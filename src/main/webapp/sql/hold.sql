@@ -40,6 +40,7 @@ commit;
 
 ----
 CREATE TABLE Corporation (
+    userNo              NUMBER                              NOT NULL,
     establishmentName   VARCHAR2(30)                        NOT NULL,
     establishmentDate   VARCHAR2(20)                        NOT NULL,
     companyName         VARCHAR2(20)                        NOT NULL,
@@ -47,6 +48,8 @@ CREATE TABLE Corporation (
     employeers          NUMBER                              NOT NULL,
     tax                 NUMBER                                      ,
     score               VARCHAR2(3)         DEFAULT 'NR'        NULL,
-    userNo              NUMBER                              NOT NULL,
+    files               NUMBER              DEFAULT 0           NULL,
     CONSTRAINT fk_midx foreign key(userNo) references Customer (userNo)
 );
+INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score)
+values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR');

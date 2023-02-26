@@ -37,6 +37,7 @@
 			<mapping path="/credit"/>
 			<mapping path="/creditresult"/>
 			<mapping path="/user/userModify"/>
+			<mapping path="/creditManage"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor>

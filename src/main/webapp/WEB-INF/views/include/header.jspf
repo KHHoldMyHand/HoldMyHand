@@ -70,7 +70,7 @@
                     <a class="nav-link" href="<%=request.getContextPath() %>/oracle">회원관리</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/creditmanage">신용평가</a>
                   </li>
                 </c:when>
                 <c:otherwise>
@@ -78,24 +78,15 @@
                     <c:choose>
                         <c:when test="${login.creditStatus==0}">
                             <li class="nav-item">
-                                <a class="nav-link" href="<%=request.getContextPath() %>/credit">신용조회</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
                             </li>
                         </c:when>
                         <c:when test="${login.creditStatus==1}">
                             <li class="nav-item">
-                                <a class="nav-link" href="<%=request.getContextPath() %>/creditwait">신용조회</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="<%=request.getContextPath()%>/creditwait">신용평가</a>
                             </li>
                         </c:when>
                         <c:when test="${login.creditStatus==2}">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%=request.getContextPath() %>/creditresult">신용조회</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<%=request.getContextPath()%>/creditresult">신용평가</a>
                             </li>
@@ -110,9 +101,6 @@
             </c:when>
             <c:otherwise>
 <%--              비회원일때 작성하는 코드영역--%>
-              <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/creditresult">신용조회</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
               </li>

@@ -2,13 +2,17 @@ package org.project.controller;
 
 import org.project.dao.CorporationDAO;
 import org.project.dto.CorporationDTO;
+import org.project.vo.CorporationVO;
+import org.project.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -39,6 +43,15 @@ public class CreditController {
     @RequestMapping(value="/creditForm", method = RequestMethod.POST)
     public String crfGET() {
         return "credit/creditForm";
+    }
+
+    @RequestMapping(value="/creditmanage", method = RequestMethod.GET)
+    public String crbGET(Model model) {
+        List<CorporationVO> list = corporationMapper.listCorporation();
+        model.addAttribute("list", list);
+
+
+        return "credit/creditManage";
     }
     
     // 신용정보입력 데이터 저장 후 메인페이지 출력(구현중), 실패시 입력 화면 값 그대로 유지하기(미구현)
