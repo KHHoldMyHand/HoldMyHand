@@ -5,11 +5,16 @@
 
 <mapper namespace="org.project.dao.CorporationDAO">
 
-    <insert id="create" parameterType="org.project.dto.CorporationDTO">
-        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers)
-        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})
-    </insert>
+<!--    <insert id="create" parameterType="org.project.dto.CorporationDTO">-->
+<!--        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers)-->
+<!--        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})-->
+<!--    </insert>-->
 
+    <select id="listCorporation" resultType="org.project.vo.CorporationVO">
+        select
+            *
+        from Corporation
+    </select>
 
 
 </mapper>
