@@ -5,6 +5,7 @@ import org.project.dto.CustomerModifyDTO;
 import org.project.dto.LoginDTO;
 import org.project.service.CustomerService;
 import org.project.vo.CustomerVO;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.util.WebUtils;
 
 import javax.inject.Inject;
 import javax.servlet.http.*;
+import java.net.http.HttpResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +34,7 @@ public class CustomerController {
         CustomerVO vo = service.login(dto);
         if(vo==null)return;
         model.addAttribute("customerVO",vo);
+        System.out.println("쿠키 사용 중이니? = "+dto.isUseCookie());
         if(dto.isUseCookie()){
             int amount = 60*60*24*7;
             Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
@@ -72,9 +75,9 @@ public class CustomerController {
 
 
     @RequestMapping(value="/userModify", method = RequestMethod.GET)
-    public String umGET(@RequestParam("userNo") int userno, Model model) {
-        model.addAttribute(service.read(userno));
-        System.out.println(service.read(userno).toString());
+    public String umGET(HttpSession session) {
+        CustomerVO vo = (CustomerVO)session.getAttribute("login");
+        System.out.println(service.read(vo.getUserNo()).toString());
         return "user/userModify";
     }
     //dto받아올때 @RequestBody로 받으면 안됨.. Json이라 그런듯?
@@ -89,11 +92,20 @@ public class CustomerController {
         }
         return "redirect:/";
     }
-    @RequestMapping(value ="userDelete",method = RequestMethod.GET)
-    public String delCustomerGET(Integer userNo){
+    @RequestMapping(value ="/userDelete",method = RequestMethod.GET)
+    public String delCustomerGET(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         try {
-            System.out.println("받아온 유저넘버"+userNo);
-            service.remove(userNo);
+            CustomerVO vo = (CustomerVO)session.getAttribute("login");
+            System.out.println("받아온 유저넘버"+vo.getUserNo());
+            session.removeAttribute("login");
+            session.invalidate();
+            Cookie loginCookie = WebUtils.getCookie(request,"loginCookie");
+            if(loginCookie!=null) {
+                loginCookie.setPath("/");
+                loginCookie.setMaxAge(0);
+                response.addCookie(loginCookie);
+            }
+            service.remove(vo.getUserNo());
         }catch (Exception e){
             e.printStackTrace();
         }

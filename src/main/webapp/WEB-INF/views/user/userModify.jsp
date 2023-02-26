@@ -66,9 +66,9 @@
             <form id="modiForm" action="<%= request.getContextPath() %>/user/userModify"
                   method="post">
                 <h1>회원정보수정</h1>
-                <span class="input_area" style="display: none"><input type="text" maxlength="13" name="userNo" value="${customerVO.userNo}" readonly></span>
+                <span class="input_area" style="display: none"><input type="text" maxlength="13" name="userNo" value="${login.userNo}" readonly></span>
                 <h5>아이디</h5>
-                <span class="input_area"><input type="text" maxlength="13"  value="${customerVO.userID}" readonly></span>
+                <span class="input_area"><input type="text" maxlength="13"  value="${login.userID}" readonly></span>
                 <p></p>
                 <h5>비밀번호</h5>
                 <span class="input_area"><input type="password" maxlength="15" name="userPwd" required></span>
@@ -79,20 +79,20 @@
 <%--                <label id="pwdResult"></label>--%>
 <%--                <p></p>--%>
                 <h5>이메일</h5>
-                <span class="input_area"><input type="email" name="userEmail" value="${customerVO.userEmail}"></span>
+                <span class="input_area"><input type="email" name="userEmail" value="${login.userEmail}"></span>
                 <p></p>
 
                 <h5>기업명</h5>
-                <span class="input_area"><input type="text" maxlength="5" value="${customerVO.corpName}" readonly></span>
+                <span class="input_area"><input type="text" maxlength="5" value="${login.corpName}" readonly></span>
                 <p></p>
 
                 <h5>기업종류</h5>
-                <span class="input_area"><input type="text" maxlength="5" value="${customerVO.corpType}" readonly></span>
+                <span class="input_area"><input type="text" maxlength="5" value="${login.corpType}" readonly></span>
                 <p></p>
 
                 <h5>연락처</h5>
                 <span class="input_area"><input type="tel" maxlength="11" name="phoneNo"
-                                                placeholder="(-없이)01012345678" value="${customerVO.phoneNo}"></span>
+                                                placeholder="(-없이)01012345678" value="${login.phoneNo}"></span>
                 <p></p>
 
 
@@ -100,7 +100,7 @@
             </form>
             <div class="btnArea">
                 <a href="/index"><button type="submit" class="cancelBtn">취소</button></a>
-                <a href="/mypage/userDelete?userNo=${customerVO.userNo}"><button type="submit" class="cancelBtn">회원탈퇴</button></a>
+                <a href="/user/userDelete"><button type="submit" class="cancelBtn">회원탈퇴</button></a>
 
             </div>
         </div>

@@ -46,7 +46,7 @@ CREATE TABLE Corporation (
     companyScale        VARCHAR2(20)                        NOT NULL,
     employeers          NUMBER                              NOT NULL,
     tax                 NUMBER                                      ,
-    score               VARCHAR2(3)         DEFAULT 'NR'    NOT NULL,
+    score               VARCHAR2(3)         DEFAULT 'NR'        NULL,
     userNo              NUMBER                              NOT NULL,
     CONSTRAINT fk_midx foreign key(userNo) references Customer (userNo)
 );
