@@ -1,5 +1,6 @@
 package org.project.controller;
 
+import org.apache.commons.io.FilenameUtils;
 import org.project.dao.CorporationDAO;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
@@ -15,11 +16,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
@@ -50,34 +54,41 @@ public class CreditController {
 
     @RequestMapping(value="/risksolution", method = RequestMethod.GET)
     public String rsGET(){return "credit/risksolution";};
+
+    @RequestMapping(value="/creditmanage", method = RequestMethod.GET)
+    public String crbGET(Model model) {
+        List<CorporationBoardDTO> list = corporationMapper.listCorporation();
+        model.addAttribute("list", list);
+        return "credit/creditManage";
+    }
+
     // 약관 동의 후 신용정보입력 화면 출력
     @RequestMapping(value="/creditForm", method = RequestMethod.POST)
     public String crfGET() {
         return "credit/creditForm";
     }
 
-    @RequestMapping(value="/creditmanage", method = RequestMethod.GET)
-    public String crbGET(Model model) {
-        List<CorporationBoardDTO> list = corporationMapper.listCorporation();
-        model.addAttribute("list", list);
-
-
-        return "credit/creditManage";
-    }
-    
     // 신용정보입력 데이터 저장 후 메인페이지 출력(구현중), 실패시 입력 화면 값 그대로 유지하기(미구현)
-    @RequestMapping(value = "/creditInfo", method = RequestMethod.POST)
-    public String Corporation(CorporationDTO dto, RedirectAttributes rttr, HttpSession session) {
-        int result = corporationMapper.create(dto);
-        if(result==1){
-            rttr.addFlashAttribute("msgType", "입력완료");
-            rttr.addFlashAttribute("msg", "심사 진행을 시작합니다.");
-            session.setAttribute("dto",dto);
-            System.out.println("성공" + dto.toString());
-            return "redirect:/";
-        } else {
-            return "redirect:/creditForm";
+    @RequestMapping(value = "/submitCreditInfo", method = RequestMethod.POST /*,headers = ("content-type=multipart/*")*/)
+    public String submitCreditInfo(CorporationDTO dto) throws Exception {
+        // 파일 업로드 처리
+        String fileName = null;
+        MultipartFile uploadFile = dto.getUploadFile();
+        if (!uploadFile.isEmpty()) {
+            String originalFileName = uploadFile.getOriginalFilename(); //원본파일 이름 구하기
+            String ext = FilenameUtils.getExtension(originalFileName);  //확장자 구하기
+            UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
+            fileName = originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
+                    .substring(0, originalFileName.length() - 4) + uuid + "." + ext;
+
+            uploadFile.transferTo(new File("C:\\dev\\upload\\" + fileName)); //저장경로
         }
+        dto.setFileName(fileName);
+        corporationService.submitCreditInfo(dto);
+
+        // creditStatus,files -> 1 변경
+
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/evaluationPage",method = RequestMethod.GET)

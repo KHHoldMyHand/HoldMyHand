@@ -12,8 +12,12 @@ import java.util.List;
 @Repository
 public interface CorporationDAO {
 
-      public int create(CorporationDTO dto);
-      public List<CorporationBoardDTO> listCorporation();
+    public int create(CorporationDTO dto);
+
+    public List<CorporationBoardDTO> listCorporation();
 
     public void modCS(EvaluateSuccessDTO dto) throws Exception;
+
+    // 신용정보 등록
+    void submitCreditInfo(CorporationDTO dto);
 }

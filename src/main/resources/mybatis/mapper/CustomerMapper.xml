@@ -46,6 +46,7 @@
         where userNo=#{userNo}
     </delete>
 
+    <!-- 심사완료 -->
     <update id="modUserStatus">
         update Customer set creditStatus=2 where userNo=#{userNo}
     </update>
