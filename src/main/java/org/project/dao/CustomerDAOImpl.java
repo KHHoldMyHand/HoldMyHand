@@ -3,6 +3,7 @@ package org.project.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.project.dto.CustomerModifyDTO;
 import org.project.dto.EvaluateSuccessDTO;
+import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
@@ -71,5 +72,11 @@ public class CustomerDAOImpl implements CustomerDAO{
     @Override
     public void modUserStatus(Integer userNo) throws Exception {
         session.update(namespace+".modUserStatus",userNo);
+    }
+
+    @Override
+    public void create(JoinDTO dto) throws Exception {
+        System.out.println(dto.toString());
+        session.insert(namespace + ".create", dto);
     }
 }

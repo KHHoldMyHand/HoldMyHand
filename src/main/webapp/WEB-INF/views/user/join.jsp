@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
 
+
 <section class="py-5" id="features">
 <%--    아래 주석까지 코드 삭제해서 새로 짜는게 편할 거야 넵~~^^--%>
 <div class="container px-5 my-5">
@@ -15,13 +16,13 @@
 
 <div class="outer">
 <div id="joinInfoArea">
-<form id="joinForm" action="<%= request.getContextPath() %>/index.jsp"
+<form id="joinForm" action="/user/join"
 method="post" onsubmit="return validate();">
 <h1>회원 가입</h1>
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<span class="input_area"><input type="text" maxlength="13" name="userId" id="useId"
+<span class="input_area"><input type="text" maxlength="13" name="userID" id="useId"
 required placeholder="(-없이) 000-00-00000"></span>
 <button id="idCheck" type="button">중복확인</button>
 <hr id="line2">
@@ -40,7 +41,7 @@ name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"
 <h4>* 업체명</h4>
 
 <td class="bt0">
-<input type="text" id="enpNm" name="enpNm" placeholder="업체명"
+<input type="text" id="enpNm" name="corpName" placeholder="업체명"
 required="required" class>
 <button type="button" class="btn_del">
 <span>입력내용 삭제</span>
@@ -97,7 +98,7 @@ class="postcodify_postcode5" placeholder="우편번호 검색"></span>
 <span class="input_area"><input type="text" name="userAddress"
 class="postcodify_address"></span>
 <h4>상세주소</h4>
-<span class="input_area"><input type="text" name="address"
+<span class="input_area"><input type="text" name="address2"
 class="postcodify_details"></span>
 
 <h4 class="tit_large mt80">※이용 약관</h4>
@@ -369,7 +370,21 @@ function selectAll(selectAll)  {
 }
 </script>
 
-
+<script type="text/javascript">
+function execution_add_address(){
+<!— 주소 합치기 —>
+//내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+         var finalAddress = ''; // 주소 변수
+//사용자가 입력한 상세주소에 따라 해당 주소 값을 finalAddress 에 담는다. data 여기 바꿔야할듯?
+                if (data.address2 !== '') { //만약 상세주소가 null이 아니면
+                    finalAddress = data.data.userAddress+' (' + address2 + ')';
+                } else { // 상세 주소가 없을경우 구냥 주소만 넣기.
+                    finalAddress = data.userAddress;
+                }
+                // 주소변수 문자열과 참고항목 문자열 합치기
+                    data.userAddress=finalAddress;
+}
+</script>
 
 
 </html>

@@ -2,15 +2,19 @@ package org.project.controller;
 
 import lombok.extern.java.Log;
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.service.CustomerService;
 import org.project.vo.CustomerVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import javax.inject.Inject;
@@ -114,4 +118,15 @@ public class CustomerController {
         return "redirect:/";
     }
 
+
+    //신용으로 가라고 했음!!!!!참고~~~~^^ㅜ 그냥 그렇게 해본거임
+    @RequestMapping(value="/join",method = RequestMethod.POST)
+    public String joinPOST(JoinDTO dto) throws Exception {
+
+        System.out.println(("로고 찍히나 테스트,,,ㅋ 포스트 방식으로 넘길꺼임"+dto.toString()));
+
+        service.regist(dto);
+
+        return "redirect:/user/login";
+    }
 }

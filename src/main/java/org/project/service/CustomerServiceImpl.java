@@ -3,11 +3,13 @@ package org.project.service;
 import org.project.dao.CustomerDAO;
 import org.project.dto.CustomerModifyDTO;
 import org.project.dto.EvaluateSuccessDTO;
+import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -62,6 +64,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void modUserStatus(Integer userNo) throws Exception {
         dao.modUserStatus(userNo);
+    }
+
+    @Transactional
+    @Override
+    public CustomerVO regist(JoinDTO dto) throws Exception {
+        dao.create(dto);
+        return null;
     }
 
 }
