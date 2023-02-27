@@ -7,7 +7,7 @@
 
     <select id="login" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
         from Customer
         where userID=#{userID} and userPwd=#{userPwd} and rownum=1
     </select>
@@ -25,15 +25,15 @@
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
         from Customer
     </select>
 
     <select id="read" resultType="org.project.vo.CustomerVO">
         select
-            userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
-            from Customer
-            where userNo = #{userNo}
+        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        from Customer
+        where userNo = #{userNo}
     </select>
 
     <update id="update">
@@ -49,5 +49,38 @@
     <update id="modUserStatus">
         update Customer set creditStatus=2 where userNo=#{userNo}
     </update>
+
+    <!-- 유저 인서트 -->
+    <insert id="create">
+        insert into Customer (
+        userNo,
+        userID,
+        userPwd,
+        userEmail,
+        userJoinDate,
+        managerClassification,
+        userAddress,
+        corpName,
+        corpType,
+        corpManager,
+        phoneNo,
+        creditStatus
+        )
+        values
+        (
+        userNo.NEXTVAL,
+        #{userID},
+        #{userPwd},
+        #{userEmail},
+        SYSDATE,
+        0,
+        #{userAddress},
+        #{corpName},
+        #{corpType},
+        #{corpManager},
+        #{phoneNo},
+        0)
+
+    </insert>
 
 </mapper>
