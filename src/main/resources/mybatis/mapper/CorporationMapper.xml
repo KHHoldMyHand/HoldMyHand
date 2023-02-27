@@ -18,6 +18,10 @@
           and a.userNo = b.userNo order by userNo asc
     </select>
 
+    <update id="modCS">
+        update Corporation set score=#{score} where userNo=#{userNo}
+    </update>
+
 
 
 

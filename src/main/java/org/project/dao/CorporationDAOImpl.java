@@ -3,6 +3,7 @@ package org.project.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
+import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
 
 import javax.inject.Inject;
@@ -24,5 +25,10 @@ public class CorporationDAOImpl implements CorporationDAO{
     @Override
     public List<CorporationBoardDTO> listCorporation() {
         return null;
+    }
+
+    @Override
+    public void modCS(EvaluateSuccessDTO dto) throws Exception{
+        session.update(namespace+".modCS",dto);
     }
 }

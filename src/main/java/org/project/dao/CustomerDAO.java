@@ -1,6 +1,7 @@
 package org.project.dao;
 
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
@@ -29,5 +30,7 @@ public interface CustomerDAO {
 //
 //    //회원탈퇴
     public void delete(Integer userNo) throws Exception;
+
+    public void modUserStatus(Integer userNo) throws Exception;
 }
 

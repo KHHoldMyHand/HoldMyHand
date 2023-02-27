@@ -70,15 +70,17 @@
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
                     <h1 class="fw-bolder">신용평가 페이지</h1>
-                    <p class="lead fw-normal text-muted mb-0">${userNo}의 신용평가 페이지</p>
+                    <p class="lead fw-normal text-muted mb-0">유저번호 : ${userNo}의 신용평가 페이지</p>
                 </div>
                 <div class="board_write_wrap">
-                <form action="<%=request.getContextPath()%>/">
+                <form action="<%=request.getContextPath()%>/evaluateSuccess" method="POST">
                     <div>
                         <div>
+                            <input type="text" name="userNo" value="${userNo}" style="display: none">
+
                             <dl>
                                 <dt>점수</dt>
-                                <dd><input type="text" placeholder="재무재표를 보고 점수를 기입."></dd>
+                                <dd><input type="text" name="score" placeholder="재무재표를 보고 점수를 기입."></dd>
                             </dl>
                             <dl>
                                 <dt>여기서 첨부파일을 볼 수 있어야 함.</dt>
@@ -87,9 +89,8 @@
                         </div>
                         <div class="bt_wrap">
                             <button type="submit" value="평가" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
-                            <a href="<%=request.getContextPath()%>/creditManage"><input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
                         </div>
-
+                        <a href="<%=request.getContextPath()%>/creditManage"><input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
                     </div>
                 </form>
                 </div>

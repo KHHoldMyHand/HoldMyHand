@@ -2,6 +2,7 @@ package org.project.service;
 
 import org.project.dao.CustomerDAO;
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void remove(Integer userNo) throws Exception {
         dao.delete(userNo);
+    }
+
+    @Override
+    public void modUserStatus(Integer userNo) throws Exception {
+        dao.modUserStatus(userNo);
     }
 
 }
