@@ -46,4 +46,8 @@
         where userNo=#{userNo}
     </delete>
 
+    <update id="modUserStatus">
+        update Customer set creditStatus=2 where userNo=#{userNo}
+    </update>
+
 </mapper>

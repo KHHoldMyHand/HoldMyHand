@@ -1,6 +1,7 @@
 package org.project.service;
 
 import org.project.dto.CustomerModifyDTO;
+import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
@@ -27,5 +28,6 @@ public interface CustomerService {
 //    //회원탈퇴
     public void remove(Integer userNo) throws Exception;
 
+    public void modUserStatus(Integer userNo) throws Exception;
 
 }

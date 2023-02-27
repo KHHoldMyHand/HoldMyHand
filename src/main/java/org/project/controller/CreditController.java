@@ -3,6 +3,9 @@ package org.project.controller;
 import org.project.dao.CorporationDAO;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
+import org.project.dto.EvaluateSuccessDTO;
+import org.project.service.CorporationService;
+import org.project.service.CustomerService;
 import org.project.vo.CorporationVO;
 import org.project.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -23,6 +27,10 @@ public class CreditController {
 
     @Autowired
     CorporationDAO corporationMapper;
+    @Inject
+    CustomerService customerService;
+    @Inject
+    CorporationService corporationService;
 
     //약관
     @RequestMapping(value="/credit", method = RequestMethod.GET)
@@ -79,12 +87,15 @@ public class CreditController {
     }
 
     @RequestMapping(value = "/evaluateSuccess", method = RequestMethod.POST)
-    public String evalPOST(){
+    public String evalPOST(EvaluateSuccessDTO dto) throws Exception{
+        Integer userNo = dto.getUserNo();
+        System.out.println(dto.toString());
         //여기에는 신용평가완료 되었을 시에 작용할 것들.
         //dto를 매개변수로 받아내고 서비스 2개 연결.
         //서비스에서는 user의 정보변경, corporation의 정보변경.(userNo 알고있으니 가능)
-
-        return "credit/creditManage";
+        corporationService.modCorpScore(dto);
+        customerService.modUserStatus(userNo);
+        return "redirect:/";
     }
 
 }
