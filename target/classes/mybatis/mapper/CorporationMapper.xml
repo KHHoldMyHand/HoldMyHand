@@ -5,11 +5,8 @@
 
 <mapper namespace="org.project.dao.CorporationDAO">
 
-<!--    <insert id="create" parameterType="org.project.dto.CorporationDTO">-->
-<!--        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers)-->
-<!--        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})-->
-<!--    </insert>-->
-
+    <!-- 관리자 및 상태 구분 -->
+    <!-- 0:신청 안함 / 1:심사진행중 / 2:심사완료-->
     <select id="listCorporation" resultType="org.project.dto.CorporationBoardDTO">
         select a.userNo,b.establishmentName,b.companyName,b.companyScale,b.employeers,b.tax,b.files
         from Customer a, Corporation b
@@ -18,10 +15,22 @@
           and a.userNo = b.userNo order by userNo asc
     </select>
 
+    <!-- 신용등급 산정 -->
     <update id="modCS">
         update Corporation set score=#{score} where userNo=#{userNo}
     </update>
 
+    <!-- 신용정보 등록 -->
+    <insert id="submitCreditInfo" parameterType="org.project.dto.CorporationDTO">
+        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers, userNo, receiptDate)
+        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers}, 1, sysdate)
+    </insert>
+
+    <!-- 신청리스트 수정해야됨 -->
+<!--    <select id="creditList" resultType="org.project.vo.CorporationVO">
+        SELECT regNo,userNo,companyName,receiptDate,fileName,prgress
+        FROM Corporation ORDER BY regNo DESC
+    </select>-->
 
 
 

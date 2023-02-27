@@ -11,4 +11,6 @@ public interface CorporationService {
     public List<CorporationVO> listCorporation();
 
     public void modCorpScore(EvaluateSuccessDTO dto) throws Exception;
+
+    void submitCreditInfo(CorporationDTO dto) throws Exception;
 }

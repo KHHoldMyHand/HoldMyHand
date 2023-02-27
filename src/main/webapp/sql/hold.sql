@@ -49,7 +49,9 @@ CREATE TABLE Corporation (
     tax                 NUMBER                                      ,
     score               VARCHAR2(3)         DEFAULT 'NR'        NULL,
     files               NUMBER              DEFAULT 0           NULL,
+    receiptDate         DATE,
     CONSTRAINT fk_midx foreign key(userNo) references Customer (userNo)
 );
-INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score)
-values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR');
+INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score,receiptDate)
+values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
+

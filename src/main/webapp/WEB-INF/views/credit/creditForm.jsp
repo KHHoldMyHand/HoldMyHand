@@ -2,6 +2,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!--<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $("#joinBtn").click(function(){
+// 업로드 파일 전부 append
+        var str="";
+        $(".deleteFile").each(function(index){
+            var that = $(this);
+            var data = that.attr("data-src");
+            str += "<input type='file' name='files["+index+"]' value='"+data+"' >";
+        });
+
+        $("form").append(str);
+        $("form").submit();
+    });
+</script>-->
+
+
 
 <section class="py-5" id="features">
     <div class="container px-5 my-5">
@@ -13,40 +30,33 @@
             <div class="outer">
                 <!-- 사업자명 가져오기 -->
                 <div id="joinInfoArea">
-                    <form id="joinForm" action="${contextPath}/creditInfo" method="post"
+                    <form id="joinForm" action="${contextPath}/submitCreditInfo" method="post"
                           name="frm" enctype="multipart/form-data">
-                        <h1>신용정보 입력</h1>
-                        <hr id="line2">
-
+                        <h1 class="tit30B">신용정보 입력</h1>
                         <!-- 설립자 -->
-                        <div>
-                            <h4>* 설립자명</h4>
-                            <span class="input_area"><input type="text" maxlength="13" name="establishmentName" required
+                        <div class="gold_line">
+                            <h4 class="tit17">* 설립자명</h4>
+                            <span class="in_area"><input class="insert_input" type="text" maxlength="13" name="establishmentName" required
                                                             required placeholder="설립자명을 입력해주세요."></span>
-                            <hr id="line2">
                         </div>
                         <!-- 설립일자 -->
-                        <div>
-                            <h4>* 설립일자</h4>
-                            <span class="input_area"><input type="text" maxlength="8" name="establishmentDate"
-                                                            required placeholder="19950907"></span>
-                            <hr id="line2">
+                        <div class="gold_line">
+                            <h4 class="tit17">* 설립일자</h4>
+                            <span class="in_area"><input class="insert_input" type="text" maxlength="8" name="establishmentDate" required placeholder="19950907"></span>
                         </div>
 
                         <!-- 기업규모 -->
                         <%-- 리스트형으로 선택 하게--%>
-                        <div>
-                            <h4>* 기업규모</h4>
-                            <input type="text" id="CompanyName" name="CompanyName" placeholder="업체명"
-                                   required="required" style="width: 272px;height: 45px;border: solid 1px #dadada;
-                                   padding: 10px 10px 14px 10px;background: white;vertical-align: middle;border-radius: 6px;">
+                        <div class="gold_line">
+                            <h4 class="tit17">* 기업규모</h4>
+                            <input class="insert_input" type="text" id="companyName" name="companyName" placeholder="업체명"
+                                   required="required">
                             <!-- 업체규모 -->
-                            <div class="mt8">
-                                <div class="select w240">
+                            <div style="margin-bottom: 50px;">
+                                <div class="select">
                                     <select name="companyScale" id="companyScale"
-                                            class="necessary" title="업체규모"
-                                            style="width: 272px;height: 45px;border: solid 1px #dadada;
-                                            padding: 10px 10px 14px 10px;background: white;vertical-align: middle;border-radius: 6px;">
+                                            class="necessary insert_input" title="업체규모"
+                                            style="width: 200px; height: 39px; margin-top: 10px;">
                                         <option value="">기업종류</option>
                                         <option value="중소기업">중소기업</option>
                                         <option value="중견기업">중견기업</option>
@@ -55,35 +65,34 @@
                                         <option value="기타법인">기타법인</option>
                                     </select>
                                 </div>
-                                <hr id="line2">
                             </div>
 
                             <!-- 종업원수 -->
-                            <div>
-                                <h4>* 종업원수</h4>
-                                <span class="input_area">
-                                    <input type="text" name="employeers" id="employeers" required></span>
-                                <hr id="line2">
+                            <div class="gold_line">
+                                <h4 class="tit17">* 종업원수</h4>
+                                <span class="in_area">
+                                    <input class="insert_input" type="text" name="employeers" id="employeers" required></span>
                             </div>
 
                             <!-- 파일첨부 -->
-                            <div>
-                                <h4>* 파일첨부</h4>
-                                    <label class="file_btn" style="text-align: center">파일 선택
-                                        <input type="file" name="addfile" style="display: none"/>
-                                    </label>
-                                <hr id="line2">
+                            <div class="gold_line">
+                                <h4 class="tit17">* 파일첨부</h4>
+                                <div class="filebox">
+                                    <input type="file" name="uploadFile" multiple="multiple">
+                                    <!--<input style="cursor: pointer;" placeholder="첨부파일"
+                                           class="insert_input upload-name" type=file" name= "uploadFile" value="첨부파일"/>
+                                    <label for="file">파일첨부</label>
+                                    <input type="file" id="file">-->
+                                </div>
                             </div>
 
                             <!-- 세금관련 (홈택스링크걸기) -->
-                            <div>
-                                <h4>* 세금 관련서류제출</h4>
-                                <a href="https://www.hometax.go.kr/"><img src="/resources/images/hometax.jpg"
-                                                                          width="30%" height="30%"></img></a>
-                                <hr id="line2">
+                            <div class="gold_line">
+                                <h4 class="tit17">* 세금 관련서류제출</h4>
+                                <a class="hometax_link" target="_blank" href="https://www.hometax.go.kr/"><img src="/resources/images/hometax.jpg"></a>
                             </div>
 
-                            <div class="btnArea">
+                            <div class="btnArea" style="padding: 0;">
                                 <button type="button" id="joinBtn" onclick="ClickSubmit()">제출</button>
                             </div>
                         </div>
@@ -103,7 +112,7 @@
         <div id="messageType" class="modal-content panel-info">
             <div class="modal-header panel-heading">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">${msgType}</h4>
+                <h4 class="tit17" class="modal-title">${msgType}</h4>
             </div>
             <div class="modal-body">
                 <p>${msg}</p>
@@ -115,26 +124,34 @@
     </div>
 </div>
 <style>
-    .file_btn {
-        width: 100px;
-        height: 30px;
-        border: 5px;
-        color: black;
-        background: gold;
-        margin: 10px;
-        border-radius: 10px;
-    }
+    * {font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 600; color: #111;}
+    .gold_btn {width: 100px; height: 40px; color: #333; background: gold; margin: 10px; border-radius: 10px; display: inline-block;}
+    .outer {padding: 20px !important;}
+    .tit30B {font-size: 30px; font-weight: 700; margin-bottom: 25px;}
+    .tit17 {font-size: 17px; font-weight: 600; margin-top: 15px; margin-bottom: 10px;}
+    .gold_line {border-top: 5px solid gold; margin-bottom: 50px;}
+    .hometax_link img {max-width: 100%; width: 114px; height: 57px;}
+    .insert_input {background: #fff; border-radius: 10px; outline: none; border: 2px solid #ddd; padding: 7px 10px; font-size: 15px; font-weight: 500; color: #444;}
+    .in_area {display: inline-block;}
+    .insert_input::placeholder {color: #999;}
 </style>
 
-<script ="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <script type="text/javascript">
     // 알림창
     $(document).ready(function () {
-        if (${!empty msgType}) {
-            $("#messageType").attr("class", "modal-content panel-success");
-            $("#myMessage").modal("show");
-        }
+        <%--if (${!empty msgType}) {--%>
+        <%--    $("#messageType").attr("class", "modal-content panel-success");--%>
+        <%--    $("#myMessage").modal("show");--%>
+        <%--}--%>
+
+    });
+
+    // 파일찾기 커스텀
+    $("#file").on('change',function(){
+        var fileName = $("#file").val();
+        $(".upload-name").val(fileName);
     });
 
     // 제출 시 전송

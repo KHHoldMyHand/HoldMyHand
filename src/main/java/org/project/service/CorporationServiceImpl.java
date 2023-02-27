@@ -28,4 +28,9 @@ public class CorporationServiceImpl implements CorporationService{
     public void modCorpScore(EvaluateSuccessDTO dto) throws Exception {
         dao.modCS(dto);
     }
+
+    @Override
+    public void submitCreditInfo(CorporationDTO dto) throws Exception {
+        dao.submitCreditInfo(dto);
+    }
 }

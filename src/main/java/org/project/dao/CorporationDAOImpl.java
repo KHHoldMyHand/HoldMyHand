@@ -31,4 +31,10 @@ public class CorporationDAOImpl implements CorporationDAO{
     public void modCS(EvaluateSuccessDTO dto) throws Exception{
         session.update(namespace+".modCS",dto);
     }
+
+    // 신용정보 등록
+    @Override
+    public void submitCreditInfo(CorporationDTO dto) {
+        session.insert(namespace + ".submitCreditInfo", dto);
+    }
 }
