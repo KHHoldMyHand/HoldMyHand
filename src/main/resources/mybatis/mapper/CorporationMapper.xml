@@ -10,10 +10,12 @@
 <!--        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})-->
 <!--    </insert>-->
 
-    <select id="listCorporation" resultType="org.project.vo.CorporationVO">
-        select
-            *
-        from Corporation
+    <select id="listCorporation" resultType="org.project.dto.CorporationBoardDTO">
+        select a.userNo,b.establishmentName,b.companyName,b.companyScale,b.employeers,b.tax,b.files
+        from Customer a, Corporation b
+        where a.creditStatus=1
+          and a.managerclassification=0
+          and a.userNo = b.userNo order by userNo asc
     </select>
 
 

@@ -1,6 +1,7 @@
 package org.project.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.vo.CorporationVO;
 import org.springframework.stereotype.Repository;
@@ -11,5 +12,5 @@ import java.util.List;
 public interface CorporationDAO {
 
       public int create(CorporationDTO dto);
-      public List<CorporationVO> listCorporation();
+      public List<CorporationBoardDTO> listCorporation();
 }

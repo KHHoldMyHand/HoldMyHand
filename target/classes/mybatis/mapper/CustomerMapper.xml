@@ -9,7 +9,7 @@
         select
             userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
         from Customer
-        where userID=#{userID} and userPwd=#{userPwd}
+        where userID=#{userID} and userPwd=#{userPwd} and rownum=1
     </select>
 
     <update id="keepLogin">
