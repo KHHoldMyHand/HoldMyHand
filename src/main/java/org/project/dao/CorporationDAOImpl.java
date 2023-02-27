@@ -1,6 +1,7 @@
 package org.project.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.vo.CorporationVO;
 
@@ -21,7 +22,7 @@ public class CorporationDAOImpl implements CorporationDAO{
     }
 
     @Override
-    public List<CorporationVO> listCorporation() {
+    public List<CorporationBoardDTO> listCorporation() {
         return null;
     }
 }

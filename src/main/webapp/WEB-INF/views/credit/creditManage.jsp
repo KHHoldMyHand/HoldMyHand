@@ -79,26 +79,25 @@
     <body>
         <section class="qnaMain py-5 h-100">
             <div class="text-center" style="margin-bottom: 20px">
-                <h1 class="fw-bolder">Q&A</h1>
-            </div>
-            <div class="buttons" style="text-align: right;">
-                <input type="button" value="글쓰기" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
+                <h1 class="fw-bolder">평가 페이지입니다.</h1>
             </div>
             <table class="table table-hover">
                 <tr>
+                    <th>유저번호</th>
+                    <th>대표자명</th>
                     <th>기업이름</th>
-                    <th>유저ID</th>
-                    <th>설립자명</th>
-                    <th>사원수</th>
+                    <th>파일여부</th>
+                    <th>평가버튼</th>
                 </tr>
 
                 <c:forEach items="${list}" var="crbGET">
                     <tr>
-                        <a><td>${crbGET.companyName}</td></a>
-                        <a><td>${crbGET.userNo}</td></a>
-                        <a><td>${crbGET.establishmentName}</td></a>
-                        <a><td>${crbGET.employeers}</td></a>
 
+                        <td>${crbGET.userNo}</td>
+                        <td>${crbGET.establishmentName}</td>
+                        <td>${crbGET.companyName}</td>
+                        <td>${crbGET.files}</td>
+                        <td><a href="<%=request.getContextPath()%>/evaluationPage?userNo=${crbGET.userNo}"><button>평가하기</button></a></td>
                     </tr>
                 </c:forEach>
                 </table>
