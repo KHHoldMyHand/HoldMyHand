@@ -97,15 +97,20 @@ public class CustomerController {
     }
     //dto받아올때 @RequestBody로 받으면 안됨.. Json이라 그런듯?
     @RequestMapping(value="/userModify", method = RequestMethod.POST)
-    public String modCustomerPOST(CustomerModifyDTO dto) {
+    public String modCustomerPOST(CustomerModifyDTO dto,HttpSession session) {
         System.out.println("받아온 파라미터들1 : "+dto.toString());
         //아래와 같은 방법은 인터셉트 방식
         try{
             service.modify(dto);
+            CustomerVO vo = (CustomerVO)session.getAttribute("login");
+            vo.setUserPwd(dto.getUserPwd());
+            vo.setUserEmail(dto.getUserEmail());
+            vo.setPhoneNo(dto.getPhoneNo());
+            session.setAttribute("login",vo);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/";
+        return "redirect:/user/userModify";
     }
     @RequestMapping(value ="/userDelete",method = RequestMethod.GET)
     public String delCustomerGET(HttpSession session, HttpServletRequest request, HttpServletResponse response){
