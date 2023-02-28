@@ -9,6 +9,7 @@ import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +46,10 @@ public class CustomerDAOImpl implements CustomerDAO{
         return session.selectOne(namespace+".checkUserWithSessionKey",value);
     }
 
+    @Override
+    public String findUserId(HttpServletResponse response, String userEmail){
+        return session.selectOne(namespace+".findUserId", userEmail);
+    }
     //로그인
 //회원가입
 //    @Override
