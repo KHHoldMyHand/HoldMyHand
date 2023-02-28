@@ -29,7 +29,7 @@ public class BoardDAOImpl implements BoardDAO{
     @Override
     public int countBoard() {
 
-        return session.selectOne("boarddate.countboard");
+        return session.selectOne(namespace+".countBoard");
     }
 
     @Override
