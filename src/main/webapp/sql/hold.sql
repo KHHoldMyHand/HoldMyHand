@@ -1,8 +1,10 @@
 -- Customer 테이블 생성& userNo 시퀀스 생성
+drop table QA;
+drop table Corporation;
 drop table Customer;
 drop table FileInfo;
 drop sequence userNo;
-
+drop sequence QANo;
 
 CREATE SEQUENCE userNo
     INCREMENT BY 1
@@ -55,11 +57,35 @@ CREATE TABLE Corporation (
     CONSTRAINT fk_midx foreign key(userNo) references Customer (userNo)
 );
 INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score,receiptDate)
-values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
+values(1,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
 
 CREATE TABLE FileInfo (
     userNo              NUMBER                              NOT NULL,
     fileName            VARCHAR(300)                        NOT NULL
-)
+);
 
+CREATE TABLE QA (
+                    QANo   NUMBER      NOT NULL,
+                    title   VARCHAR2(30)      NOT NULL,
+                    content   VARCHAR2(500)      NOT NULL,
+                    writeDate   DATE      NOT NULL,
+                    userNo   NUMBER      NOT NULL,
+                    adminNo   NUMBER      NULL,
+                    count   NUMBER   DEFAULT 0   NOT NULL,
+                    writer   VARCHAR2(10)      NOT NULL
+);
+
+ALTER TABLE QA ADD CONSTRAINT PK_QA PRIMARY KEY (QANo);
+
+CREATE SEQUENCE QANo
+    INCREMENT BY 1
+    START WITH 1
+    MINVALUE 1
+    MAXVALUE 100000000
+    NOCYCLE
+    NOCACHE;
+
+ALTER TABLE QA ADD CONSTRAINT FK_userNo FOREIGN KEY (userNo) REFERENCES Customer (userNo);
+
+COMMIT;
 

@@ -29,6 +29,7 @@
 
 
 
+
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
         insert into QA(QANO, TITLE, CONTENT, WRITEDATE, USERNO, WRITER)
         values(QANo.NEXTVAL,#{title},#{content},sysdate, #{userNo}, #{writer})
