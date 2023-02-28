@@ -5,6 +5,7 @@ import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
+import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,10 +15,12 @@ public interface CorporationDAO {
 
     public int create(CorporationDTO dto);
 
+    // 평가 진행 목록
     public List<CorporationBoardDTO> listCorporation();
 
     public void modCS(EvaluateSuccessDTO dto) throws Exception;
 
     // 신용정보 등록
     void submitCreditInfo(CorporationDTO dto);
+
 }

@@ -92,7 +92,6 @@
 
                 <c:forEach items="${list}" var="crbGET">
                     <tr>
-
                         <td>${crbGET.userNo}</td>
                         <td>${crbGET.establishmentName}</td>
                         <td>${crbGET.companyName}</td>

@@ -2,6 +2,7 @@ package org.project.controller;
 
 import org.apache.commons.io.FilenameUtils;
 import org.project.dao.CorporationDAO;
+import org.project.dao.CustomerDAO;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
@@ -30,7 +31,9 @@ import java.util.UUID;
 public class CreditController {
 
     @Autowired
-    CorporationDAO corporationMapper;
+    CorporationDAO corporationDAO;
+    @Autowired
+    CustomerDAO CustomerDAO;
     @Inject
     CustomerService customerService;
     @Inject
@@ -55,21 +58,22 @@ public class CreditController {
     @RequestMapping(value="/risksolution", method = RequestMethod.GET)
     public String rsGET(){return "credit/risksolution";};
 
-    @RequestMapping(value="/creditmanage", method = RequestMethod.GET)
+    /* 평가 진행 목록 */
+    @RequestMapping(value="/creditManage", method = RequestMethod.GET)
     public String crbGET(Model model) {
-        List<CorporationBoardDTO> list = corporationMapper.listCorporation();
+        List<CorporationBoardDTO> list = corporationDAO.listCorporation();
         model.addAttribute("list", list);
         return "credit/creditManage";
     }
 
-    // 약관 동의 후 신용정보입력 화면 출력
+    /* 약관 동의 후 신용정보입력 화면 출력 */
     @RequestMapping(value="/creditForm", method = RequestMethod.POST)
     public String crfGET() {
         return "credit/creditForm";
     }
 
-    // 신용정보입력 데이터 저장 후 메인페이지 출력(구현중), 실패시 입력 화면 값 그대로 유지하기(미구현)
-    @RequestMapping(value = "/submitCreditInfo", method = RequestMethod.POST /*,headers = ("content-type=multipart/*")*/)
+    /* 신용정보 등록과 동시에 CustomerVO : creditStatus,files : 0->1 변경 */
+    @RequestMapping(value = "/submitCreditInfo", method = RequestMethod.POST)
     public String submitCreditInfo(CorporationDTO dto) throws Exception {
         // 파일 업로드 처리
         String fileName = null;
@@ -77,17 +81,13 @@ public class CreditController {
         if (!uploadFile.isEmpty()) {
             String originalFileName = uploadFile.getOriginalFilename(); //원본파일 이름 구하기
             String ext = FilenameUtils.getExtension(originalFileName);  //확장자 구하기
-            UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
-            fileName = originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
-                    .substring(0, originalFileName.length() - 4) + uuid + "." + ext;
-
-            uploadFile.transferTo(new File("C:\\dev\\upload\\" + fileName)); //저장경로
+//            UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
+            fileName = dto.getCompanyName() + originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
+                    .substring(0, originalFileName.length() - 4) + "." + ext;
+            uploadFile.transferTo(new File("C:\\dev\\Project\\src\\main\\resources\\upload\\" + fileName)); //저장경로
         }
         dto.setFileName(fileName);
         corporationService.submitCreditInfo(dto);
-
-        // creditStatus,files -> 1 변경
-
         return "redirect:/";
     }
 

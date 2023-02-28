@@ -5,6 +5,7 @@ import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
+import org.project.vo.CustomerVO;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -22,6 +23,7 @@ public class CorporationDAOImpl implements CorporationDAO{
         return 0;
     }
 
+    // 평가 진행 목록
     @Override
     public List<CorporationBoardDTO> listCorporation() {
         return null;
@@ -37,4 +39,6 @@ public class CorporationDAOImpl implements CorporationDAO{
     public void submitCreditInfo(CorporationDTO dto) {
         session.insert(namespace + ".submitCreditInfo", dto);
     }
+
+
 }

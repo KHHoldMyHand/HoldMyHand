@@ -1,6 +1,8 @@
 -- Customer 테이블 생성& userNo 시퀀스 생성
 drop table Customer;
+drop table FileInfo;
 drop sequence userNo;
+
 
 CREATE SEQUENCE userNo
     INCREMENT BY 1
@@ -54,4 +56,10 @@ CREATE TABLE Corporation (
 );
 INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score,receiptDate)
 values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
+
+CREATE TABLE FileInfo (
+    userNo              NUMBER                              NOT NULL,
+    fileName            VARCHAR(300)                        NOT NULL
+)
+
 

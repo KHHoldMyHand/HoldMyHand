@@ -33,6 +33,8 @@
                     <form id="joinForm" action="${contextPath}/submitCreditInfo" method="post"
                           name="frm" enctype="multipart/form-data">
                         <h1 class="tit30B">신용정보 입력</h1>
+                        <!-- -->
+                        <input style="display: none" type="text" name="userNo" value="${login.userNo}">
                         <!-- 설립자 -->
                         <div class="gold_line">
                             <h4 class="tit17">* 설립자명</h4>
