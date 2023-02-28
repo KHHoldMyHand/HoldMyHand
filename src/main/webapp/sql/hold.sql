@@ -87,5 +87,23 @@ CREATE SEQUENCE QANo
 
 ALTER TABLE QA ADD CONSTRAINT FK_userNo FOREIGN KEY (userNo) REFERENCES Customer (userNo);
 
+CREATE TABLE CREDITEVALUATION (
+                                  reportNo   NUMBER      NOT NULL,
+                                  reportRank   VARCHAR2(30)      NOT NULL,
+                                  userNo   NUMBER      NOT NULL,
+                                  createDate   DATE      NOT NULL,
+                                  fileDate   DATE      NOT NULL
+
+);
+ALTER TABLE CREDITEVALUATION ADD CONSTRAINT PK_CREDITEVALUATION PRIMARY KEY (reportNo);
+
+ALTER TABLE CREDITEVALUATION ADD CONSTRAINT FK_userNo_1 FOREIGN KEY(userNo) REFERENCES CUSTOMER (userNo);
+
+
+INSERT INTO Creditevaluation (reportNo, reportRank, userNo, createDate, fileDate) VALUES(1, 'AAA', 1, '20230225', '20230225');
+
+INSERT INTO Creditevaluation (reportNo, reportRank, userNo, createDate, fileDate) VALUES(2, 'AAA', 2, '20230225', '20230225');
+
+
 COMMIT;
 
