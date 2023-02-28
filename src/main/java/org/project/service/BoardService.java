@@ -8,7 +8,7 @@ import org.project.vo.PagingVO;
 import java.util.List;
 
 public interface BoardService {
-    List<BoardVO> qnaList() throws Exception;
+    //List<BoardVO> qnaList() throws Exception;
 
     //±€ ¿€º∫
     public void write(BoardWriteDTO dto) throws Exception;

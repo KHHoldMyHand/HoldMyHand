@@ -14,10 +14,10 @@ public class BoardServiceImpl implements BoardService{
     @Inject
     private BoardDAO boardDAO;
 
-    @Override
-    public List<BoardVO> qnaList() throws Exception{
-        return null;
-    }
+//    @Override
+//    public List<BoardVO> qnaList() throws Exception{
+//        return null;
+//    }
 
     //±€ ¿€º∫
     @Override
