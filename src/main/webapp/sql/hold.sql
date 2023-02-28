@@ -57,12 +57,12 @@ CREATE TABLE Corporation (
     CONSTRAINT fk_midx foreign key(userNo) references Customer (userNo)
 );
 INSERT INTO Corporation (userNo,establishmentName, establishmentDate, companyName,companyScale,employeers,tax,score,receiptDate)
-values(10,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
+values(1,'주종훈','1995/09/13','쿠팡','협력업체',1024,'10000000','NR',sysdate);
 
 CREATE TABLE FileInfo (
     userNo              NUMBER                              NOT NULL,
     fileName            VARCHAR(300)                        NOT NULL
-)
+);
 
 CREATE TABLE QA (
                     QANo   NUMBER      NOT NULL,
@@ -85,7 +85,7 @@ CREATE SEQUENCE QANo
     NOCYCLE
     NOCACHE;
 
-ALTER TABLE QA ADD CONSTRAINT FK_userNo FOREIGN KEY (userNo)REFERENCES Customer (userNo);
+ALTER TABLE QA ADD CONSTRAINT FK_userNo FOREIGN KEY (userNo) REFERENCES Customer (userNo);
 
 COMMIT;
 
