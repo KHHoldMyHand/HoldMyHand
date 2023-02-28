@@ -18,4 +18,6 @@ public interface BoardService {
 
     // 페이징 처리 게시글 조회
     public List<BoardVO> selectBoard(PagingVO vo);
+
+    //public BoardVO countBoard(int qano);
 }

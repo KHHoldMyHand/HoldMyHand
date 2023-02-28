@@ -14,6 +14,8 @@ public interface BoardDAO {
     public void write(BoardWriteDTO dto) throws Exception;
 
     int countBoard();
-
+    // ∆‰¿Ã¬°
     List<BoardVO> selectBoard(PagingVO vo);
+
+//    void boardCount(int qano);
 }

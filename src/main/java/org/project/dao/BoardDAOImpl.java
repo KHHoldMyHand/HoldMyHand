@@ -38,4 +38,9 @@ public class BoardDAOImpl implements BoardDAO{
         return session.selectList(namespace + ".selectBoard", vo);
     }
 
+//    @Override
+//    public void boardCount(int qano) {
+//        session.update(namespace + ".boardCount", qano);
+//    }
+
 }
