@@ -5,11 +5,13 @@ import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -36,6 +38,7 @@ public interface CustomerService {
     //회원가입 ^.^
     public CustomerVO regist(JoinDTO dto) throws Exception;
 
+    public int countCustomer()throws Exception;
 
-
+    public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception;
 }
