@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.dao.BoardDAO">
+    <!-- 리스트조회 -->
+    <select id="qnaList" resultType="org.project.vo.BoardVO">
+        SELECT * FROM QA
+
+    </select>
+
+    <!-- 게시물 총 갯수 -->
+    <select id="count" resultType="int">
+        select count(bno) from QA
+    </select>
+
+    <!-- 페이징 처리 후 게시글 조회 -->
+    <select id="selectBoard" resultType="org.project.vo.BoardVO">
+
+    </select>
+
+    <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
+        insert into QA(QANO, TITLE, CONTENT, WRITEDATE, USERNO, WRITER)
+        values(QANO.NEXTVAL,#{title},#{content},sysdate, #{userNo}, #{writer})
+    </insert>
+
+
+</mapper>
