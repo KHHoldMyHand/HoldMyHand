@@ -10,14 +10,18 @@
 
     </select>
 
-    <!-- 게시물 총 갯수 -->
-    <select id="count" resultType="int">
-        select count(bno) from QA
-    </select>
 
-    <!-- 페이징 처리 후 게시글 조회 -->
-    <select id="selectBoard" resultType="org.project.vo.BoardVO">
-
+    <select id="selectBoard" resultType="com.my.spring.domain.BoardVO">
+        SELECT *
+        FROM (
+        SELECT ROWNUM RN, QA.*
+        FROM (
+        SELECT *
+        FROM BOARD
+        ORDER BY USERNO DESC
+        ) QA
+        )
+        WHERE RN BETWEEN #{start} AND #{end}
     </select>
 
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
