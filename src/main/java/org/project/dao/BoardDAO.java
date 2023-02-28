@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BoardDAO {
 
-    List<BoardVO> qnaList();
+    //List<BoardVO> qnaList();
 
     //±€ ¿€º∫
     public void write(BoardWriteDTO dto) throws Exception;

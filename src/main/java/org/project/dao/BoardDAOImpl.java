@@ -17,8 +17,8 @@ public class BoardDAOImpl implements BoardDAO{
 
     private static String namespace ="org.project.dao.BoardDAO";
 
-    @Override
-    public List<BoardVO> qnaList() {return null;}
+    //@Override
+    //public List<BoardVO> qnaList() {return null;}
 
     //±€ ¿€º∫
     @Override
@@ -29,13 +29,13 @@ public class BoardDAOImpl implements BoardDAO{
     @Override
     public int countBoard() {
 
-        return 0;
+        return session.selectOne("boarddate.countboard");
     }
 
     @Override
     public List<BoardVO> selectBoard(PagingVO vo) {
 
-        return null;
+        return session.selectList(namespace + ".selectBoard", vo);
     }
 
 }
