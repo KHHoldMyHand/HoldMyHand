@@ -1,21 +1,19 @@
 package org.project.controller;
 
-import org.jetbrains.annotations.NotNull;
 import org.project.dao.BoardDAO;
 import org.project.dto.BoardWriteDTO;
-import org.project.searchandpaging.Criteria;
-import org.project.searchandpaging.PageMaker;
 import org.project.service.BoardService;
 import org.project.vo.BoardVO;
+import org.project.vo.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -33,12 +31,12 @@ public class BoardController {
 
 
     //게시판 리스트
-    @RequestMapping(value="/qna", method = RequestMethod.GET)
-    public String list(Model model) {
-        List<BoardVO> list = boardDAO.qnaList();
-        model.addAttribute("list", list);
-        return "board/qna";
-    }
+//    @RequestMapping(value="/qna", method = RequestMethod.GET)
+//    public String list(Model model) {
+//        List<BoardVO> list = boardDAO.qnaList();
+//        model.addAttribute("list", list);
+//        return "board/qna";
+//    }
 
     @RequestMapping(value="/qnaWriter", method = RequestMethod.GET)
     public String writeGET(){ return "board/qnaWriter";}
@@ -48,6 +46,26 @@ public class BoardController {
     public String write(BoardWriteDTO dto, HttpSession session) throws Exception{
 
         boardService.write(dto);
-        return "/board/qna";
+        return "redirect:/qna";
+    }
+
+    @RequestMapping(value ="/qna", method = RequestMethod.GET)
+    public String boardList(PagingVO vo, Model model
+            , @RequestParam(value="nowPage", required=false)String nowPage
+            , @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+
+        int total = boardService.countBoard();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+        vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", vo);
+        model.addAttribute("viewAll", boardService.selectBoard(vo));
+        return "board/qna";
     }
 }
