@@ -100,7 +100,7 @@
 
                 <button type="submit" class="cancelBtn">회원정보수정</button>
                 <a href="/index"><button type="button" class="cancelBtn">취소</button></a>
-                <a href="/user/userDelete"><button type="button" class="cancelBtn">회원탈퇴</button></a>
+                <a href="/user/userDelete" onclick="return confirm('정말로 회원을 탈퇴하시겠습니까? 작성했던 게시물들도 전부 삭제됩니다.')"><button type="button" class="cancelBtn">회원탈퇴</button></a>
             </form>
             <br><br><br>
 
