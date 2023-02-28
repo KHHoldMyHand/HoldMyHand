@@ -6,6 +6,7 @@ import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
+import org.project.vo.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -89,6 +91,16 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerVO regist(JoinDTO dto) throws Exception {
         dao.create(dto);
         return null;
+    }
+
+    @Override
+    public int countCustomer() throws Exception {
+        return dao.countCustomer();
+    }
+
+    @Override
+    public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception {
+        return dao.selectCustomer(vo);
     }
 
 }
