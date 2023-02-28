@@ -1,6 +1,5 @@
 package org.project.controller;
 
-import org.jetbrains.annotations.NotNull;
 import org.project.dao.BoardDAO;
 import org.project.dto.BoardWriteDTO;
 import org.project.searchandpaging.Criteria;
@@ -32,7 +31,7 @@ public class BoardController {
     }
 
 
-    //°Ô½ÃÆÇ ¸®½ºÆ®
+    //ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     @RequestMapping(value="/qna", method = RequestMethod.GET)
     public String list(Model model) {
         List<BoardVO> list = boardDAO.qnaList();
@@ -43,7 +42,7 @@ public class BoardController {
     @RequestMapping(value="/qnaWriter", method = RequestMethod.GET)
     public String writeGET(){ return "board/qnaWriter";}
 
-    //±Û¾²±â post
+    //ï¿½Û¾ï¿½ï¿½ï¿½ post
     @RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
     public String write(BoardWriteDTO dto, HttpSession session) throws Exception{
 
