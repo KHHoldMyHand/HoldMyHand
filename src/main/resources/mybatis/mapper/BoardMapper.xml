@@ -11,18 +11,18 @@
     </select>
 
 
-    <select id="selectBoard" resultType="com.my.spring.domain.BoardVO">
-        SELECT *
-        FROM (
-        SELECT ROWNUM RN, QA.*
-        FROM (
-        SELECT *
-        FROM BOARD
-        ORDER BY USERNO DESC
-        ) QA
-        )
-        WHERE RN BETWEEN #{start} AND #{end}
-    </select>
+<!--    <select id="selectBoard" resultType="com.my.spring.domain.BoardVO">-->
+<!--        SELECT *-->
+<!--        FROM (-->
+<!--        SELECT ROWNUM RN, QA.*-->
+<!--        FROM (-->
+<!--        SELECT *-->
+<!--        FROM BOARD-->
+<!--        ORDER BY USERNO DESC-->
+<!--        ) QA-->
+<!--        )-->
+<!--        WHERE RN BETWEEN #{start} AND #{end}-->
+<!--    </select>-->
 
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
         insert into QA(QANO, TITLE, CONTENT, WRITEDATE, USERNO, WRITER)
