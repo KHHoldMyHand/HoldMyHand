@@ -72,6 +72,17 @@ public class CustomerController {
         return "user/logout";
     }
 
+    @RequestMapping(value="/findUserId", method = RequestMethod.POST)
+    public String findUserId(HttpServletResponse response, @RequestParam("userEmail") String userEmail, Model model) throws Exception{
+        model.addAttribute("userid",service.findUserId(response,userEmail));
+        return "user/findUserIdResult";
+    }
+
+    @RequestMapping(value="/findUserId", method = RequestMethod.GET)
+    public String findUserIdGET() throws Exception{
+        return "user/findUserId";
+    }
+
     @RequestMapping(value="/join", method = RequestMethod.GET)
     public String joinGET() {
         return "user/join";

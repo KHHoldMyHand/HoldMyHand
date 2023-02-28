@@ -22,6 +22,10 @@
         select * from Customer where sessionKey = #{value} and sessionLimit > SYSDATE and rownum=1
     </select>
 
+    <select id="findUserId" resultType="String">
+        select userID from Customer where userEmail = #{param2} and rownum=1
+    </select>
+
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select

@@ -7,6 +7,7 @@ import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,8 @@ public interface CustomerDAO {
 
     public void keepLogin(Map<String,Object> map);
     public CustomerVO checkUserWithSessionKey(String value);
+
+    public String findUserId(HttpServletResponse response, String userEmail);
     //회원가입
 //    public void create(CustomerVO vo) throws Exception;
 

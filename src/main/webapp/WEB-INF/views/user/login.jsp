@@ -24,16 +24,27 @@
                        <div class="login-area">
                            <input type="password" name="userPwd" id="userPW" autocomplete="off" required>
                            <label for="userPW">비밀번호입력(PW)</label>
+
                        </div>
+                       <div class="auto-login">
                        <label>
                            <input type="checkbox" name="useCookie">자동로그인
                        </label>
+                       </div>
                        <div class = "button-area">
                            <button id="btn" type="submit">LOGIN</button>
                        </div>
                    </form>
+                   <div style="display:flex; justify-content: center; column-gap: 20px;">
                    <div class = "join-area">
-                       <a href="<%=request.getContextPath()%>/join">회원가입</a>
+                       <a href="<%=request.getContextPath()%>/user/join">회원가입</a>
+                   </div>
+                     <div class = "id-area">
+                       <a href="<%=request.getContextPath()%>/user/findUserId" method="post">아이디 찾기</a>
+                     </div>
+                      <div class = "pwd-area">
+                        <a href="<%=request.getContextPath()%>/user/findUserPwd" method="post">비밀번호 찾기</a>
+                      </div>
                    </div>
            </div>
            </div>
@@ -59,7 +70,6 @@
                        }
                    })
            </script>
-           </html>
 
 </section>
 
