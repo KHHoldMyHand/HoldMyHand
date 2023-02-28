@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <style>
     body {
         background-color: beige
@@ -33,7 +34,11 @@
         </div>
         <form action="<%=request.getContextPath()%>/qnaWriter" >
              <div class="buttons" style="text-align: right;" "font-size:20px; background-color: #FFC007; border-radius: 10px">
-                <button id="QaBtn" type ="submit">글쓰기</button>
+              <c:choose>
+                 <c:when test="${login!=null}">
+                      <button id="QaBtn" type ="submit">글쓰기</button>
+                           </c:when>
+                          </c:choose>
              </div>
         </form>
 
@@ -48,13 +53,15 @@
                     <th>조회수</th>
                 </tr>
                 <c:forEach items="${viewAll}" var="list">
+
                 <tr>
-                    <td>${list.QANo}</td>
-                    <td>${list.title}</td>
-                    <td>${list.writer}</td>
-                    <td>${list.writeDate}</td>
-                    <td>${list.count}</td>
+                    <td class="test">${list.QANo}</td>
+                    <td class="test">${list.title}</td>
+                    <td class="test">${list.writer}</td>
+                    <td class="test">${list.writeDate}</td>
+                    <td class="test">${list.count}</td>
                 </tr>
+
                 </c:forEach>
             </table>
 
@@ -80,4 +87,10 @@
 
     </section>
 </body>
+
+<script>
+$(".test").click(function(){
+location.href = "/qnaInfo"
+})
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

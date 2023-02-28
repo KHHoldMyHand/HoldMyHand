@@ -67,5 +67,10 @@ public class BoardController {
         model.addAttribute("paging", vo);
         model.addAttribute("viewAll", boardService.selectBoard(vo));
         return "board/qna";
+        }
+
+    @RequestMapping(value = "/qnaInfo", method = RequestMethod.GET)
+    public String detail() throws Exception {
+        return "board/qnaInfo";
     }
 }
