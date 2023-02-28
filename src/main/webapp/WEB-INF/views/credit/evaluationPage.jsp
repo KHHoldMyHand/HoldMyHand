@@ -77,24 +77,33 @@
                     <div>
                         <div>
                             <input type="text" name="userNo" value="${userNo}" style="display: none">
-
                             <dl>
                                 <dt>점수</dt>
                                 <dd><input type="text" name="score" placeholder="재무재표를 보고 점수를 기입."></dd>
                             </dl>
                             <dl>
-                                <dt>여기서 첨부파일을 볼 수 있어야 함.</dt>
+                                <%-- 첨부파일 여기--%>
+
+                                <dt></dt>
                                 <dd><input type="text" placeholder="?"></dd>
                             </dl>
                         </div>
-                        <div class="bt_wrap">
-                            <button type="submit" value="평가" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
+                        <div >
+                            파일 다운이 안돼....
+                            <a href="/fileDownload?fileName=${FileInfo.fileName}">${FileInfo.fileName}<input type="button" value="재무재표" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
+                            <a href="<%=request.getContextPath()%>/creditManage"><input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
+                            <input type="button" value="평가" onclick="Evaluation()" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
                         </div>
-                        <a href="<%=request.getContextPath()%>/creditManage"><input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
+
                     </div>
                 </form>
                 </div>
             </div>
         </section>
     </body>
+<script type="text/javascript">
+    function Evaluation() {
+        document.submit(); // 전송
+    }
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
