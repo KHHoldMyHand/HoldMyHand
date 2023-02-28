@@ -74,7 +74,7 @@ public class CreditController {
 
     /* 신용정보 등록과 동시에 CustomerVO : creditStatus,files : 0->1 변경 */
     @RequestMapping(value = "/submitCreditInfo", method = RequestMethod.POST)
-    public String submitCreditInfo(CorporationDTO dto) throws Exception {
+    public String submitCreditInfo(CorporationDTO dto, HttpSession session) throws Exception {
         // 파일 업로드 처리
         String fileName = null;
         MultipartFile uploadFile = dto.getUploadFile();
@@ -88,6 +88,10 @@ public class CreditController {
         }
         dto.setFileName(fileName);
         corporationService.submitCreditInfo(dto);
+        //세션 user의 vo객체 받아와서 업데이트
+        CustomerVO vo = (CustomerVO) session.getAttribute("login");
+        vo.setCreditStatus(1);
+        session.setAttribute("login",vo);
         return "redirect:/";
     }
 
