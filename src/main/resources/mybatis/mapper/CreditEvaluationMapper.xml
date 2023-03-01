@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.dao.CreditEvaluationDAO">
+
+    <!-- 유저 조회 -->
+
+
+
+    <select resultType="org.project.dto.CreditEvaluationDTO" id="CreditEvaluationDTO">
+
+        <!-- join -->
+
+        select Corporation.userNo, Corporation.establishmentName,
+        Corporation.establishmentDate,Corporation.companyName
+        Corporation.companyScale,Corporation.employeers,
+        Corporation.files, Corporation.tax, Corporation.score, Corporation.ReceiptDate
+        CreditEvaluation.reportNo, CreditEvaluation.reportRank, CreditEvaluation.userNo,CreditEvaluation.createDate,
+        CreditEvaluation.fileDate
+        from CreditEvaluation full outer join Corporation
+        on CreditEvaluation.userNo = Corporation.userNo;
+    </select>
+
+</mapper>
