@@ -44,5 +44,8 @@ public interface CustomerDAO {
     public int countCustomer() throws Exception;
 
     public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception;
+
+    //회원가입 - 중복확인
+    public int idCheck(String userID) throws Exception;
 }
 

@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+  <!-- jQuery 2.1.4 -->
+    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
 
 
@@ -16,15 +18,19 @@
 
 <div class="outer">
 <div id="joinInfoArea">
-<form id="joinForm" action="/user/join"
+<form id="joinForm" action="<%=request.getContextPath()%>/user/join"
 method="post" onsubmit="return validate();">
 <h1>회원 가입</h1>
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<span class="input_area"><input type="text" maxlength="13" name="userID" id="useId"
-required placeholder="(-없이) 000-00-00000"></span>
-<button id="idCheck" type="button">중복확인</button>
+<label for="address2">아이디</label>
+<input type="text" id="userID" name="userID">
+<button type="button" type="button" id="idChk" onclick="idCheck();" value="N">중복확인</button>
+<span class="useId_ok">사용 가능한 아이디입니다.</span>
+<span class="useId_already">누군가 이 아이디를 사용하고 있어요.</span>
+
+
 <hr id="line2">
 <h4>* 비밀번호</h4>
 <span class="input_area"><input type="password" maxlength="15"
@@ -102,6 +108,7 @@ class="postcodify_address"></span>
 class="postcodify_details"></span>
 
 <h4 class="tit_large mt80">※이용 약관</h4>
+<form id="contactForm" action="<%=request.getContextPath()%>/login" method="POST">
 <p class="f18 mt16">＊서비스 이용을 위하여 약관 및 개인정보 수집 이용 동의가 필요합니다.</p>
 <dl class="agreement_area2">
 <dt>
@@ -112,7 +119,7 @@ class="postcodify_details"></span>
 </div>
 </dt>
 <dt>
-<input type="checkbox" id="d2" name="chk">
+<input type="checkbox" id="d2" name="chk1">
 <label for="d2">[필수] 회원가입약관</label>
 
 <a href="javascript:doDisplay();">
@@ -259,7 +266,7 @@ class="postcodify_details"></span>
 <!-- //약관 샘플 -->
 </dd>
 <dt>
-<input type="checkbox" id="d3" name="chk">
+<input type="checkbox" id="d3" name="chk2">
 <label for="d3">[필수] 개인정보 수집 및 이용</label>
 <a href="javascript:doDisplay1();">
 <button type="button" id="ctn-btn"><span class="blind">내용보기</span></button>
@@ -310,7 +317,7 @@ class="postcodify_details"></span>
 
 </dl>
 <div class="btnArea">
-<button id="joinBtn">가입하기</button>
+<button id="joinBtn" onclick="AgreementYesNoCheck()">가입하기</button>
 </div>
 </form>
 </div>
@@ -386,7 +393,43 @@ function execution_add_address(){
 }
 </script>
 
+<script type="text/javascript">
+    function idCheck() {
+        $.ajax({
+            url : "/user/joinIdCheck",
+            type : "POST",
+            dataType :"JSON",
+            data : {"userID" : $("#userID").val()},
+            success : function (data) {
+            console.log(data);
+                if(data == 0) {
+                $("#userID").attr("value", "Y");
+                $('.useId_ok').css("display","inline-block");
+                $('.useId_already').css("display", "none");
+                } else if (data >= 1) {
+                $('.useId_already').css("display","inline-block");
+                alert("아이디를 다시 입력해주세요");
+                $('.useId_ok').css("display", "none");
+                $('#useId_ok').val('');
+                }
+            },
+            error:function(){
+            alert("에러입니다."+data);
+            }
+        });
+    }
+</script>
 
+<!— 동의하는거 버튼 —>
+<script type="text/javascript">
+    function AgreementYesNoCheck() {
+        if(document.querySelector("input[name='d2']:checked").value == "y") {
+            document.getElementById("contactForm").submit();
+        } else {
+            alert('이용약관에 동의하지 않았습니다.');
+        }
+    }
+</script>
 </html>
 </div>
 </section>

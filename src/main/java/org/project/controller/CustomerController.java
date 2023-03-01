@@ -8,6 +8,7 @@ import org.project.service.CustomerService;
 import org.project.vo.CustomerVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -147,5 +148,15 @@ public class CustomerController {
         service.regist(dto);
 
         return "redirect:/user/login";
+    }
+    //아이디 중복확인때 쓸것임----------------------------------------------
+    @Autowired
+    private CustomerService customerService;
+
+    @ResponseBody
+    @RequestMapping(value = "/joinIdCheck", method = RequestMethod.POST)
+    public int registerPOST(String userID) throws Exception {
+        int result = customerService.idCheck(userID);
+        return result;
     }
 }

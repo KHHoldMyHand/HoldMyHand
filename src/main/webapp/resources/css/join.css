@@ -175,3 +175,12 @@ margin-top : 8px; !important;
 margin-bottom : 8px; !important;
 }
 
+.useId_ok{
+color:#008000;
+display: none;
+}
+
+.useId_already{
+color:#6A82FB;
+display: none;
+}

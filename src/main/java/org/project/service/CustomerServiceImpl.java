@@ -103,4 +103,11 @@ public class CustomerServiceImpl implements CustomerService {
         return dao.selectCustomer(vo);
     }
 
+    @Override
+    public int idCheck(String userID) throws Exception {
+        int result = dao.idCheck(userID);
+        System.out.println("result = dao.idCheck(userID)?: " + result);
+        return result;
+    }
+
 }
