@@ -83,7 +83,9 @@ public class CreditController {
             String originalFileName = uploadFile.getOriginalFilename(); //원본파일 이름 구하기
             String ext = FilenameUtils.getExtension(originalFileName);  //확장자 구하기
             UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
-            fileName = uuid +"." + ext;
+//            fileName = dto.getCompanyName() + originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
+//                    .substring(0, originalFileName.length() - 4) + "." + ext;
+            fileName = uuid + "." + ext;
             uploadFile.transferTo(new File("C:\\dev\\Project\\src\\main\\resources\\upload\\" + fileName)); //저장경로
         }
         dto.setFileName(fileName);
