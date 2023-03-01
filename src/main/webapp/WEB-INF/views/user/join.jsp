@@ -19,7 +19,7 @@
 <div class="outer">
 <div id="joinInfoArea">
 <form id="joinForm" action="<%=request.getContextPath()%>/user/join"
-method="post" onsubmit="return validate();">
+method="post" onsubmit="return validateForm()">
 <h1>회원 가입</h1>
 <hr id="line2">
 
@@ -34,12 +34,15 @@ method="post" onsubmit="return validate();">
 <hr id="line2">
 <h4>* 비밀번호</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd" id=pw required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+
 <h4>* 비밀번호 확인</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd2" id=pw2 required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+        <font id="checkPw" style="font-size: x-small; "></font>
+        <label id="pwdResult"></label>
+        <p></p>
 <label id="pwdResult"></label>
-
 <hr id="line">
 
 
@@ -411,6 +414,8 @@ function execution_add_address(){
                 alert("아이디를 다시 입력해주세요");
                 $('.useId_ok').css("display", "none");
                 $('#useId_ok').val('');
+                $('#userID').val('');
+                $('#userID').focus();
                 }
             },
             error:function(){
@@ -419,6 +424,65 @@ function execution_add_address(){
         });
     }
 </script>
+
+<!— 비번 틀렸을때 —>
+ <script type="text/javascript">
+        $('#pw2').blur(function (){
+            let pass1=$("#pw").val();
+            let pass2=$("#pw2").val();
+            if(pass1!="" || pass2!=""){
+                if(pass1==pass2){
+                    $("#checkPw").html('패스워드가 일치합니다.');
+                    $("#checkPw").attr('color','green');
+                }else{
+                    $("#checkPw").html('패스워드가 불일치합니다.');
+                    $("#checkPw").attr('color','red');
+                     $('#pw2').val('');
+           	         $('#pw2').focus();
+                }
+            }
+        })
+
+/*영문(대소문자) 포함
+   숫자 포함
+   특수 문자 포함
+   공백 X
+   비밀번호 자리 8~15자 */
+        $('#pw2').blur(function chkPW(){
+         var pw = $("#pw2").val();
+         var num = pw.search(/[0-9]/g);
+         var eng = pw.search(/[a-z]/ig);
+         var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+         if(pw.length < 8 || pw.length > 15){
+
+          alert("8자리 ~ 15자리 이내로 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(pw.search(/\s/) != -1){
+          alert("비밀번호는 공백 없이 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(num < 0 || eng < 0 || spe < 0 ){
+          alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+                    $('#pw').val('');
+                    $('#pw2').val('');
+                    $('#pw').focus();
+          return false;
+         }else {
+        	alert("사용가능한 비밀번호입니다.");
+            return true;
+         }
+
+        })
+
+    </script>
+
+
 
 <!— 동의하는거 버튼 —>
 <script type="text/javascript">
