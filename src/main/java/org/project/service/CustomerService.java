@@ -41,4 +41,7 @@ public interface CustomerService {
     public int countCustomer()throws Exception;
 
     public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception;
+
+    // 아이디 중복체크
+    public int idCheck(String userID) throws Exception;
 }

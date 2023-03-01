@@ -87,6 +87,12 @@ public class CustomerDAOImpl implements CustomerDAO{
     }
 
     @Override
+    public int idCheck(String userID) throws Exception {
+        int result = session.selectOne(namespace+".idChk", userID);
+        return result;
+    }
+
+    @Override
     public int countCustomer() throws Exception {
         return session.selectOne(namespace+".countCustomer");
     }
