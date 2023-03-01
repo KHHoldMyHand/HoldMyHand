@@ -80,7 +80,7 @@
                             <div class="gold_line">
                                 <h4 class="tit17">* 파일첨부</h4>
                                 <div class="filebox">
-                                    <input type="file" name="uploadFile" multiple="multiple">
+                                    <input type="file" name="uploadFile" href="<%=request.getContextPath()%>/fileDownload?fileName=${FileInfo.fileName}">
                                     <!--<input style="cursor: pointer;" placeholder="첨부파일"
                                            class="insert_input upload-name" type=file" name= "uploadFile" value="첨부파일"/>
                                     <label for="file">파일첨부</label>

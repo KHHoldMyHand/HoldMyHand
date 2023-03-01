@@ -10,6 +10,7 @@ import org.project.service.CorporationService;
 import org.project.service.CustomerService;
 import org.project.vo.CorporationVO;
 import org.project.vo.CustomerVO;
+import org.project.vo.FileVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,7 +82,7 @@ public class CreditController {
         if (!uploadFile.isEmpty()) {
             String originalFileName = uploadFile.getOriginalFilename(); //원본파일 이름 구하기
             String ext = FilenameUtils.getExtension(originalFileName);  //확장자 구하기
-//            UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
+            UUID uuid = UUID.randomUUID();                              //UUID(중복방지) 구하기
             fileName = dto.getCompanyName() + originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
                     .substring(0, originalFileName.length() - 4) + "." + ext;
             uploadFile.transferTo(new File("C:\\dev\\Project\\src\\main\\resources\\upload\\" + fileName)); //저장경로
@@ -96,8 +97,11 @@ public class CreditController {
     }
 
     @RequestMapping(value = "/evaluationPage",method = RequestMethod.GET)
-    public String evalGET(@RequestParam("userNo") int userno, Model model){
+    public String evalGET(@RequestParam("userNo") int userno, Model model,CorporationDTO dto){
         model.addAttribute("userNo",userno);
+        model.addAttribute("FileInfo", corporationService.getFileName(dto));
+        FileVO fileName = corporationService.getFileName(dto);
+        model.addAttribute("FileInfo", fileName);
         return "credit/evaluationPage";
     }
 

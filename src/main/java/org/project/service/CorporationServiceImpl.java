@@ -5,7 +5,7 @@ import org.project.dao.CustomerDAO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
-import org.project.vo.CustomerVO;
+import org.project.vo.FileVO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -16,18 +16,10 @@ public class CorporationServiceImpl implements CorporationService{
 
     @Inject
     CorporationDAO dao;
-    @Inject
-    CustomerDAO customerDAO;
 
     @Override
     public int create(CorporationDTO dto) {
         return 0;
-    }
-
-    // 평가 진행 목록 페이지
-    @Override
-    public List<CorporationVO> listCorporation() {
-        return null;
     }
 
     @Override
@@ -41,7 +33,10 @@ public class CorporationServiceImpl implements CorporationService{
         dao.submitCreditInfo(dto);
     }
 
-
-
+    // 파일 정보 가져오기
+    @Override
+    public FileVO getFileName(CorporationDTO dto) {
+        return dao.getFileName(dto);
+    }
 
 }

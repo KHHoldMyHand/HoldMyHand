@@ -4,8 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
-import org.project.vo.CorporationVO;
-import org.project.vo.CustomerVO;
+import org.project.vo.FileVO;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -40,5 +39,10 @@ public class CorporationDAOImpl implements CorporationDAO{
         session.insert(namespace + ".submitCreditInfo", dto);
     }
 
+    // 파일 정보 가져오기
+    @Override
+    public FileVO getFileName(CorporationDTO dto) {
+        return session.selectOne(namespace + ".getFileName", dto);
+    }
 
 }
