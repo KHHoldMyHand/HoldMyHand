@@ -47,7 +47,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <div style="display: block; text-align: center;">
+        <div style="display: block; text-align: center; font-size: 20px;">
             <c:if test="${paging.startPage != 1 }">
                 <a href="/oracle?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
             </c:if>

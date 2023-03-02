@@ -8,12 +8,32 @@
     <!-- 평가 진행 목록 -->
     <!-- 관리자 및 상태 구분 -->
     <!-- 0:신청 안함 / 1:심사진행중 / 2:심사완료-->
+<!--
     <select id="listCorporation" resultType="org.project.dto.CorporationBoardDTO">
         select a.userNo,b.establishmentName,b.companyName,b.companyScale,b.employeers,b.tax,b.files
         from Customer a, Corporation b
         where a.creditStatus=1
           and a.managerclassification=0
           and a.userNo = b.userNo order by receiptDate desc /* 신청 순서 */
+    </select>
+-->
+    <!-- 신용정보 등록 고객 목록 페이징처리  -->
+    <select id="countCorporation" resultType="int">
+        select count(*) from Corporation
+    </select>
+    <select id="selectSubmitCustomer" resultType="org.project.vo.CorporationVO">
+        SELECT *
+        FROM (SELECT ROWNUM RN, A.*
+              FROM (select a.userNo, b.establishmentName, b.companyName, b.companyScale, b.employeers, b.tax
+                    FROM Customer a,
+                         Corporation b
+                    WHERE a.creditStatus = 1
+                      AND a.managerclassification = 0
+                      AND a.userNo = b.userNo
+                    ORDER BY receiptDate DESC /* 신청 순서 */
+                   ) A)
+        WHERE RN BETWEEN #{start} AND #{end}
+
     </select>
 
     <!-- 신용등급 산정 -->
