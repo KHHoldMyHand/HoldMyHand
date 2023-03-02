@@ -38,7 +38,7 @@ table tr{
                       <thead>
                         <tr>
                           <th>기업명</th>
-                          <th>${session.userNo}</th>
+                          <th>${login.corpName}</th>
 
                         </tr>
                       </thead>
@@ -46,39 +46,39 @@ table tr{
 
                         <tr>
                           <td>보고서식별번호</td>
-                          <td>${CreditEvaluationDTO.reportNo}</td>
+                          <td>${dto.reportNo}</td>
                         </tr>
 
 
                           <tr>
                          <td>설립자명</td>
-                         <td>${CreditEvaluationDTO.establishmentName}</td>
+                         <td>${dto.establishmentName}</td>
 
                          </tr>
                         <tr>
                           <td>설립일자</td>
-                          <td>${CreditEvaluationDTO.establishmentDate}</td>
+                          <td>${dto.establishmentDate}</td>
 
                         </tr>
                         <tr>
                           <td>주소</td>
-                          <td>${session.userAddress}</td>
+                          <td>${login.userAddress}</td>
 
                         </tr>
                         <tr>
                           <td>기업종류</td>
-                          <td>${session.corpType}</td>
+                          <td>${login.corpType}</td>
 
                         </tr>
                         <tr>
                           <td>기업규모</td>
-                          <td>${CorporationDTO.companyScale}</td>
+                          <td>${dto.companyScale}</td>
 
                         </tr>
 
                          <tr>
                           <td>사원수</td>
-                          <td>${CorporationDTO.employeers}</td>
+                          <td>${dto.employeers}</td>
 
                           </tr>
 
@@ -184,7 +184,7 @@ table tr{
                   <tr>
 
                    <td style="border:2px solid blue;" align="center" valign="middle" rowspan= "2">
-                   <p class="ss">${CreditEvaluationDTO.reportRank}</p> <br>
+                   <p class="ss">${dto.reportRank}</p> <br>
                     <!-- 질문사항: 등급마다 p안에 코맨트가 달려야하는데 1방안: 등급테이블을 만들어야하는지, 2방안: 등급만 표시해서 p태그 자체를 없앨지 -->
                     <span style="color:black"><p> 채무상환능력이 매우 우량하나, AAA보다는 다소 열위한 요소가 있음</p></span> </td>
 
@@ -203,13 +203,13 @@ table tr{
                    </tr>
                     <tr>
                    <td>평가(산출)일자</td>
-                   <td>${CreditEvaluationDTO.createDate}</td>
+                   <td>${dto.createDate}</td>
 
                    </tr>
 
                   <tr>
                   <td >재무기준일자</td>
-                  <td>${CreditEvaluationDTO.fileDate}</td>
+                  <td>${dto.fileDate}</td>
 
 
                    </tr>
@@ -239,7 +239,7 @@ table tr{
                           <tr>
 
                            <td style="border:2px solid blue;" align="center" valign="middle" rowspan= "2"><span style="color:black"><H2> 기업등급<H2></span>
-                        <br> <H2 style="color:blue" "font-weight:bold";> <strong>${CreditEvaluationDTO.reportRank}</strong> </td></H2></H2>
+                        <br> <H2 style="color:blue" "font-weight:bold";> <strong>${dto.reportRank}</strong> </td></H2></H2>
 
                        </tr>
 
@@ -255,13 +255,13 @@ table tr{
                      </tr>
                       <tr>
                       <td>평가(산출)일자</td>
-                     <td>${CreditEvaluationDTO.createDate}</td>
+                     <td>${dto.createDate}</td>
 
                   </tr>
 
                       <tr>
                      <td >재무기준일자</td>
-                     <td>${CreditEvaluationDTO.fileDate}</td>
+                     <td>${dto.fileDate}</td>
 
                     </tr>
 

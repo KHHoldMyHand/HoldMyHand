@@ -2,17 +2,21 @@ package org.project.controller;
 
 import org.apache.commons.io.FilenameUtils;
 import org.project.dao.CorporationDAO;
+import org.project.dao.CreditEvaluationDAO;
 import org.project.dao.CustomerDAO;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
+import org.project.dto.CreditEvaluationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.service.CorporationService;
+import org.project.service.CreditEvaluationService;
 import org.project.service.CustomerService;
 import org.project.vo.CorporationVO;
 import org.project.vo.CustomerVO;
 import org.project.vo.FileVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,10 +39,14 @@ public class CreditController {
     CorporationDAO corporationDAO;
     @Autowired
     CustomerDAO CustomerDAO;
+    @Autowired
+    private CreditEvaluationDAO creditEvaluationDAO;
     @Inject
     CustomerService customerService;
     @Inject
     CorporationService corporationService;
+    @Inject
+    CreditEvaluationService creditEvaluationService;
 
     //약관
     @RequestMapping(value="/credit", method = RequestMethod.GET)
@@ -52,10 +60,12 @@ public class CreditController {
     }
 
     @RequestMapping(value="/creditresult", method = RequestMethod.GET)
-    public String crGET() {
+    public String crGET(HttpSession session, Model model) {
+        CustomerVO vo = (CustomerVO)session.getAttribute("login");
+        CreditEvaluationDTO dto =creditEvaluationDAO.creditevaluationdto(vo.getUserNo());
+        model.addAttribute("dto",dto);
         return "credit/creditresult";
     }
-
     @RequestMapping(value="/risksolution", method = RequestMethod.GET)
     public String rsGET(){return "credit/risksolution";};
 
@@ -115,7 +125,11 @@ public class CreditController {
         //서비스에서는 user의 정보변경, corporation의 정보변경.(userNo 알고있으니 가능)
         corporationService.modCorpScore(dto);
         customerService.modUserStatus(userNo);
-        return "redirect:/";
+
+        System.out.println(dto.getFileDate());
+        //여기서 추가로 신용평가보고서 생성해줘야 함
+        creditEvaluationDAO.createReport(dto);
+        return "redirect:/creditManage";
     }
 
 }
