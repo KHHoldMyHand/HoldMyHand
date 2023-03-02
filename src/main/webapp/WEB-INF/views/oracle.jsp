@@ -12,6 +12,14 @@
 
 <section class="py-5" id="features">
     <div class="container">
+        <select name="category">
+            <option value="a">전체</option>
+            <option value="b">고객</option>
+            <option value="c">관리자</option>
+            <option value="d">신용평가미신청</option>
+            <option value="e">신용평가진행중</option>
+            <option value="f">신용평가완료</option>
+        </select>
         <div style="float: right;">
             <select id="cntPerPage" name="sel" onchange="selChange()">
                 <option value="5"
