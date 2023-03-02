@@ -54,9 +54,9 @@
                 </tr>
                 <c:forEach items="${viewAll}" var="list">
 
-                <tr>
+                <tr data-qano = "${list.QANo}">
                     <td class="test">${list.QANo}</td>
-                    <td class="test">${list.title}</td>
+                    <td class="test">${list.title}</a></td>
                     <td class="test">${list.writer}</td>
                     <td class="test">${list.writeDate}</td>
                     <td class="test">${list.count}</td>
@@ -90,7 +90,10 @@
 
 <script>
 $(".test").click(function(){
-location.href = "/qnaInfo"
+let dataNo =  $(this).closest("tr").attr("data-QANo");
+
+console.log("dataNo : "+dataNo);
+location.href = "/qnaInfo?QANo="+dataNo
 })
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

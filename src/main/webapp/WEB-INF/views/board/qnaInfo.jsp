@@ -44,19 +44,19 @@
 
                 <tr>
                     <td id="title">작성일</td>
-                    <td>2023.02.23</td>
+                    <td>${data.writeDate}</td>
                 </tr>
                 <tr>
                     <td id="title">작성자</td>
-                    <td><input type="text" placeholder="작성자" disabled></td>
+                    <td><input type="text" value="${data.writer}" readonly></td>
                 </tr>
                 <tr>
                     <td id="title">제 목</td>
-                    <td>안녕하세요 길동이에요</td>
+                    <td>${data.title}</td>
                 </tr>
                 <tr>
                     <td id="title" style="height: 300px;">내 용</td>
-                    <td>내용</td>
+                    <td>${data.content}</td>
                 </tr>
 
 

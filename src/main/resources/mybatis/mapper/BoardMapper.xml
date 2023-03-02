@@ -10,7 +10,7 @@
     <!--    </select>-->
 
     <!-- 총 게시글 갯수 출력 -->
-    <select id="countBoard" resultType="int">
+    <select id="countBoard" resultType="Integer">
         SELECT COUNT(*) FROM QA
     </select>
     <!-- 리스트 페이징 처리 -->
@@ -28,12 +28,18 @@
     </select>
 
     <!-- 게시판 조회수 -->
-    <update id="boardCount" parameterType="int">
+    <update id="boardCnt" parameterType="Integer">
         UPDATE QA
         SET COUNT = COUNT+1
-        WHERE QANO = #{QANo}
+        WHERE QANo = #{QANo}
     </update>
 
+    <!-- 게시글 상세정보 -->
+    <select id="detail" resultType="org.project.vo.BoardVO">
+        select *
+        FROM QA
+        WHERE QANO = #{QANo}
+    </select>
 
 
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">

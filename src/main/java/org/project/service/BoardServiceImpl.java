@@ -5,8 +5,6 @@ import org.project.dto.BoardWriteDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -37,10 +35,15 @@ public class BoardServiceImpl implements BoardService{
         return boardDAO.selectBoard(vo);
     }
 
-//    @Override
-//    public BoardVO read(int qano) {
-//        boardDAO.boardCount(qano);
-//        return boardDAO.read(qano);
-//    }
+    @Override
+    public BoardVO detail(Integer QANo) {
+        return boardDAO.detail(QANo);
+    }
+
+    @Override
+    public void boardCnt(Integer QANo) {
+        boardDAO.boardCnt(QANo);
+    }
+
 
 }
