@@ -175,6 +175,12 @@ margin-top : 8px; !important;
 margin-bottom : 8px; !important;
 }
 
+#idChk{
+margin-left: 0px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
 .useId_ok{
 color:#008000;
 display: none;

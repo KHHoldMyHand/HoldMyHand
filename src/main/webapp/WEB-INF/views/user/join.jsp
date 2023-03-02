@@ -24,8 +24,7 @@ method="post" onsubmit="return validateForm()">
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<label for="address2">아이디</label>
-<input type="text" id="userID" name="userID" required>
+<span class="input_area"><input type="text" id="userID" name="userID" required></span>
 <button type="button" type="button" id="idChk" onclick="idCheck();" value="N">중복확인</button>
 <span class="useId_ok">사용 가능한 아이디입니다.</span>
 <span class="useId_already">누군가 이 아이디를 사용하고 있어요.</span>
@@ -104,7 +103,7 @@ class="postcodify_postcode5" placeholder="우편번호 검색"></span>
 <span class="input_area"><input type="text" name="userAddress"
 class="postcodify_address" required></span>
 <h4>상세주소</h4>
-<span class="input_area"><input type="text" name="userAddress"
+<span class="input_area"><input type="text" name="userAddress"></span>
 
 
 <h4 class="tit_large mt80">※이용 약관</h4>
