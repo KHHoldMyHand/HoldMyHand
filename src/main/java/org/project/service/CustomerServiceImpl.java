@@ -105,6 +105,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int idCheck(String userID) throws Exception {
+        System.out.println("idCheck 서비스 실행");
+        System.out.println("userID= "+userID);
         int result = dao.idCheck(userID);
         System.out.println("result = dao.idCheck(userID)?: " + result);
         return result;
