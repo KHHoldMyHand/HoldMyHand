@@ -34,14 +34,30 @@
         WHERE QANo = #{QANo}
     </update>
 
-    <!-- 게시글 상세정보 -->
-    <select id="detail" resultType="org.project.vo.BoardVO">
+<!--    &lt;!&ndash; 게시글 상세정보 &ndash;&gt;-->
+<!--    <select id="detail" resultType="org.project.vo.BoardVO">-->
+<!--        select *-->
+<!--        FROM QA-->
+<!--        WHERE QANO = #{QANo}-->
+<!--    </select>-->
+
+    <!-- 게시글 읽기 -->
+    <select id="read" resultType="org.project.vo.BoardVO">
         select *
         FROM QA
-        WHERE QANO = #{QANo}
+        WHERE QANo = #{QANo}
     </select>
 
+    <!-- 게시글 삭제 -->
+    <delete id="delete" parameterType="org.project.vo.BoardVO">
+        DELETE FROM QA WHERE QANo = #{QANo}
+    </delete>
+    <!-- 게시글 수정 -->
+    <update id="update" parameterType="org.project.dto.BoardWriteDTO">
+        UPDATE QA set QANo=#{QANo}, title=#{title}, content=#{content},writedate=sysdate, userno=#{userNo}, writer =#{writer}  where QANo=#{QANo}
+    </update>
 
+    <!-- 게시글 쓰기 -->
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
         insert into QA(QANO, TITLE, CONTENT, WRITEDATE, USERNO, WRITER)
         values(QANo.NEXTVAL,#{title},#{content},sysdate, #{userNo}, #{writer})
