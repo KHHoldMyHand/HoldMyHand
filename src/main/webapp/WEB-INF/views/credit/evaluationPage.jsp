@@ -84,15 +84,16 @@
                             <dl>
                                 <%-- 첨부파일 여기--%>
 
-                                <dt></dt>
-                                <dd><input type="text" placeholder="?"></dd>
+                                <dt>재무재표 첨부파일의 날짜를 기입하세요.</dt>
+                                <dd><input type="date" id="today-date" name="fileDate"></dd>
                             </dl>
                         </div>
                         <div >
-                            파일 다운이 안돼....
                             <a href="/fileDownload?fileName=${FileInfo.fileName}">${FileInfo.fileName}<input type="button" value="재무재표" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
                             <a href="<%=request.getContextPath()%>/creditManage"><input type="button" value="취소" style="font-size:20px; background-color: #FFC007; border-radius: 10px"></a>
-                            <input type="button" value="평가" onclick="Evaluation()" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
+<%--                            <input type="button" value="평가" onclick="Evaluation()" style="font-size:20px; background-color: #FFC007; border-radius: 10px">--%>
+                            <button type="submit" value="평가" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
+
                         </div>
 
                     </div>
@@ -101,9 +102,17 @@
             </div>
         </section>
     </body>
-<script type="text/javascript">
-    function Evaluation() {
-        document.submit(); // 전송
-    }
+<%--<script type="text/javascript">--%>
+<%--    function Evaluation() {--%>
+<%--        document.submit(); // 전송--%>
+<%--    }--%>
+<%--</script>--%>
+<script>
+    let today = new Date().toISOString().slice(0,10);
+    document.getElementById("today-date").max = today;
+    document.getElementById("today-date").value = today;
+    // function ho(){
+    //     alert(today);
+    // }
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

@@ -10,18 +10,29 @@
 
 
 
-    <select resultType="org.project.dto.CreditEvaluationDTO" id="CreditEvaluationDTO">
+    <select resultType="org.project.dto.CreditEvaluationDTO" parameterType="int" id="creditevaluationdto">
 
         <!-- join -->
 
-        select Corporation.userNo, Corporation.establishmentName,
-        Corporation.establishmentDate,Corporation.companyName
-        Corporation.companyScale,Corporation.employeers,
-        Corporation.files, Corporation.tax, Corporation.score, Corporation.ReceiptDate
-        CreditEvaluation.reportNo, CreditEvaluation.reportRank, CreditEvaluation.userNo,CreditEvaluation.createDate,
-        CreditEvaluation.fileDate
-        from CreditEvaluation full outer join Corporation
-        on CreditEvaluation.userNo = Corporation.userNo;
+        select
+        b.establishmentName,
+        b.establishmentDate,
+        b.companyName,
+        b.companyScale,
+        b.employeers,
+        b.files,
+        b.tax,
+        a.reportNo,
+        a.reportRank,
+        a.createDate,
+        a.fileDate
+        from CreditEvaluation a , Corporation b
+        where a.userNo = b.userNo and a.userNo=#{userNo} and rownum=1
     </select>
+
+    <insert id="createReport" parameterType="org.project.dto.EvaluateSuccessDTO">
+        INSERT INTO Creditevaluation (reportNo, reportRank, userNo, createDate, fileDate)
+        VALUES(reportNo.NEXTVAL, #{score}, #{userNo}, sysdate, #{fileDate})
+    </insert>
 
 </mapper>
