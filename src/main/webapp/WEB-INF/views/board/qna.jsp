@@ -58,7 +58,7 @@
                     <td class="test">${list.QANo}</td>
                     <td class="test">${list.title}</a></td>
                     <td class="test">${list.writer}</td>
-                    <td class="test">${list.writeDate}</td>
+                    <td class="test"><fmt:formatDate value="${list.writeDate}" pattern="yy-MM-dd"/></td>
                     <td class="test">${list.count}</td>
                 </tr>
 
