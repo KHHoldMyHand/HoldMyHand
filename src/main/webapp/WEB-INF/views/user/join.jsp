@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+  <!-- jQuery 2.1.4 -->
+    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
 
 
 <section class="py-5" id="features">
@@ -15,24 +18,31 @@
 
 <div class="outer">
 <div id="joinInfoArea">
-<form id="joinForm" action="<%= request.getContextPath() %>/index.jsp"
-method="post" onsubmit="return validate();">
+<form id="joinForm" action="<%=request.getContextPath()%>/user/join"
+method="post" onsubmit="return validateForm()">
 <h1>회원 가입</h1>
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<span class="input_area"><input type="text" maxlength="13" name="userId" id="useId"
-required placeholder="(-없이) 000-00-00000"></span>
-<button id="idCheck" type="button">중복확인</button>
+<label for="address2">아이디</label>
+<input type="text" id="userID" name="userID">
+<button type="button" type="button" id="idChk" onclick="idCheck();" value="N">중복확인</button>
+<span class="useId_ok">사용 가능한 아이디입니다.</span>
+<span class="useId_already">누군가 이 아이디를 사용하고 있어요.</span>
+
+
 <hr id="line2">
 <h4>* 비밀번호</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd" id=pw required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+
 <h4>* 비밀번호 확인</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd2" id=pw2 required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+        <font id="checkPw" style="font-size: x-small; "></font>
+        <label id="pwdResult"></label>
+        <p></p>
 <label id="pwdResult"></label>
-
 <hr id="line">
 
 
@@ -40,7 +50,7 @@ name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"
 <h4>* 업체명</h4>
 
 <td class="bt0">
-<input type="text" id="enpNm" name="enpNm" placeholder="업체명"
+<input type="text" id="enpNm" name="corpName" placeholder="업체명"
 required="required" class>
 <button type="button" class="btn_del">
 <span>입력내용 삭제</span>
@@ -97,10 +107,11 @@ class="postcodify_postcode5" placeholder="우편번호 검색"></span>
 <span class="input_area"><input type="text" name="userAddress"
 class="postcodify_address"></span>
 <h4>상세주소</h4>
-<span class="input_area"><input type="text" name="address"
+<span class="input_area"><input type="text" name="address2"
 class="postcodify_details"></span>
 
 <h4 class="tit_large mt80">※이용 약관</h4>
+<form id="contactForm" action="<%=request.getContextPath()%>/login" method="POST">
 <p class="f18 mt16">＊서비스 이용을 위하여 약관 및 개인정보 수집 이용 동의가 필요합니다.</p>
 <dl class="agreement_area2">
 <dt>
@@ -111,7 +122,7 @@ class="postcodify_details"></span>
 </div>
 </dt>
 <dt>
-<input type="checkbox" id="d2" name="chk">
+<input type="checkbox" id="d2" name="chk1">
 <label for="d2">[필수] 회원가입약관</label>
 
 <a href="javascript:doDisplay();">
@@ -258,7 +269,7 @@ class="postcodify_details"></span>
 <!-- //약관 샘플 -->
 </dd>
 <dt>
-<input type="checkbox" id="d3" name="chk">
+<input type="checkbox" id="d3" name="chk2">
 <label for="d3">[필수] 개인정보 수집 및 이용</label>
 <a href="javascript:doDisplay1();">
 <button type="button" id="ctn-btn"><span class="blind">내용보기</span></button>
@@ -309,7 +320,7 @@ class="postcodify_details"></span>
 
 </dl>
 <div class="btnArea">
-<button id="joinBtn">가입하기</button>
+<button id="joinBtn" onclick="AgreementYesNoCheck()">가입하기</button>
 </div>
 </form>
 </div>
@@ -369,9 +380,120 @@ function selectAll(selectAll)  {
 }
 </script>
 
+<script type="text/javascript">
+function execution_add_address(){
+<!— 주소 합치기 —>
+//내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+         var finalAddress = ''; // 주소 변수
+//사용자가 입력한 상세주소에 따라 해당 주소 값을 finalAddress 에 담는다. data 여기 바꿔야할듯?
+                if (data.address2 !== '') { //만약 상세주소가 null이 아니면
+                    finalAddress = data.data.userAddress+' (' + address2 + ')';
+                } else { // 상세 주소가 없을경우 구냥 주소만 넣기.
+                    finalAddress = data.userAddress;
+                }
+                // 주소변수 문자열과 참고항목 문자열 합치기
+                    data.userAddress=finalAddress;
+}
+</script>
+
+<script type="text/javascript">
+    function idCheck() {
+        $.ajax({
+            url : "/user/joinIdCheck",
+            type : "POST",
+            dataType :"JSON",
+            data : {"userID" : $("#userID").val()},
+            success : function (data) {
+            console.log(data);
+                if(data == 0) {
+                $("#userID").attr("value", "Y");
+                $('.useId_ok').css("display","inline-block");
+                $('.useId_already').css("display", "none");
+                } else if (data >= 1) {
+                $('.useId_already').css("display","inline-block");
+                alert("아이디를 다시 입력해주세요");
+                $('.useId_ok').css("display", "none");
+                $('#useId_ok').val('');
+                $('#userID').val('');
+                $('#userID').focus();
+                }
+            },
+            error:function(){
+            alert("에러입니다."+data);
+            }
+        });
+    }
+</script>
+
+<!— 비번 틀렸을때 —>
+ <script type="text/javascript">
+        $('#pw2').blur(function (){
+            let pass1=$("#pw").val();
+            let pass2=$("#pw2").val();
+            if(pass1!="" || pass2!=""){
+                if(pass1==pass2){
+                    $("#checkPw").html('패스워드가 일치합니다.');
+                    $("#checkPw").attr('color','green');
+                }else{
+                    $("#checkPw").html('패스워드가 불일치합니다.');
+                    $("#checkPw").attr('color','red');
+                     $('#pw2').val('');
+           	         $('#pw2').focus();
+                }
+            }
+        })
+
+/*영문(대소문자) 포함
+   숫자 포함
+   특수 문자 포함
+   공백 X
+   비밀번호 자리 8~15자 */
+        $('#pw2').blur(function chkPW(){
+         var pw = $("#pw2").val();
+         var num = pw.search(/[0-9]/g);
+         var eng = pw.search(/[a-z]/ig);
+         var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+         if(pw.length < 8 || pw.length > 15){
+
+          alert("8자리 ~ 15자리 이내로 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(pw.search(/\s/) != -1){
+          alert("비밀번호는 공백 없이 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(num < 0 || eng < 0 || spe < 0 ){
+          alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+                    $('#pw').val('');
+                    $('#pw2').val('');
+                    $('#pw').focus();
+          return false;
+         }else {
+        	alert("사용가능한 비밀번호입니다.");
+            return true;
+         }
+
+        })
+
+    </script>
 
 
 
+<!— 동의하는거 버튼 —>
+<script type="text/javascript">
+    function AgreementYesNoCheck() {
+        if(document.querySelector("input[name='d2']:checked").value == "y") {
+            document.getElementById("contactForm").submit();
+        } else {
+            alert('이용약관에 동의하지 않았습니다.');
+        }
+    }
+</script>
 </html>
 </div>
 </section>

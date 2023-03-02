@@ -1,122 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+    body {
+        background-color: beige
+    }
 
-    <style>
-        body {background-color:beige}
-            .qnaMain{margin-bottom:200px}
+    .buttons {
+        display: flex;
+        justify-content: right;
+        align-items: right;
+    }
 
-            .qnaList{
-                        line-height: 3em;
-                        width: 100%;
-                        list-style:none;
-                        padding:0;
-                        text-align: center;
-
-            }
-
-            .qnaList>li:first-child>ul>li {
-                background-color: #ffda70;
-                font-weight: bold;
-                text-align: center;
-                font-size: 11pt;
-            }
-
-            .qnaList>li>ul>li {
-                float: left;
-                font-size: 10pt;
-                border-bottom: 1.5px solid silver;
-                vertical-align: baseline;
-                background-color: #fff;
-            }
-
-            .qnaList>li>ul>li:first-child {
-                width: 10%;
-                        list-style:none;
-
-            }
-
-            .qnaList>li>ul>li:first-child+li {
-                width: 50%;
-                        list-style:none;
-
-            }
-
-            .qnaList>li>ul>li:first-child+li+li {
-                width: 12%;
-                        list-style:none;
-
-            }
-
-            .qnaList>li>ul>li:first-child+li+li+li {
-                width: 12%;
-                        list-style:none;
-
-            }
-
-            .qnaList>li>ul>li:first-child+li+li+li+li {
-                width: 15%;
-                        list-style:none;
-
-            }
-
-        .buttons {
-          display: flex;
-          justify-content: right;
-          align-items: right;
-        }
-
-        .btn { margin: 1rem; height: 30px; }
+    .btn {
+        margin: 1rem;
+        height: 30px;
+    }
 
 
-        .left {
-                text-align : left;
-        }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
 
+<body>
+    <section class="qnaMain py-5 h-100">
+        <div class="text-center" style="margin-bottom: 20px">
+            <h1 class="fw-bolder">Q&A</h1>
+        </div>
+        <form action="<%=request.getContextPath()%>/qnaWriter" >
+             <div class="buttons" style="text-align: right;" "font-size:20px; background-color: #FFC007; border-radius: 10px">
+              <c:choose>
+                 <c:when test="${login!=null}">
+                      <button id="QaBtn" type ="submit">글쓰기</button>
+                           </c:when>
+                          </c:choose>
+             </div>
+        </form>
 
+        <div class="ListView">
+            <table id="qnaList" style="width:100%">
 
-        </style>
-    <body>
-        <section class="qnaMain py-5 h-100">
-            <div class="text-center" style="margin-bottom: 20px">
-                <h1 class="fw-bolder">Q&A</h1>
-            </div>
-            <div class="buttons" style="text-align: right;">
-                <input type="button" value="글쓰기" style="font-size:20px; background-color: #FFC007; border-radius: 10px">
-            </div>
+                <tr>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+                <c:forEach items="${viewAll}" var="list">
 
-            <div class="qnaList">
-                <li>
-                    <ul>
-                        <li>No</li>
-                        <li>제목</li>
-                        <li>작성자</li>
-                        <li>작성일</li>
-                        <li>조회수</li>
-                    </ul>
-                </li>
+                <tr>
+                    <td class="test">${list.QANo}</td>
+                    <td class="test">${list.title}</td>
+                    <td class="test">${list.writer}</td>
+                    <td class="test">${list.writeDate}</td>
+                    <td class="test">${list.count}</td>
+                </tr>
 
-                <li>
-                    <ul>
-                        <li>2</li>
-                        <li class="left">질문이욥</li>
-                        <li>김*란</li>
-                        <li>2022.2.2</li>
-                        <li>10</li>
-                    </ul>
-                </li>
+                </c:forEach>
+            </table>
 
-                <li>
-                    <ul>
-                        <li>1</li>
-                        <li class="left">헿</li>
-                        <li>김*란</li>
-                        <li>2013.3.3</li>
-                        <li>8</li>
-                    </ul>
-                </li>
-            </div>
-         </div>
+          	<div style="display: block; text-align: center;">
+            		<c:if test="${paging.startPage != 1 }">
+            			<a href="/qna?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+            		</c:if>
+            		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+            			<c:choose>
+            				<c:when test="${p == paging.nowPage }">
+            					<b>${p }</b>
+            				</c:when>
+            				<c:when test="${p != paging.nowPage }">
+            					<a href="/qna?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+            				</c:when>
+            			</c:choose>
+            		</c:forEach>
+            		<c:if test="${paging.endPage != paging.lastPage}">
+            			<a href="/qna?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+            		</c:if>
+            	</div>
+        </div>
+
     </section>
-    </body>
+</body>
+
+<script>
+$(".test").click(function(){
+location.href = "/qnaInfo"
+})
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

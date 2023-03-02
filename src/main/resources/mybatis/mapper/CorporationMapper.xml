@@ -5,11 +5,41 @@
 
 <mapper namespace="org.project.dao.CorporationDAO">
 
-    <insert id="create" parameterType="org.project.dto.CorporationDTO">
-        insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers)
-        values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers})
+    <!-- 평가 진행 목록 -->
+    <!-- 관리자 및 상태 구분 -->
+    <!-- 0:신청 안함 / 1:심사진행중 / 2:심사완료-->
+    <select id="listCorporation" resultType="org.project.dto.CorporationBoardDTO">
+        select a.userNo,b.establishmentName,b.companyName,b.companyScale,b.employeers,b.tax,b.files
+        from Customer a, Corporation b
+        where a.creditStatus=1
+          and a.managerclassification=0
+          and a.userNo = b.userNo order by receiptDate desc /* 신청 순서 */
+    </select>
+
+    <!-- 신용등급 산정 -->
+    <update id="modCS">
+        update Corporation set score=#{score} where userNo=#{userNo}
+    </update>
+
+    <!-- 신용정보 등록과 동시에 creditStatus,files : 0->1 변경 -->
+    <insert id="submitCreditInfo" parameterType="org.project.dto.CorporationDTO">
+        declare
+        begin
+            -- 기업테이블 저장
+            insert into Corporation (establishmentName, establishmentDate, companyName, companyScale, employeers, userNo, receiptDate)
+            values (#{establishmentName}, #{establishmentDate}, #{companyName}, #{companyScale},#{employeers}, #{userNo}, sysdate);
+            -- 심사진행중 1 , files(첨부 여부) 1 로 변경
+            update Customer set creditStatus=1 where userNo = #{userNo};
+            update Corporation set files=1 where userNo = #{userNo};
+            -- 파일테이블 저장
+            insert into FileInfo (userNo, fileName)
+            values (#{userNo}, #{fileName});
+        end;
     </insert>
 
-
+    <!-- 파일 이름 가져오기-->
+    <select id="getFileName" resultType="org.project.vo.FileVO">
+        select fileName from FileInfo where userNo = #{userNo}
+    </select>
 
 </mapper>

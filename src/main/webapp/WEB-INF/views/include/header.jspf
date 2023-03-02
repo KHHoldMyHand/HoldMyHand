@@ -1,4 +1,5 @@
-<%@ page import="org.project.vo.CustomerVO" %><%--
+<%@ page import="org.project.vo.CustomerVO" %>
+<%--
   Created by IntelliJ IDEA.
   User: jujonghun
   Date: 2023/02/20
@@ -21,10 +22,7 @@
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <!-- Bootstrap icons-->
-  <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-          rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="../resources/css/styles.css" rel="stylesheet" />
   <!-- 조건문으로 세션이 유지되어있으면 마이페이지 / 로그아웃으로 변경 -->
@@ -32,7 +30,7 @@
     <c:choose>
       <c:when test="${login!=null}"> <!-- if와 동일 -->
         <%--세션이 존재한다면--%>
-        <li><a href="<%=request.getContextPath()%>/user/userModify?userNo=${login.userNo}">마이페이지</a></li>
+        <li><a href="<%=request.getContextPath()%>/user/userModify">마이페이지</a></li>
         <li><a href="<%=request.getContextPath()%>/user/logout">로그아웃</a></li>
       </c:when>
       <c:otherwise> <!-- 세션이 존재하지 않다면 -->
@@ -65,34 +63,42 @@
             <c:when test="${login!=null}">
               <c:choose>
                 <c:when test="${login.managerClassification==1}">
-<%--                  관리자일때 작성하는 코드--%>
+                <%--관리자일때 작성하는 코드영역--%>
                   <li class="nav-item">
                     <a class="nav-link" href="<%=request.getContextPath() %>/oracle">회원관리</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/creditManage">신용평가</a>
                   </li>
                 </c:when>
                 <c:otherwise>
-<%--                  유저일때 작성하는코드--%>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath() %>/creditresult">신용조회</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/risksolution">리스크 솔루션</a>
-                  </li>
+                <%--유저일때 작성하는 코드영역--%>
+                    <c:choose>
+                        <c:when test="${login.creditStatus==0}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
+                            </li>
+                        </c:when>
+                        <c:when test="${login.creditStatus==1}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%=request.getContextPath()%>/creditwait">신용평가</a>
+                            </li>
+                        </c:when>
+                        <c:when test="${login.creditStatus==2}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%=request.getContextPath()%>/creditresult">신용평가</a>
+                            </li>
+                        </c:when>
+                    </c:choose>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/risksolution">리스크 솔루션</a>
+                    </li>
                 </c:otherwise>
               </c:choose>
-<%--              관리자, 유저 로그인되어있을때 작성하는 코드--%>
+<%--              관리자, 유저 로그인되어있을때 작성하는 코드영역--%>
             </c:when>
             <c:otherwise>
-<%--              비회원일때 작성하는 코드--%>
-              <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/creditresult">신용조회</a>
-              </li>
+<%--              비회원일때 작성하는 코드영역--%>
               <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/credit">신용평가</a>
               </li>
@@ -117,16 +123,14 @@
                     class="dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownBlog"
             >
-<%--              <li>--%>
-<%--                <a class="dropdown-item" href="../dummy/blog-home.html">공지사항</a>--%>
-<%--              </li>--%>
+            <%--<li>--%>
+            <%--<a class="dropdown-item" href="../dummy/blog-home.html">공지사항</a>--%>
+            <%--</li>--%>
               <li>
                 <a class="dropdown-item" href="<%=request.getContextPath()%>/qna">Q&A</a>
               </li>
               <li>
-                <a class="dropdown-item" href="<%=request.getContextPath()%>/faq"
-                >자주묻는 질문</a
-                >
+                <a class="dropdown-item" href="<%=request.getContextPath()%>/faq">자주묻는 질문</a>
               </li>
             </ul>
           </li>
