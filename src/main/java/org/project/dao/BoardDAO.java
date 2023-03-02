@@ -17,5 +17,9 @@ public interface BoardDAO {
     // ÆäÀÌÂ¡
     List<BoardVO> selectBoard(PagingVO vo);
 
-//    void boardCount(int qano);
+    BoardVO detail(Integer QANo);
+
+
+    void boardCnt(Integer QANo);
+
 }

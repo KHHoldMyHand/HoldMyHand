@@ -22,7 +22,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     //±€ ¿€º∫
     @Override
-    public void write(BoardWriteDTO dto) throws Exception{
+    public void write(BoardWriteDTO dto) {
         session.insert(namespace+".write", dto);
     }
 
@@ -38,9 +38,17 @@ public class BoardDAOImpl implements BoardDAO{
         return session.selectList(namespace + ".selectBoard", vo);
     }
 
-//    @Override
-//    public void boardCount(int qano) {
-//        session.update(namespace + ".boardCount", qano);
-//    }
+    @Override
+    public BoardVO detail(Integer QANo) {
+
+        return session.selectOne(namespace + ".detail", QANo);
+    }
+
+    @Override
+    public void boardCnt(Integer QANo) {
+        session.update(namespace + ".boardCnt", QANo);
+    }
+
+
 
 }

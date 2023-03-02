@@ -1,7 +1,6 @@
 package org.project.service;
 
 import org.project.dto.BoardWriteDTO;
-import org.project.searchandpaging.Criteria;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
 
@@ -19,5 +18,7 @@ public interface BoardService {
     // 페이징 처리 게시글 조회
     public List<BoardVO> selectBoard(PagingVO vo);
 
-    //public BoardVO countBoard(int qano);
+    BoardVO detail(Integer QANo);
+
+    public void boardCnt(Integer QANo);
 }

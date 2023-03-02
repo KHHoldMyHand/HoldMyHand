@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -70,7 +69,13 @@ public class BoardController {
         }
 
     @RequestMapping(value = "/qnaInfo", method = RequestMethod.GET)
-    public String detail() throws Exception {
+    public String detail(Model model, @RequestParam int QANo){
+        BoardVO data = boardService.detail(QANo);
+        boardService.boardCnt(QANo);
+        model.addAttribute("data", data);
+
         return "board/qnaInfo";
     }
+
+
 }
