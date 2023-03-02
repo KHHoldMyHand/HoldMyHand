@@ -105,7 +105,7 @@ class="postcodify_postcode5" placeholder="우편번호 검색"></span>
 class="postcodify_address" required></span>
 <h4>상세주소</h4>
 <span class="input_area"><input type="text" name="userAddress"
-class="postcodify_details" required></span>
+
 
 <h4 class="tit_large mt80">※이용 약관</h4>
 <form id="contactForm" action="<%=request.getContextPath()%>/login" method="POST">

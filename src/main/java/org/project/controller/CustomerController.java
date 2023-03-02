@@ -84,6 +84,15 @@ public class CustomerController {
         return "user/findUserId";
     }
 
+    @RequestMapping(value = "/findUserPwd", method = RequestMethod.POST)
+    public void findUserPwdPOST(HttpServletResponse response,@ModelAttribute CustomerVO vo) throws Exception{
+        service.findUserPwd(response, vo);
+    }
+
+    @RequestMapping(value="/findUserPwd", method = RequestMethod.GET)
+    public void findUserPwdGET() throws Exception{
+    }
+
     @RequestMapping(value="/join", method = RequestMethod.GET)
     public String joinGET() {
         return "user/join";

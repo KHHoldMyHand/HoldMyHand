@@ -51,6 +51,24 @@ public class CustomerDAOImpl implements CustomerDAO{
     public String findUserId(HttpServletResponse response, String userEmail){
         return session.selectOne(namespace+".findUserId", userEmail);
     }
+
+    @Override
+    public CustomerVO checkId(String userID) throws Exception{
+        return session.selectOne(namespace+".checkId",userID);
+    }
+
+    @Override
+    public CustomerVO readCustomer(String userID) throws Exception {
+        //테스트(컨트롤러) 호출 -> 정보를 저장 -> DB로이동
+        CustomerVO vo = session.selectOne(namespace+".readCustomer", userID); //괄호안의 물음표를 콤마뒤에 쓰는거임
+        return vo;
+    }
+    @Override
+    public String updatePwd(CustomerVO vo) throws Exception{
+        return session.selectOne(namespace+".updatePwd", vo);
+    }
+
+
     //로그인
 //회원가입
 //    @Override
@@ -64,12 +82,12 @@ public class CustomerDAOImpl implements CustomerDAO{
         return session.selectOne(namespace + ".read",userNo);
     }
 
-//    //회원정보수정
+    //    //회원정보수정
     @Override
     public void update(CustomerModifyDTO dto) throws Exception {
         session.update(namespace + ".update",dto);
     }
-//    //회원탈퇴
+    //    //회원탈퇴
     @Override
     public void delete(Integer userNo) throws Exception {
         session.delete(namespace + ".delete",userNo);
