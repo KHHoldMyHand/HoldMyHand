@@ -23,15 +23,22 @@ public interface CustomerDAO {
     public CustomerVO checkUserWithSessionKey(String value);
 
     public String findUserId(HttpServletResponse response, String userEmail);
+    public CustomerVO checkId(String userID) throws Exception;
+
+
+    public CustomerVO readCustomer(String userID) throws Exception;
+
+    public String updatePwd(CustomerVO vo) throws Exception;
+
     //회원가입
 //    public void create(CustomerVO vo) throws Exception;
 
     //회원번호로 회원한명가져오기
     public CustomerVO read(Integer userNo);
 
-//    //회원정보수정
+    //    //회원정보수정
     public void update(CustomerModifyDTO dto) throws Exception;
-//
+    //
 //    //회원탈퇴
     public void delete(Integer userNo) throws Exception;
 

@@ -43,7 +43,7 @@
                        <a href="<%=request.getContextPath()%>/user/findUserId" method="post">아이디 찾기</a>
                      </div>
                       <div class = "pwd-area">
-                        <a href="<%=request.getContextPath()%>/user/findUserPwd" method="post">비밀번호 찾기</a>
+                        <a href="<%=request.getContextPath()%>/user/findUserPwd">비밀번호 찾기</a>
                       </div>
                    </div>
            </div>

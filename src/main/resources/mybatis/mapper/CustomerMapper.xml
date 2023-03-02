@@ -26,6 +26,20 @@
         select userID from Customer where userEmail = #{param2} and rownum=1
     </select>
 
+    <select id="readCustomer" resultType="org.project.vo.CustomerVO">
+        select *
+        from Customer
+        where userID=#{userID}
+    </select>
+
+    <select id="checkId" resultType="org.project.vo.CustomerVO">
+        select userID from Customer where userID = #{userID}
+    </select>
+
+    <select id="updatePwd" resultType="org.project.vo.CustomerVO">
+        update customer set userPwd = #{userPwd} where userID = #{userID}
+    </select>
+
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select
