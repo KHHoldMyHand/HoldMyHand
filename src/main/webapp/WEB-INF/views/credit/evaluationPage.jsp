@@ -107,29 +107,25 @@
             </div>
             <div class="col-5" style="padding: 0 20px;">
                 <div class="board_write_wrap">
-                    <form action="<%=request.getContextPath()%>/evaluateSuccess" method="POST">
+                    <form action="<%=request.getContextPath()%>/evaluateSuccess" id="scoreFrm" method="POST">
                         <div>
                             <div>
                                 <input type="text" name="userNo" value="${userNo}" style="display: none">
                                 <span style="display: block; width: 100%; margin-bottom: 10px; vertical-align: middle; font-size: 20px; font-weight: 700;">점수입력</span>
-                                <input
-                                        style="background: #fff; border: 1px solid #555; margin-bottom: 15px; width: 130px;
-                                        border-radius: 7px; outline: none; height: 100px; font-size: 45px; text-align: center;"
-                                        type="text" name="score" placeholder="재무재표를 보고 점수를 기입.">
-                                <%--                                        <dl>--%>
-                                <%--                                            &lt;%&ndash; 첨부파일 여기&ndash;%&gt;--%>
-
-                                <%--                                            <dt></dt>--%>
-                                <%--                                            <dd><input type="text" placeholder="?"></dd>--%>
-                                <%--                                        </dl>--%>
+                                <input style="background: #fff; border: 1px solid #555; margin-bottom: 15px; width: 130px;
+                                            border-radius: 7px; outline: none; height: 100px; font-size: 45px; text-align: center;"
+                                           type="text" name="score" placeholder="재무재표를 보고 점수를 기입.">
                             </div>
                             <div>
-                                <a href="/fileDownload?fileName=${FileInfo.fileName}"><%--<span class="file_info">${FileInfo.fileName}</span>--%><input
-                                        style="margin-bottom: 10px;" class="gold_btn" type="button"
+                                <input type="date" id="today-date" name="fileDate">
+                            </div>
+                            <div>
+                                <a href="/fileDownload?fileName=${FileInfo.fileName}">
+                                    <input style="margin-bottom: 10px;" class="gold_btn" type="button"
                                         value="재무재표 다운로드"></a>
                             </div>
                             <div>
-                                <a href="<%=request.getContextPath()%>/creditManage"><input class="gold_btn"
+                                <a href="<%=request.getContextPath()%>/creditresult"><input class="gold_btn"
                                                                                             type="button"
                                                                                             value="취소"></a>
                                 <input class="gold_btn" type="button" value="평가" onclick="Evaluation()">
@@ -145,7 +141,17 @@
 </body>
 <script type="text/javascript">
     function Evaluation() {
-        document.submit(); // 전송
+        alert("전송")
+        document.getElementById("scoreFrm").submit(); // 전송
     }
 </script>
+<script>
+    let today = new Date().toISOString().slice(0,10);
+    document.getElementById("today-date").max = today;
+    document.getElementById("today-date").value = today;
+    // function ho(){
+    //     alert(today);
+    // }
+</script>
+
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>
