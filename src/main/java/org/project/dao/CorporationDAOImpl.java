@@ -4,7 +4,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
+import org.project.vo.CustomerVO;
 import org.project.vo.FileVO;
+import org.project.vo.PagingVO;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -43,6 +45,15 @@ public class CorporationDAOImpl implements CorporationDAO{
     @Override
     public FileVO getFileName(CorporationDTO dto) {
         return session.selectOne(namespace + ".getFileName", dto);
+    }
+
+    @Override
+    public int countCorporation() throws Exception {
+        return session.selectOne(namespace+".countCustomer");
+    }
+    @Override
+    public List<CustomerVO> selectSubmitCustomer(PagingVO vo) {
+        return session.selectList(namespace+".selectCustomer",vo);
     }
 
 }
