@@ -1,11 +1,9 @@
 package org.project.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
-import org.project.vo.CorporationVO;
-import org.project.vo.CustomerVO;
+import org.project.vo.FileVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,4 +21,6 @@ public interface CorporationDAO {
     // 신용정보 등록
     void submitCreditInfo(CorporationDTO dto);
 
+    // 파일 정보 가져오기
+    FileVO getFileName(CorporationDTO dto);
 }

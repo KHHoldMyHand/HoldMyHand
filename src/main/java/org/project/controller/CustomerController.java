@@ -8,6 +8,7 @@ import org.project.service.CustomerService;
 import org.project.vo.CustomerVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -134,6 +135,9 @@ public class CustomerController {
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
             }
+            //당연히 에러남. (미해결)
+            //Customer의 userNo를 외래키로 사용하는 모든 테이블의 데이터를 먼저 삭제해야 함
+            //모든 테이블에 접근하는 service,dao,mapper가 구현되고 난 후에 이 부분을 구현해야 함.
             service.remove(vo.getUserNo());
         }catch (Exception e){
             e.printStackTrace();
@@ -153,5 +157,17 @@ public class CustomerController {
         service.regist(dto);
 
         return "redirect:/user/login";
+    }
+    //아이디 중복확인때 쓸것임----------------------------------------------
+    @Autowired
+    private CustomerService customerService;
+
+    @ResponseBody
+    @RequestMapping(value = "/joinIdCheck", method = RequestMethod.POST)
+    public int registerPOST(String userID) throws Exception {
+        System.out.println("regist 실행");
+        int result = customerService.idCheck(userID);
+        System.out.println("result=="+result);
+        return result;
     }
 }

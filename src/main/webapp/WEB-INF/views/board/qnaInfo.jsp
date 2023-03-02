@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+   <!-- 제이쿼리 -->
+   <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
     <style>
         body {
@@ -37,39 +39,46 @@
                 <h1 class="fw-bolder">QNA</h1>
                 <p class="lead fw-normal text-muted mb-0">게시물 상세보기</p>
             </div>
+
     <div id="wrap">
         <br><br>
-        <div id="board">
+        <div id="board" readonly>
             <table id="detailBoard" width="100%" border="3" bordercolor="skyblue">
-
+            <form method="post" role="form">
+                <input type="text" name="QANo" value="${vo.QANo}" style="display:none">
+                <input type="text" name="userNo" value="${vo.userNo}" style="display:none">
+                <input type="text" name="count" value="${vo.count}" style="display:none">
                 <tr>
-                    <td id="title">작성일</td>
-                    <td>2023.02.23</td>
+                    <td id="title" name="writeDate">작성일</td>
+                    <td>${vo.writeDate}</td>
                 </tr>
                 <tr>
-                    <td id="title">작성자</td>
-                    <td><input type="text" placeholder="작성자" disabled></td>
+                    <td id="title" name="writer">작성자</td>
+                    <td><input type="text" value="${vo.writer}" readonly></td>
                 </tr>
                 <tr>
-                    <td id="title">제 목</td>
-                    <td>안녕하세요 길동이에요</td>
+                    <td id="title" name="title">제 목</td>
+                    <td>${vo.title}</td>
                 </tr>
                 <tr>
-                    <td id="title" style="height: 300px;">내 용</td>
-                    <td>내용</td>
+                    <td id="title" name="content" style="height: 300px;">내 용</td>
+                    <td>${vo.content}</td>
                 </tr>
 
 
                 <tr align="center" valign="middle" style="height: 50;">
                     <td colspan="5">
-                        <input type="button" value="수정" style="font-size:20px; background-color: #FFC007; border-radius: 10px";>
-                        <input type="button" value="삭제" style="font-size:20px; background-color: #FFC007; border-radius: 10px;">
-                        <input type="button" value="답글" style="font-size:20px; background-color: #FFC007; border-radius: 10px;">
-                        <input type="button" value="목록" style="font-size:20px; background-color: #FFC007; border-radius: 10px;">
+                        <button id="update_btn" type="submit"  style="font-size:20px; background-color: #FFC007; border-radius: 10px";>수정</button>
+                        <button type="button" onclick="location.href='qna'"  style="font-size:20px; background-color: #FFC007; border-radius: 10px;">목록</button>
+                        <button id="delete_btn" type="submit"  style="font-size:20px; background-color: #FFC007; border-radius: 10px;">삭제</button>
                     </td>
                 </tr>
+                </form>
             </table>
         </div>
+
+
+
         <br><br>
 
         <!-- 댓글 부분 -->
@@ -92,9 +101,8 @@
                     <!-- 버튼 -->
                     <td width="200">
                         <div id="btn">
-                            <a href="#" style="color:blue;">[답변]</a><br>
-                            <a href="#" style="color:blue;">[수정]</a><br>
-                            <a href="#" style="color: blue;">[삭제]</a>
+                            <a href="<%=request.getContextPath()%>/qnaWriter" style="color:blue;">[수정]</a><br>
+                            <a href="" style="color: blue;">[삭제]</a>
                         </div>
                     </td>
                 </tr>
@@ -127,8 +135,32 @@
 
             </table>
         </div>
+
     </div>
     </section>
+
+    <script>
+    $(document).ready(function(){
+        let formObj = $("form[role='form']");
+
+        <!-- 삭제 -->
+        $("#delete_btn").click(function(){
+            formObj.attr("action","/delete");
+            formObj.attr("method","post");
+            formObj.submit();
+        });
+
+        <!-- 수정 -->
+        $("#update_btn").click(function(){
+            formObj.attr("action","/Gupdate");
+            formObj.attr("method","get");
+            formObj.submit();
+        });
+
+
+    })
+    </script>
+
 
 
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

@@ -6,13 +6,14 @@ import org.project.dto.CustomerModifyDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+
 import java.util.Map;
 
 @Service
@@ -182,6 +183,25 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerVO regist(JoinDTO dto) throws Exception {
         dao.create(dto);
         return null;
+    }
+
+    @Override
+    public int countCustomer() throws Exception {
+        return dao.countCustomer();
+    }
+
+    @Override
+    public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception {
+        return dao.selectCustomer(vo);
+    }
+
+    @Override
+    public int idCheck(String userID) throws Exception {
+        System.out.println("idCheck 서비스 실행");
+        System.out.println("userID= "+userID);
+        int result = dao.idCheck(userID);
+        System.out.println("result = dao.idCheck(userID)?: " + result);
+        return result;
     }
 
 }

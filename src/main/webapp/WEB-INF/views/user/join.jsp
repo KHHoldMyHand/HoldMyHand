@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+  <!-- jQuery 2.1.4 -->
+    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
 
 
@@ -16,24 +18,31 @@
 
 <div class="outer">
 <div id="joinInfoArea">
-<form id="joinForm" action="/user/join"
-method="post" onsubmit="return validate();">
+<form id="joinForm" action="<%=request.getContextPath()%>/user/join"
+method="post" onsubmit="return validateForm()">
 <h1>회원 가입</h1>
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<span class="input_area"><input type="text" maxlength="13" name="userID" id="useId"
-required placeholder="(-없이) 000-00-00000"></span>
-<button id="idCheck" type="button">중복확인</button>
+<label for="address2">아이디</label>
+<input type="text" id="userID" name="userID" required>
+<button type="button" type="button" id="idChk" onclick="idCheck();" value="N">중복확인</button>
+<span class="useId_ok">사용 가능한 아이디입니다.</span>
+<span class="useId_already">누군가 이 아이디를 사용하고 있어요.</span>
+
+
 <hr id="line2">
 <h4>* 비밀번호</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd" id=pw placeholder="영문,숫자,특수문자 8~15자 입력" required></span>
+
 <h4>* 비밀번호 확인</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd2" id=pw2 placeholder="영문,숫자,특수문자 8~15자 입력" required></span>
+        <font id="checkPw" style="font-size: x-small; "></font>
+        <label id="pwdResult"></label>
+        <p></p>
 <label id="pwdResult"></label>
-
 <hr id="line">
 
 
@@ -42,16 +51,13 @@ name="userPwd2" required placeholder="영문,숫자,특수문자 8~15자 입력"
 
 <td class="bt0">
 <input type="text" id="enpNm" name="corpName" placeholder="업체명"
-required="required" class>
-<button type="button" class="btn_del">
-<span>입력내용 삭제</span>
-</button>
+required="required" required>
 <p class="txt_error" id="enp_nm_txt_error" style="display: none;">
 업체명을 입력해 주세요.</p>
 <div class="mt8">
 <div class="select w240">
 <select name="corpType" id="searchSvcGrpCd"
-class="necessary" title="기업종류" style>
+class="necessary" required title="기업종류" style>
 <option value="">기업종류</option>
 <option value="01">주식회사</option>
 <option value="02">합명회사</option>
@@ -80,39 +86,40 @@ class="necessary" title="기업종류" style>
 <hr id="line2">
 <h4>* 대표자명</h4>
 <span class="input_area"><input type="text" maxlength="5"
-name="corpManager" required placeholder="대표자명"></span>
+name="corpManager" required placeholder="대표자명" required></span>
 
 <h4>대표 연락처</h4>
 <span class="input_area"><input type="tel" maxlength="11"
-name="phoneNo" placeholder="(-없이)01012345678"></span>
+name="phoneNo" placeholder="(-없이)01012345678" required></span>
 
 <h4>이메일</h4>
 <span class="input_area"><input type="email" name="userEmail"
-placeholder="대표 이메일"></span>
+placeholder="대표 이메일" required></span>
 <hr id="line2">
 <h4>우편번호</h4>
 <span class="input_area"><input type="text" name="address"
 class="postcodify_postcode5" placeholder="우편번호 검색"></span>
-<button type="button" id="postcodify_search_button">검색</button>
+<button type="button" id="postcodify_search_button" required>검색</button>
 <h4>사업자등록상 주소</h4>
 <span class="input_area"><input type="text" name="userAddress"
-class="postcodify_address"></span>
+class="postcodify_address" required></span>
 <h4>상세주소</h4>
 <span class="input_area"><input type="text" name="userAddress"
-class="postcodify_details"></span>
+
 
 <h4 class="tit_large mt80">※이용 약관</h4>
+<form id="contactForm" action="<%=request.getContextPath()%>/login" method="POST">
 <p class="f18 mt16">＊서비스 이용을 위하여 약관 및 개인정보 수집 이용 동의가 필요합니다.</p>
 <dl class="agreement_area2">
 <dt>
 <div>
 <input type="checkbox" id="allChk" name="checkBoxAll"
-    class="checkBoxAll" value='selectall' onclick='selectAll(this)'>
+    class="checkBoxAll" value='selectall' onclick='selectAll(this)' required>
 <label for="allChk">전체동의</label>
 </div>
 </dt>
 <dt>
-<input type="checkbox" id="d2" name="chk">
+<input type="checkbox" id="terms1" name="chk">
 <label for="d2">[필수] 회원가입약관</label>
 
 <a href="javascript:doDisplay();">
@@ -259,7 +266,7 @@ class="postcodify_details"></span>
 <!-- //약관 샘플 -->
 </dd>
 <dt>
-<input type="checkbox" id="d3" name="chk">
+<input type="checkbox" id="terms2" name="chk">
 <label for="d3">[필수] 개인정보 수집 및 이용</label>
 <a href="javascript:doDisplay1();">
 <button type="button" id="ctn-btn"><span class="blind">내용보기</span></button>
@@ -296,8 +303,7 @@ class="postcodify_details"></span>
 <button type="button" id="ctn-btn">내용보기</button>
 </a>
 </dt>
-<dd>
-<!-- 마케팅 수신 샘플 -->
+<dd><!-- 마케팅 수신 샘플 -->
 <div class="scroll_type" tabindex="0" id="myDIV2" style="display:none;">
 <div class="agreement_area">
     <h5 class="tit_least">프로모션 정보수신 동의</h5>
@@ -310,7 +316,7 @@ class="postcodify_details"></span>
 
 </dl>
 <div class="btnArea">
-<button id="joinBtn">가입하기</button>
+<button id="joinBtn" onclick="AgreementYesNoCheck()">가입하기</button>
 </div>
 </form>
 </div>
@@ -336,6 +342,17 @@ var bDisplay = true; function doDisplay(){
 }
 </script>
 
+<script type="text/javascript">
+$('#joinBtn').on('click',function(event){
+  let terms1 = $('#terms1').prop("checked");
+  let terms2 = $('#terms2').prop("checked");
+  if (!terms1 || !terms2) {
+    event.preventDefault();
+    alert("모든 약관에 동의해야 합니다.");
+  }
+});
+
+</script>
 
 <script type="text/javascript">
 var bDisplay = ture; function doDisplay1(){
@@ -386,7 +403,103 @@ function execution_add_address(){
 }
 </script>
 
+<script type="text/javascript">
+    function idCheck() {
+        $.ajax({
+            url : "/user/joinIdCheck",
+            type : "POST",
+            dataType :"JSON",
+            data : {"userID" : $("#userID").val()},
+            success : function (data) {
+            console.log(data);
+                if(data == 0) {
+                $("#userID").attr("value", "Y");
+                $('.useId_ok').css("display","inline-block");
+                $('.useId_already').css("display", "none");
+                } else if (data >= 1) {
+                $('.useId_already').css("display","inline-block");
+                $('.useId_ok').css("display", "none");
+                $('#useId_ok').val('');
+                $('#userID').val('');
+                $('#userID').focus();
+                }
+            },
+            error:function(){
+            alert("에러입니다."+data);
+            }
+        });
+    }
+</script>
 
+<!— 비번 틀렸을때 —>
+ <script type="text/javascript">
+        $('#pw2').blur(function (){
+            let pass1=$("#pw").val();
+            let pass2=$("#pw2").val();
+            if(pass1!="" || pass2!=""){
+                if(pass1==pass2){
+                    $("#checkPw").html('패스워드가 일치합니다.');
+                    $("#checkPw").attr('color','green');
+                }else{
+                    $("#checkPw").html('패스워드가 불일치합니다.');
+                    $("#checkPw").attr('color','red');
+                     $('#pw2').val('');
+           	         $('#pw2').focus();
+                }
+            }
+        })
+
+/*영문(대소문자) 포함
+   숫자 포함
+   특수 문자 포함
+   공백 X
+   비밀번호 자리 8~15자 */
+        $('#pw2').blur(function chkPW(){
+         var pw = $("#pw2").val();
+         var num = pw.search(/[0-9]/g);
+         var eng = pw.search(/[a-z]/ig);
+         var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+         if(pw.length < 8 || pw.length > 15){
+
+          alert("8자리 ~ 15자리 이내로 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(pw.search(/\s/) != -1){
+          alert("비밀번호는 공백 없이 입력해주세요.");
+          $('#pw').val('');
+          $('#pw2').val('');
+          $('#pw').focus();
+          return false;
+         }else if(num < 0 || eng < 0 || spe < 0 ){
+          alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+                    $('#pw').val('');
+                    $('#pw2').val('');
+                    $('#pw').focus();
+          return false;
+         }else {
+        	alert("사용가능한 비밀번호입니다.");
+            return true;
+         }
+
+        })
+
+    </script>
+
+
+
+<!— 동의하는거 버튼 —>
+<script type="text/javascript">
+    function AgreementYesNoCheck() {
+        if(document.querySelector("input[name='d2']:checked").value == "y") {
+            document.getElementById("contactForm").submit();
+        } else {
+            alert('이용약관에 동의하지 않았습니다.');
+        }
+    }
+</script>
 </html>
 </div>
 </section>

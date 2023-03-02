@@ -21,11 +21,9 @@ public class FileDownloadController {
     @RequestMapping(value = "/fileDownload")
     public void fileDownload(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
         //String path =  request.getSession().getServletContext().getRealPath("저장경로");
-        System.out.println("--------------------------------------------------------------request : " );
 
         String fileName =request.getParameter("fileName");
         String realFilename="";
-        System.out.println("--------------------------------------------------------------fileName : " + fileName.toString());
 
         try {
             String browser = request.getHeader("User-Agent");
@@ -34,14 +32,11 @@ public class FileDownloadController {
                     || browser.contains("Chrome")) {
                 fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+",
                         "%20");
-                System.out.println("--------------------------------------------------------------if : " + fileName.toString());
             } else {
                 fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-                System.out.println("--------------------------------------------------------------else : " + fileName);
             }
         } catch (UnsupportedEncodingException ex) {
             System.out.println("UnsupportedEncodingException");
-            System.out.println("--------------------------------------------------------------catch : " + fileName);
         }
         realFilename = "C:\\dev\\Project\\src\\main\\resources\\upload\\" + fileName;
         System.out.println(realFilename);

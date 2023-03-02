@@ -19,7 +19,6 @@ public class BoardServiceImpl implements BoardService{
 //        return null;
 //    }
 
-    //�� �ۼ�
     @Override
     public void write(BoardWriteDTO dto) throws Exception{
         boardDAO.write(dto);
@@ -33,6 +32,35 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public List<BoardVO> selectBoard(PagingVO vo) {
         return boardDAO.selectBoard(vo);
+    }
+
+//    @Override
+//    public BoardVO detail(Integer QANo) {
+//        return boardDAO.detail(QANo);
+//    }
+//
+    @Override
+    public void boardCnt(Integer QANo) {
+        boardDAO.boardCnt(QANo);
+    }
+
+    // 글 읽기
+    @Override
+    public BoardVO read(Integer QANo) {
+        return boardDAO.read(QANo);
+    }
+
+
+    // 글 삭제
+    @Override
+    public void delete(Integer QANo) throws Exception {
+        boardDAO.delete(QANo);
+    }
+
+    // 글 수정
+    @Override
+    public void update(BoardWriteDTO dto) throws Exception{
+        boardDAO.update(dto);
     }
 
 }

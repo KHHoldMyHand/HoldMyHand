@@ -6,6 +6,7 @@ import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
@@ -101,5 +102,21 @@ public class CustomerDAOImpl implements CustomerDAO{
     public void create(JoinDTO dto) throws Exception {
         System.out.println(dto.toString());
         session.insert(namespace + ".create", dto);
+    }
+
+    @Override
+    public int idCheck(String userID) throws Exception {
+        int result = session.selectOne(namespace+".idChk", userID);
+        return result;
+    }
+
+    @Override
+    public int countCustomer() throws Exception {
+        return session.selectOne(namespace+".countCustomer");
+    }
+
+    @Override
+    public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception {
+        return session.selectList(namespace+".selectCustomer",vo);
     }
 }

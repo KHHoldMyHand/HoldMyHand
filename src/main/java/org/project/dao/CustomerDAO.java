@@ -5,6 +5,7 @@ import org.project.dto.EvaluateSuccessDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Repository;
 
 import javax.servlet.http.HttpServletResponse;
@@ -46,5 +47,12 @@ public interface CustomerDAO {
 
     //회원가입
     public void create(JoinDTO dto) throws Exception;
+
+    public int countCustomer() throws Exception;
+
+    public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception;
+
+    //회원가입 - 중복확인
+    public int idCheck(String userID) throws Exception;
 }
 

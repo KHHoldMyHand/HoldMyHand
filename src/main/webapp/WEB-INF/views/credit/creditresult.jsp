@@ -38,67 +38,51 @@ table tr{
                       <thead>
                         <tr>
                           <th>기업명</th>
-                          <th>FutureIsArtemis</th>
+                          <th>${login.corpName}</th>
 
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>사업자 등록번호</td>
-                          <td>105-**-*****</td>
 
-                        </tr>
                         <tr>
-                          <td>대표자</td>
-                          <td>김비오</td>
-
+                          <td>보고서식별번호</td>
+                          <td>${dto.reportNo}</td>
                         </tr>
-                        <tr>
-                          <td>본사주소</td>
-                          <td>경기도 시흥시 능곡중앙로33</td>
 
-                        </tr>
-                        <tr>
-                          <td>대표전화</td>
-                          <td>010-2429-4283</td>
 
-                        </tr>
+                          <tr>
+                         <td>설립자명</td>
+                         <td>${dto.establishmentName}</td>
+
+                         </tr>
                         <tr>
                           <td>설립일자</td>
-                          <td>2023년 02월 21일</td>
+                          <td>${dto.establishmentDate}</td>
 
                         </tr>
                         <tr>
-                          <td>기업분류</td>
-                          <td>외감</td>
+                          <td>주소</td>
+                          <td>${login.userAddress}</td>
 
                         </tr>
-                         <tr>
+                        <tr>
+                          <td>기업종류</td>
+                          <td>${login.corpType}</td>
+
+                        </tr>
+                        <tr>
                           <td>기업규모</td>
-                          <td>중소기업</td>
-
-                         </tr>
-                        <tr>
-                        <td>업종명</td>
-                        <td>트레이딩 주식투자</td>
+                          <td>${dto.companyScale}</td>
 
                         </tr>
 
                          <tr>
-                          <td>종업원수</td>
-                          <td>1명</td>
+                          <td>사원수</td>
+                          <td>${dto.employeers}</td>
 
                           </tr>
-                         <tr>
-                         <td>기업분류</td>
-                          <td>외감</td>
 
-                         </tr>
-                          <tr>
-                         <td>기업분류</td>
-                         <td>외감</td>
 
-                         </tr>
 
                       </tbody>
                     </table>
@@ -200,7 +184,8 @@ table tr{
                   <tr>
 
                    <td style="border:2px solid blue;" align="center" valign="middle" rowspan= "2">
-                   <p class="ss"> AA </p> <br>
+                   <p class="ss">${dto.reportRank}</p> <br>
+                    <!-- 질문사항: 등급마다 p안에 코맨트가 달려야하는데 1방안: 등급테이블을 만들어야하는지, 2방안: 등급만 표시해서 p태그 자체를 없앨지 -->
                     <span style="color:black"><p> 채무상환능력이 매우 우량하나, AAA보다는 다소 열위한 요소가 있음</p></span> </td>
 
                </tr>
@@ -218,13 +203,13 @@ table tr{
                    </tr>
                     <tr>
                    <td>평가(산출)일자</td>
-                   <td>2023-02-21</td>
+                   <td>${dto.createDate}</td>
 
                    </tr>
 
                   <tr>
                   <td >재무기준일자</td>
-                  <td>2023-02-21</td>
+                  <td>${dto.fileDate}</td>
 
 
                    </tr>
@@ -254,7 +239,7 @@ table tr{
                           <tr>
 
                            <td style="border:2px solid blue;" align="center" valign="middle" rowspan= "2"><span style="color:black"><H2> 기업등급<H2></span>
-                        <br> <H2 style="color:blue" "font-weight:bold";> <strong>AA</strong> </td></H2></H2>
+                        <br> <H2 style="color:blue" "font-weight:bold";> <strong>${dto.reportRank}</strong> </td></H2></H2>
 
                        </tr>
 
@@ -270,13 +255,13 @@ table tr{
                      </tr>
                       <tr>
                       <td>평가(산출)일자</td>
-                     <td>2023-02-21</td>
+                     <td>${dto.createDate}</td>
 
                   </tr>
 
                       <tr>
                      <td >재무기준일자</td>
-                     <td>2023-02-21</td>
+                     <td>${dto.fileDate}</td>
 
                     </tr>
 

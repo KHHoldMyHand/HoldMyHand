@@ -8,12 +8,12 @@ import org.project.vo.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -30,7 +30,7 @@ public class BoardController {
     }
 
 
-    //∞‘Ω√∆« ∏ÆΩ∫∆Æ
+    //ÔøΩ‘ΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ∆Æ
 //    @RequestMapping(value="/qna", method = RequestMethod.GET)
 //    public String list(Model model) {
 //        List<BoardVO> list = boardDAO.qnaList();
@@ -41,7 +41,7 @@ public class BoardController {
     @RequestMapping(value="/qnaWriter", method = RequestMethod.GET)
     public String writeGET(){ return "board/qnaWriter";}
 
-    //±€æ≤±‚ post
+    //ÔøΩ€æÔøΩÔøΩÔøΩ post
     @RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
     public String write(BoardWriteDTO dto, HttpSession session) throws Exception{
 
@@ -67,5 +67,52 @@ public class BoardController {
         model.addAttribute("paging", vo);
         model.addAttribute("viewAll", boardService.selectBoard(vo));
         return "board/qna";
+        }
+
+//    @RequestMapping(value = "/qnaInfo", method = RequestMethod.GET)
+//    public String detail(Model model, @RequestParam int QANo){
+//        BoardVO data = boardService.detail(QANo);
+//        boardService.boardCnt(QANo);
+//        model.addAttribute("data", data);
+//
+//        return "board/qnaInfo";
+//    }
+
+    // Í≤åÏãúÍ∏Ä ÏùΩÍ∏∞
+    @RequestMapping(value = "/qnaInfo", method = RequestMethod.GET)
+    public String read(Model model, @RequestParam Integer QANo) throws Exception {
+        BoardVO vo = boardService.read(QANo);
+        boardService.boardCnt(QANo);
+        model.addAttribute("vo", vo);
+        return "board/qnaInfo";
     }
+
+
+
+    // Í∏Ä ÏÇ≠Ï†ú
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public void delete(@RequestParam("QANo") Integer QANo, Model model) throws Exception {
+        model.addAttribute("delete", QANo);
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("QANo") Integer QANo) throws Exception {
+        boardService.delete(QANo);
+        return "redirect:/qna";
+    }
+
+
+    // Í∏Ä ÏàòÏ†ï
+    @RequestMapping(value = "/Gupdate", method= RequestMethod.GET)
+    public String updateGET(@RequestParam("QANo") Integer QANo, Model model) throws  Exception{
+        model.addAttribute("update", boardService.read(QANo));
+        return "board/update";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute("update") BoardWriteDTO dto) throws Exception{
+        boardService.update(dto);
+        return "redirect:/qna";
+    }
+
 }

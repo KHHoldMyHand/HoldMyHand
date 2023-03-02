@@ -22,6 +22,10 @@
         select * from Customer where sessionKey = #{value} and sessionLimit > SYSDATE and rownum=1
     </select>
 
+    <select id="findUserId" resultType="String">
+        select userID from Customer where userEmail = #{param2} and rownum=1
+    </select>
+
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select
@@ -83,5 +87,34 @@
         0)
 
     </insert>
+
+    <select id="countCustomer" resultType="int">
+        select count(*) from Customer
+    </select>
+
+    <select id="selectCustomer" resultType="org.project.vo.CustomerVO">
+        select *from(select rownum rn, A.* from(select *from Customer where managerClassification=0 order by userJoinDate desc) A) where rn between #{start} and #{end}
+    </select>
+<!--   검색기능구현   -->
+    <sql id="search">
+        <if test="searchType == 't'.toString()">
+            and title like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="searchType == 'c'.toString()">
+            and title like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="searchType == 'w'.toString()">
+            and title like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="searchType == 'tc'.toString()">
+            and title like CONCAT('%',#{keyword},'%')
+        </if>
+    </sql>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="idCheck" resultType="int">
+        SELECT COUNT(*) FROM CUSTOMER
+        WHERE USERID = #{userID}
+    </select>
 
 </mapper>
