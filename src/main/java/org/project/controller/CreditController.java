@@ -37,17 +37,11 @@ import java.util.UUID;
 public class CreditController {
 
     @Autowired
-    CorporationDAO corporationDAO;
-    @Autowired
-    CustomerDAO CustomerDAO;
-    @Autowired
     CreditEvaluationDAO creditEvaluationDAO;
     @Inject
     CustomerService customerService;
     @Inject
     CorporationService corporationService;
-    @Inject
-    CreditEvaluationService creditEvaluationService;
 
     //약관
     @RequestMapping(value="/credit", method = RequestMethod.GET)
@@ -148,7 +142,7 @@ public class CreditController {
         System.out.println(dto.getFileDate());
         //여기서 추가로 신용평가보고서 생성해줘야 함
         creditEvaluationDAO.createReport(dto);
-        return "redirect:/creditManage89i";
+        return "redirect:/creditManage";
     }
 
 }
