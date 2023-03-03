@@ -119,4 +119,16 @@ public class CustomerDAOImpl implements CustomerDAO{
     public List<CustomerVO> selectCustomer(PagingVO vo) throws Exception {
         return session.selectList(namespace+".selectCustomer",vo);
     }
+
+    @Override
+    public int countCustomerByKeyword(Map<String,Object> paramMap) throws Exception{
+        return session.selectOne(namespace+".countCustomerByKeyword");
+    }
+
+    @Override
+    public List<CustomerVO> selectCustomerByKeyword(PagingVO vo) throws Exception{
+        return session.selectList(namespace+".selectCustomerByKeyword");
+    }
+
+
 }
