@@ -7,7 +7,10 @@ import org.project.vo.PagingVO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -62,5 +65,19 @@ public class BoardServiceImpl implements BoardService{
     public void update(BoardWriteDTO dto) throws Exception{
         boardDAO.update(dto);
     }
+
+    @Override
+    public int countSearchBoard(String keyword,String searchType)throws Exception{
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("keyword",keyword);
+        paramMap.put("searchType",searchType);
+        return boardDAO.countSearchBoard(paramMap);
+    }
+
+    @Override
+    public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception{
+        return boardDAO.selectSearchBoard(vo);
+    }
+
 
 }

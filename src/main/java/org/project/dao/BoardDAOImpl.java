@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -67,6 +68,13 @@ public class BoardDAOImpl implements BoardDAO{
         session.update(namespace+".update", dto);
     }
 
+    @Override
+    public int countSearchBoard(Map<String,Object> paramMap) throws Exception{
+        return session.selectOne(namespace+".countSearchBoard",paramMap);
+    }
 
-
+    @Override
+    public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception {
+        return session.selectList(namespace + ".selectSearchBoard", vo);
+    }
 }
