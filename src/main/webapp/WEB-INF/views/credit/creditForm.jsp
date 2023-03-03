@@ -9,7 +9,6 @@
             <title>신용정보 입력</title>
             <link href="../resources/css/join.css" rel="stylesheet" type="text/css">
             <body>
-
             <div class="outer">
                 <!-- 사업자명 가져오기 -->
                 <div id="joinInfoArea">
@@ -37,11 +36,11 @@
                         <%-- 리스트형으로 선택 하게--%>
 
                         <!-- 업체명 -->
-                        <div class="gold_line" style="margin-bottom: 50px;">
+                        <div class="gold_line">
                             <h4 class="tit17">* 업체명</h4>
-                            <input class="insert_input" type="text" id="companyName" name="companyName"
-                                   placeholder="업체명"
-                                   required="required">
+                            <span class="in_area"><input class="insert_input" type="text" id="companyName"
+                                                         name="companyName" placeholder="업체명"
+                                                         required="required"></span>
                         </div>
 
                         <div class="gold_line">
@@ -94,7 +93,7 @@
                     </form>
                 </div>
             </div>
-        </body>
+            </body>
         </div>
     </div>
 </section>
@@ -238,10 +237,10 @@
             return false;
         }
         var lastCheck = confirm("설립자명 : " + establishmentName.value + "\n"
-                              + "설립일자 : " + establishmentDate.value + "\n"
-                              + "업체명 : " + companyName.value + "\n"
-                              + "업체규모 : "  + companyScale.value + "\n"
-                              + "종업원 수 : "  + employeers.value + "명\n 작성하신 내용이 맞습니까?");
+            + "설립일자 : " + establishmentDate.value + "\n"
+            + "업체명 : " + companyName.value + "\n"
+            + "업체규모 : " + companyScale.value + "\n"
+            + "종업원 수 : " + employeers.value + "명\n 작성하신 내용이 맞습니까?");
         if (lastCheck == true) {
             document.frm.submit(); // 전송
         } else {
