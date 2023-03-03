@@ -3,8 +3,10 @@ package org.project.controller;
 import org.project.dao.BoardDAO;
 import org.project.dto.BoardWriteDTO;
 import org.project.service.BoardService;
+import org.project.service.ReplyService;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
+import org.project.vo.ReplyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
 public class BoardController {
 
-    @Autowired
+    @Inject
     private BoardDAO boardDAO;
-    @Autowired
+    @Inject
     private BoardService boardService;
+    @Inject
+    ReplyService replyService;
 
     @RequestMapping(value="/faq", method = RequestMethod.GET)
     public String faqGET() {
@@ -84,6 +90,9 @@ public class BoardController {
         BoardVO vo = boardService.read(QANo);
         boardService.boardCnt(QANo);
         model.addAttribute("vo", vo);
+
+        List<ReplyVO> replyList = replyService.readReply(QANo);
+        model.addAttribute("replyList", replyList);
         return "board/qnaInfo";
     }
 
@@ -114,5 +123,9 @@ public class BoardController {
         boardService.update(dto);
         return "redirect:/qna";
     }
+
+    //댓글
+
+
 
 }

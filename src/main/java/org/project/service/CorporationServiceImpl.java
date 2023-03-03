@@ -1,11 +1,12 @@
 package org.project.service;
 
 import org.project.dao.CorporationDAO;
-import org.project.dao.CustomerDAO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
+import org.project.vo.CustomerVO;
 import org.project.vo.FileVO;
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -39,4 +40,18 @@ public class CorporationServiceImpl implements CorporationService{
         return dao.getFileName(dto);
     }
 
+    // 신용정보 등록 고객 목록 페이징처리
+    @Override
+    public int countCorporation() throws Exception {
+        return dao.countCorporation();
+    }
+    @Override
+    public List<CustomerVO> selectSubmitCustomer(PagingVO vo) {
+        return dao.selectSubmitCustomer(vo);
+    }
+    // 등록 정보 가져오기
+    @Override
+    public CorporationVO getCustomerInfo(Integer userno) {
+        return dao.getCustomerInfo(userno);
+    }
 }

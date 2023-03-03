@@ -26,6 +26,20 @@
         select userID from Customer where userEmail = #{param2} and rownum=1
     </select>
 
+    <select id="readCustomer" resultType="org.project.vo.CustomerVO">
+        select *
+        from Customer
+        where userID=#{userID}
+    </select>
+
+    <select id="checkId" resultType="org.project.vo.CustomerVO">
+        select userID from Customer where userID = #{userID}
+    </select>
+
+    <select id="updatePwd" resultType="org.project.vo.CustomerVO">
+        update customer set userPwd = #{userPwd} where userID = #{userID}
+    </select>
+
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
         select
@@ -95,6 +109,13 @@
     <select id="selectCustomer" resultType="org.project.vo.CustomerVO">
         select *from(select rownum rn, A.* from(select *from Customer where managerClassification=0 order by userJoinDate desc) A) where rn between #{start} and #{end}
     </select>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="idCheck" resultType="int">
+        SELECT COUNT(*) FROM CUSTOMER
+        WHERE USERID = #{userID}
+    </select>
+
 <!--   검색기능구현   -->
     <sql id="search">
         <if test="searchType == 't'.toString()">
@@ -110,11 +131,5 @@
             and title like CONCAT('%',#{keyword},'%')
         </if>
     </sql>
-
-    <!-- 아이디 중복 체크 -->
-    <select id="idCheck" resultType="int">
-        SELECT COUNT(*) FROM CUSTOMER
-        WHERE USERID = #{userID}
-    </select>
 
 </mapper>
