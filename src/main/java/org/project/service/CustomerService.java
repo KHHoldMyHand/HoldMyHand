@@ -6,6 +6,7 @@ import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
 
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
