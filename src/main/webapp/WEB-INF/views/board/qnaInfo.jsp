@@ -83,31 +83,7 @@
 
         <!-- 댓글 부분 -->
         <div id="comment">
-            <table border="1" bordercolor="skyblue" style="width: 100%;">
-                <!-- 댓글 목록 -->
-                <tr>
-                    <!-- 아이디, 작성날짜 -->
-                    <td width="150">
-                        <div class="formwriter">
-                            <div class="writer" size="7" color="yellow">작성자</div>
-                        </div>
-                    </td>
-                    <!-- 본문내용 -->
-                    <td width="800">
-                        <div class="text_wrapper">
-
-                        </div>
-                    </td>
-                    <!-- 버튼 -->
-                    <td width="200">
-                        <div id="btn">
-                            <a href="<%=request.getContextPath()%>/qnaWriter" style="color:blue;">[수정]</a><br>
-                            <a href="" style="color: blue;">[삭제]</a>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- 로그인 했을 경우만 댓글 작성가능 -->
+            <table>
                 <tr bgcolor="#FFC007">
                     <form id="writeCommentForm">
                         <input type="hidden" name="comment_board">
@@ -132,7 +108,26 @@
                         </td>
                     </form>
                 </tr>
-
+            </table>
+            <table width="100%" border="3" bordercolor="skyblue" >
+                <c:forEach items="${replyList}" var="replyList">
+                <div>
+                <input type="text" name="ReplyNo" value="${replyList.ReplyNo}" style="display:none">
+                <input type="text" name="QANo" value="${replyList.QANo}" style="display:none">
+                <input type="text" name="userNo" value="${replyList.userNo}" style="display:none">
+                </div>
+                <!-- 댓글 읽기/수정/삭제-->
+                <tr bgcolor="#FFC007">
+                    <td size="7" color="yellow"> ${replyList.ReWriter} </td>
+                    <td>${replyList.replyContent}</td>
+                    <td width="200">
+                        <div id="btn">
+                            <a href="<%=request.getContextPath()%>/qnaWriter" style="color:blue;">[수정]</a><br>
+                            <a href="" style="color: blue;">[삭제]</a>
+                        </div>
+                    </td>
+                </tr>
+                </c:forEach>
             </table>
         </div>
 

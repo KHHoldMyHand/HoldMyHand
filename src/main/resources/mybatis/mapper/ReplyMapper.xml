@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.dao.ReplyDAO">
+
+    <!-- 댓글 읽기 -->
+    <select id="readReply" resultType="org.project.vo.ReplyVO">
+        select ReplyNo, replyContent, userNo, ReWriter
+        FROM Reply
+        WHERE QANo = #{QANo}
+    </select>
+
+</mapper>
