@@ -3,7 +3,7 @@
 *{margin:0; padding: 0; box-sizing: border-box;}
 
 body{
-font-family: 'Jua', sans-serif;
+font-family: 'Pretendard', sans-serif;
 }
 
 .login{position: relative; z-index: 2;}
@@ -13,7 +13,7 @@ font-family: 'Jua', sans-serif;
     margin-bottom: 60px;
 }
 .login h2{
-    font-size: 15;
+    font-size: 15px;
     text-align: center;
     margin-bottom: 60px;
 }
