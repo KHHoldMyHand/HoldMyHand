@@ -5,8 +5,6 @@ import org.project.dto.BoardWriteDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -21,7 +19,6 @@ public class BoardServiceImpl implements BoardService{
 //        return null;
 //    }
 
-    //�� �ۼ�
     @Override
     public void write(BoardWriteDTO dto) throws Exception{
         boardDAO.write(dto);
@@ -38,9 +35,32 @@ public class BoardServiceImpl implements BoardService{
     }
 
 //    @Override
-//    public BoardVO read(int qano) {
-//        boardDAO.boardCount(qano);
-//        return boardDAO.read(qano);
+//    public BoardVO detail(Integer QANo) {
+//        return boardDAO.detail(QANo);
 //    }
+//
+    @Override
+    public void boardCnt(Integer QANo) {
+        boardDAO.boardCnt(QANo);
+    }
+
+    // 글 읽기
+    @Override
+    public BoardVO read(Integer QANo) {
+        return boardDAO.read(QANo);
+    }
+
+
+    // 글 삭제
+    @Override
+    public void delete(Integer QANo) throws Exception {
+        boardDAO.delete(QANo);
+    }
+
+    // 글 수정
+    @Override
+    public void update(BoardWriteDTO dto) throws Exception{
+        boardDAO.update(dto);
+    }
 
 }

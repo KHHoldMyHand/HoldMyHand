@@ -20,9 +20,9 @@ public class BoardDAOImpl implements BoardDAO{
     //@Override
     //public List<BoardVO> qnaList() {return null;}
 
-    //�� �ۼ�
+    // 글 쓰기
     @Override
-    public void write(BoardWriteDTO dto) throws Exception{
+    public void write(BoardWriteDTO dto) {
         session.insert(namespace+".write", dto);
     }
 
@@ -39,8 +39,34 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
 //    @Override
-//    public void boardCount(int qano) {
-//        session.update(namespace + ".boardCount", qano);
+//    public BoardVO detail(Integer QANo) {
+//
+//        return session.selectOne(namespace + ".detail", QANo);
 //    }
+
+    @Override
+    public void boardCnt(Integer QANo) {
+        session.update(namespace + ".boardCnt", QANo);
+    }
+
+    @Override
+    public BoardVO read(Integer QANo) {
+        return session.selectOne(namespace + ".read", QANo);
+    }
+
+
+    // 글 삭데
+    @Override
+    public void delete(Integer QANo) throws Exception{
+        session.delete(namespace+".delete", QANo);
+    }
+
+    // 글 수정
+    @Override
+    public void update(BoardWriteDTO dto) throws Exception {
+        session.update(namespace+".update", dto);
+    }
+
+
 
 }

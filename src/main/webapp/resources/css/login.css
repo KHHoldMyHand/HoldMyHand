@@ -52,6 +52,7 @@ font-family: 'Jua', sans-serif;
 }
 
 
+
 .button-area{
             margin-top: 30px;
             }
@@ -73,6 +74,7 @@ font-family: 'Jua', sans-serif;
     top:2px;
     border-radius: 25px;
 }
+
 .join-area{
     margin-top: 20px;
     text-align: center;
@@ -95,4 +97,3 @@ font-family: 'Jua', sans-serif;
     50%{transform : translateX(-8px);}
     75%{transform : translateX(8px);}
     }
-

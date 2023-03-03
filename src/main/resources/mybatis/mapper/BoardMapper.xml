@@ -10,7 +10,7 @@
     <!--    </select>-->
 
     <!-- 총 게시글 갯수 출력 -->
-    <select id="countBoard" resultType="int">
+    <select id="countBoard" resultType="Integer">
         SELECT COUNT(*) FROM QA
     </select>
     <!-- 리스트 페이징 처리 -->
@@ -28,14 +28,36 @@
     </select>
 
     <!-- 게시판 조회수 -->
-    <update id="boardCount" parameterType="int">
+    <update id="boardCnt" parameterType="Integer">
         UPDATE QA
         SET COUNT = COUNT+1
-        WHERE QANO = #{QANo}
+        WHERE QANo = #{QANo}
     </update>
 
+<!--    &lt;!&ndash; 게시글 상세정보 &ndash;&gt;-->
+<!--    <select id="detail" resultType="org.project.vo.BoardVO">-->
+<!--        select *-->
+<!--        FROM QA-->
+<!--        WHERE QANO = #{QANo}-->
+<!--    </select>-->
 
+    <!-- 게시글 읽기 -->
+    <select id="read" resultType="org.project.vo.BoardVO">
+        select *
+        FROM QA
+        WHERE QANo = #{QANo}
+    </select>
 
+    <!-- 게시글 삭제 -->
+    <delete id="delete" parameterType="org.project.vo.BoardVO">
+        DELETE FROM QA WHERE QANo = #{QANo}
+    </delete>
+    <!-- 게시글 수정 -->
+    <update id="update" parameterType="org.project.dto.BoardWriteDTO">
+        UPDATE QA set QANo=#{QANo}, title=#{title}, content=#{content},writedate=sysdate, userno=#{userNo}, writer =#{writer}  where QANo=#{QANo}
+    </update>
+
+    <!-- 게시글 쓰기 -->
     <insert id="write" parameterType="org.project.dto.BoardWriteDTO">
         insert into QA(QANO, TITLE, CONTENT, WRITEDATE, USERNO, WRITER)
         values(QANo.NEXTVAL,#{title},#{content},sysdate, #{userNo}, #{writer})

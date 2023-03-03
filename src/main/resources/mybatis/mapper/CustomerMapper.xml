@@ -5,110 +5,212 @@
 
 <mapper namespace="org.project.dao.CustomerDAO">
 
+
+
+
     <select id="login" resultType="org.project.vo.CustomerVO">
-        select
-        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        select userNo,
+               userID,
+               userPwd,
+               userEmail,
+               userJoinDate,
+               managerClassification,
+               userAddress,
+               corpName,
+               corpType,
+               corpManager,
+               phoneNo,
+               creditStatus
         from Customer
-        where userID=#{userID} and userPwd=#{userPwd} and rownum=1
+        where userID = #{userID}
+          and userPwd = #{userPwd}
+          and rownum = 1
     </select>
 
     <update id="keepLogin">
         update Customer
-        set sessionKey = #{sessionId}, sessionLimit = #{next}
-        where userID=#{userID}
+        set sessionKey   = #{sessionId},
+            sessionLimit = #{next}
+        where userID = #{userID}
     </update>
 
     <select id="checkUserWithSessionKey" resultType="org.project.vo.CustomerVO">
-        select * from Customer where sessionKey = #{value} and sessionLimit > SYSDATE and rownum=1
+        select *
+        from Customer
+        where sessionKey = #{value}
+          and sessionLimit > SYSDATE
+          and rownum = 1
     </select>
 
     <select id="findUserId" resultType="String">
-        select userID from Customer where userEmail = #{param2} and rownum=1
+        select userID corpName
+        from Customer
+        where userEmail = #{param2}
+          and rownum = 1
+    </select>
+
+    <select id="readCustomer" resultType="org.project.vo.CustomerVO">
+        select *
+        from Customer
+        where userID = #{userID}
+    </select>
+
+    <select id="checkId" resultType="org.project.vo.CustomerVO">
+        select userID
+        from Customer
+        where userID = #{userID}
+    </select>
+
+    <select id="updatePwd" resultType="org.project.vo.CustomerVO">
+        update customer
+        set userPwd = #{userPwd}
+        where userID = #{userID}
     </select>
 
     <!-- 유저 조회 -->
     <select id="listCustomer" resultType="org.project.vo.CustomerVO">
-        select
-        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        select userNo,
+               userID,
+               userPwd,
+               userEmail,
+               userJoinDate,
+               managerClassification,
+               userAddress,
+               corpName,
+               corpType,
+               corpManager,
+               phoneNo,
+               creditStatus
         from Customer
     </select>
 
     <select id="read" resultType="org.project.vo.CustomerVO">
-        select
-        userNo,userID,userPwd,userEmail,userJoinDate,managerClassification,userAddress,corpName,corpType,corpManager,phoneNo,creditStatus
+        select userNo,
+               userID,
+               userPwd,
+               userEmail,
+               userJoinDate,
+               managerClassification,
+               userAddress,
+               corpName,
+               corpType,
+               corpManager,
+               phoneNo,
+               creditStatus
         from Customer
         where userNo = #{userNo}
     </select>
 
     <update id="update">
-        update Customer set userPwd=#{userPwd}, userEmail=#{userEmail}, phoneNo=#{phoneNo}
-        where userNo=#{userNo}
+        update Customer
+        set userPwd=#{userPwd},
+            userEmail=#{userEmail},
+            phoneNo=#{phoneNo}
+        where userNo = #{userNo}
     </update>
 
     <delete id="delete">
-        delete from Customer
-        where userNo=#{userNo}
+        delete
+        from Customer
+        where userNo = #{userNo}
     </delete>
 
     <!-- 심사완료 -->
     <update id="modUserStatus">
-        update Customer set creditStatus=2 where userNo=#{userNo}
+        update Customer
+        set creditStatus=2
+        where userNo = #{userNo}
     </update>
 
     <!-- 유저 인서트 -->
     <insert id="create">
-        insert into Customer (
-        userNo,
-        userID,
-        userPwd,
-        userEmail,
-        userJoinDate,
-        managerClassification,
-        userAddress,
-        corpName,
-        corpType,
-        corpManager,
-        phoneNo,
-        creditStatus
-        )
-        values
-        (
-        userNo.NEXTVAL,
-        #{userID},
-        #{userPwd},
-        #{userEmail},
-        SYSDATE,
-        0,
-        #{userAddress},
-        #{corpName},
-        #{corpType},
-        #{corpManager},
-        #{phoneNo},
-        0)
+        insert into Customer (userNo,
+                              userID,
+                              userPwd,
+                              userEmail,
+                              userJoinDate,
+                              managerClassification,
+                              userAddress,
+                              corpName,
+                              corpType,
+                              corpManager,
+                              phoneNo,
+                              creditStatus)
+        values (userNo.NEXTVAL,
+                #{userID},
+                #{userPwd},
+                #{userEmail},
+                SYSDATE,
+                0,
+                #{userAddress},
+                #{corpName},
+                #{corpType},
+                #{corpManager},
+                #{phoneNo},
+                0)
 
     </insert>
 
     <select id="countCustomer" resultType="int">
-        select count(*) from Customer
+        select count(*)
+        from Customer
+    </select>
+
+    <select id="countCustomerByKeyword" resultType="int">
+        <![CDATA[
+        select count(*)
+        from Customer where userNo>0
+                                ]]>
+        <include refid="search"></include>
     </select>
 
     <select id="selectCustomer" resultType="org.project.vo.CustomerVO">
-        select *from(select rownum rn, A.* from(select *from Customer where managerClassification=0 order by userJoinDate desc) A) where rn between #{start} and #{end}
+        select *
+        from (select rownum rn, A.*
+              from (select * from Customer where managerClassification = 0 order by userJoinDate desc) A)
+        where rn between #{start} and #{end}
     </select>
-<!--   검색기능구현   -->
+
     <sql id="search">
-        <if test="searchType == 't'.toString()">
-            and title like CONCAT('%',#{keyword},'%')
-        </if>
-        <if test="searchType == 'c'.toString()">
-            and title like CONCAT('%',#{keyword},'%')
-        </if>
-        <if test="searchType == 'w'.toString()">
-            and title like CONCAT('%',#{keyword},'%')
-        </if>
-        <if test="searchType == 'tc'.toString()">
-            and title like CONCAT('%',#{keyword},'%')
+        <if test ="keyword != null">
+            <if test = "keyword == 'b'.toString()">
+                and managerClassification=0
+            </if>
+            <if test = "keyword =='c'.toString()">
+                and managerClassification=1
+            </if>
+            <if test = "keyword =='d'.toString()">
+                and creditStatus=0
+            </if>
+            <if test = "keyword =='e'.toString()">
+                and creditStatus=1
+            </if>
+            <if test = "keyword =='f'.toString()">
+                and creditStatus=2
+            </if>
         </if>
     </sql>
+
+    <select id="selectCustomerByKeyword" resultType="org.project.vo.CustomerVO">
+<![CDATA[
+select *
+        from (select rownum rn, A.*
+              from (select *
+                    from Customer
+                        where userNo>0
+                                  ]]>
+        <include refid="search"></include>
+        <![CDATA[
+                        order by userJoinDate desc) A)
+        where rn between #{start} and #{end}
+                  ]]>
+    </select>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="idCheck" resultType="int">
+        SELECT COUNT(*)
+        FROM CUSTOMER
+        WHERE USERID = #{userID}
+    </select>
 
 </mapper>

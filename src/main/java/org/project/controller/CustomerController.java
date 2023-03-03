@@ -84,6 +84,15 @@ public class CustomerController {
         return "user/findUserId";
     }
 
+    @RequestMapping(value = "/findUserPwd", method = RequestMethod.POST)
+    public void findUserPwdPOST(HttpServletResponse response,@ModelAttribute CustomerVO vo) throws Exception{
+        service.findUserPwd(response, vo);
+    }
+
+    @RequestMapping(value="/findUserPwd", method = RequestMethod.GET)
+    public void findUserPwdGET() throws Exception{
+    }
+
     @RequestMapping(value="/join", method = RequestMethod.GET)
     public String joinGET() {
         return "user/join";
@@ -156,7 +165,9 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/joinIdCheck", method = RequestMethod.POST)
     public int registerPOST(String userID) throws Exception {
+        System.out.println("regist 실행");
         int result = customerService.idCheck(userID);
+        System.out.println("result=="+result);
         return result;
     }
 }

@@ -24,8 +24,7 @@ method="post" onsubmit="return validateForm()">
 <hr id="line2">
 
 <h4>* ID(사업자등록번호)</h4>
-<label for="address2">아이디</label>
-<input type="text" id="userID" name="userID">
+<span class="input_area"><input type="text" id="userID" name="userID" required></span>
 <button type="button" type="button" id="idChk" onclick="idCheck();" value="N">중복확인</button>
 <span class="useId_ok">사용 가능한 아이디입니다.</span>
 <span class="useId_already">누군가 이 아이디를 사용하고 있어요.</span>
@@ -34,11 +33,11 @@ method="post" onsubmit="return validateForm()">
 <hr id="line2">
 <h4>* 비밀번호</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd" id=pw required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd" id=pw placeholder="영문,숫자,특수문자 8~15자 입력" required></span>
 
 <h4>* 비밀번호 확인</h4>
 <span class="input_area"><input type="password" maxlength="15"
-name="userPwd2" id=pw2 required placeholder="영문,숫자,특수문자 8~15자 입력"></span>
+name="userPwd2" id=pw2 placeholder="영문,숫자,특수문자 8~15자 입력" required></span>
         <font id="checkPw" style="font-size: x-small; "></font>
         <label id="pwdResult"></label>
         <p></p>
@@ -51,16 +50,13 @@ name="userPwd2" id=pw2 required placeholder="영문,숫자,특수문자 8~15자 
 
 <td class="bt0">
 <input type="text" id="enpNm" name="corpName" placeholder="업체명"
-required="required" class>
-<button type="button" class="btn_del">
-<span>입력내용 삭제</span>
-</button>
+required="required" required>
 <p class="txt_error" id="enp_nm_txt_error" style="display: none;">
 업체명을 입력해 주세요.</p>
 <div class="mt8">
 <div class="select w240">
 <select name="corpType" id="searchSvcGrpCd"
-class="necessary" title="기업종류" style>
+class="necessary" required title="기업종류" style>
 <option value="">기업종류</option>
 <option value="01">주식회사</option>
 <option value="02">합명회사</option>
@@ -89,26 +85,26 @@ class="necessary" title="기업종류" style>
 <hr id="line2">
 <h4>* 대표자명</h4>
 <span class="input_area"><input type="text" maxlength="5"
-name="corpManager" required placeholder="대표자명"></span>
+name="corpManager" required placeholder="대표자명" required></span>
 
 <h4>대표 연락처</h4>
 <span class="input_area"><input type="tel" maxlength="11"
-name="phoneNo" placeholder="(-없이)01012345678"></span>
+name="phoneNo" placeholder="(-없이)01012345678" required></span>
 
 <h4>이메일</h4>
 <span class="input_area"><input type="email" name="userEmail"
-placeholder="대표 이메일"></span>
+placeholder="대표 이메일" required></span>
 <hr id="line2">
 <h4>우편번호</h4>
 <span class="input_area"><input type="text" name="address"
 class="postcodify_postcode5" placeholder="우편번호 검색"></span>
-<button type="button" id="postcodify_search_button">검색</button>
+<button type="button" id="postcodify_search_button" required>검색</button>
 <h4>사업자등록상 주소</h4>
 <span class="input_area"><input type="text" name="userAddress"
-class="postcodify_address"></span>
+class="postcodify_address" required></span>
 <h4>상세주소</h4>
-<span class="input_area"><input type="text" name="address2"
-class="postcodify_details"></span>
+<span class="input_area"><input type="text" name="userAddress"></span>
+
 
 <h4 class="tit_large mt80">※이용 약관</h4>
 <form id="contactForm" action="<%=request.getContextPath()%>/login" method="POST">
@@ -117,12 +113,12 @@ class="postcodify_details"></span>
 <dt>
 <div>
 <input type="checkbox" id="allChk" name="checkBoxAll"
-    class="checkBoxAll" value='selectall' onclick='selectAll(this)'>
+    class="checkBoxAll" value='selectall' onclick='selectAll(this)' required>
 <label for="allChk">전체동의</label>
 </div>
 </dt>
 <dt>
-<input type="checkbox" id="d2" name="chk1">
+<input type="checkbox" id="terms1" name="chk">
 <label for="d2">[필수] 회원가입약관</label>
 
 <a href="javascript:doDisplay();">
@@ -269,7 +265,7 @@ class="postcodify_details"></span>
 <!-- //약관 샘플 -->
 </dd>
 <dt>
-<input type="checkbox" id="d3" name="chk2">
+<input type="checkbox" id="terms2" name="chk">
 <label for="d3">[필수] 개인정보 수집 및 이용</label>
 <a href="javascript:doDisplay1();">
 <button type="button" id="ctn-btn"><span class="blind">내용보기</span></button>
@@ -306,8 +302,7 @@ class="postcodify_details"></span>
 <button type="button" id="ctn-btn">내용보기</button>
 </a>
 </dt>
-<dd>
-<!-- 마케팅 수신 샘플 -->
+<dd><!-- 마케팅 수신 샘플 -->
 <div class="scroll_type" tabindex="0" id="myDIV2" style="display:none;">
 <div class="agreement_area">
     <h5 class="tit_least">프로모션 정보수신 동의</h5>
@@ -346,6 +341,17 @@ var bDisplay = true; function doDisplay(){
 }
 </script>
 
+<script type="text/javascript">
+$('#joinBtn').on('click',function(event){
+  let terms1 = $('#terms1').prop("checked");
+  let terms2 = $('#terms2').prop("checked");
+  if (!terms1 || !terms2) {
+    event.preventDefault();
+    alert("모든 약관에 동의해야 합니다.");
+  }
+});
+
+</script>
 
 <script type="text/javascript">
 var bDisplay = ture; function doDisplay1(){
@@ -411,7 +417,6 @@ function execution_add_address(){
                 $('.useId_already').css("display", "none");
                 } else if (data >= 1) {
                 $('.useId_already').css("display","inline-block");
-                alert("아이디를 다시 입력해주세요");
                 $('.useId_ok').css("display", "none");
                 $('#useId_ok').val('');
                 $('#userID').val('');

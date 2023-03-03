@@ -1,7 +1,6 @@
 package org.project.service;
 
 import org.project.dto.BoardWriteDTO;
-import org.project.searchandpaging.Criteria;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
 
@@ -10,14 +9,26 @@ import java.util.List;
 public interface BoardService {
     //List<BoardVO> qnaList() throws Exception;
 
-    //±€ ¿€º∫
+
     public void write(BoardWriteDTO dto) throws Exception;
 
-    // ∞‘Ω√π∞ √— ∞πºˆ
+
     public int countBoard();
 
-    // ∆‰¿Ã¬° √≥∏Æ ∞‘Ω√±€ ¡∂»∏
+
     public List<BoardVO> selectBoard(PagingVO vo);
 
-    //public BoardVO countBoard(int qano);
+//    BoardVO detail(Integer QANo);
+
+    public void boardCnt(Integer QANo);
+
+    // Í∏Ä ÏùΩÍ∏∞
+    public BoardVO read(Integer QANo);
+
+
+    // Í∏Ä ÏÇ≠Ï†ú
+    public void delete(Integer QANo) throws Exception;
+
+    // Í∏Ä ÏàòÏ†ï
+    public void update(BoardWriteDTO dto) throws Exception;
 }

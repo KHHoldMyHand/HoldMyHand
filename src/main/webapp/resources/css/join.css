@@ -27,7 +27,8 @@ font-size: xx-large;
 }
 
 h4 {
-color: black margin: 80px;
+color: black;
+margin: 80px;
 margin-top: 26px;
 margin-bottom: 10px;
 }
@@ -44,10 +45,10 @@ border-radius: 6px;
 
 #searchSvcGrpCd {
 box-sizing: border-box;
-border: 1px solid var(--gray_500);
+border: 1px solid var(--bs-gray-500);
 border-radius: 6px;
 height: 45px;
-width: 100;
+width: 100px;
 border: solid 1px #dadada;
 padding: 10px 10px 14px 10px;
 letter-spacing: -0.32px;
@@ -175,12 +176,18 @@ margin-top : 8px; !important;
 margin-bottom : 8px; !important;
 }
 
+#idChk{
+margin-left: 0px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
 .useId_ok{
 color:#008000;
 display: none;
 }
 
 .useId_already{
-color:#6A82FB;
+color:#ff0000;
 display: none;
 }

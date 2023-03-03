@@ -11,4 +11,6 @@ public class BoardWriteDTO {
     private String content;
     private Integer userNo;
     private String writer;
+    private Integer QANo;
+
 }

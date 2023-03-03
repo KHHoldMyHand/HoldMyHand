@@ -10,7 +10,7 @@
     .tit19 {font-size: 19px; font-weight: 600; margin-top: 15px;}
     .tit23B {font-size: 25px; font-weight: 700;}
     .tit30B {font-size: 30px; font-weight: 700;}
-    .agr_subject {overflow-y:scroll; overflow-x: hidden; width: 800px; height: 300px; padding: 15px 20px; border: 1px solid #ababab; background: #fff;}
+    .agr_subject {overflow-y:scroll; overflow-x: hidden; width: 900px; height: 300px; padding: 15px 20px; border: 1px solid #ababab; background: #fff; margin: 0 auto;}
     .gold_btn {width: 100px; height: 40px; color: #333; background: gold; margin: 10px; border-radius: 10px; display: inline-block;}
 
 </style>
