@@ -178,12 +178,17 @@
                                             style="background: rgba(255, 247, 137, 0.132); border: 1px solid #555;
                                                 width: 130px; height: 80px; margin: 5px 5px; border-radius: 7px;
                                                 text-align: center; font-size: 45px; outline: none;">
-                                        <option value="S">S</option>
-                                        <option value="A">A</option>
+                                        <option value="S">AAA</option>
+                                        <option value="A">AA</option>
+                                        <option value="B">A</option>
+                                        <option value="B">BBB</option>
+                                        <option value="B">BB</option>
                                         <option value="B">B</option>
+                                        <option value="C">CCC</option>
+                                        <option value="C">CC</option>
                                         <option value="C">C</option>
                                         <option value="D">D</option>
-                                        <option value="E">E</option>
+                                        <option value="E">NR</option>
                                     </select>
                                 </div>
                             </div>
