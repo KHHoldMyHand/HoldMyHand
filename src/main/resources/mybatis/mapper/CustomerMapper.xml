@@ -23,7 +23,7 @@
     </select>
 
     <select id="findUserId" resultType="String">
-        select userID from Customer where userEmail = #{param2} and rownum=1
+        select userID corpName from Customer where userEmail = #{param2} and rownum=1
     </select>
 
     <select id="readCustomer" resultType="org.project.vo.CustomerVO">
