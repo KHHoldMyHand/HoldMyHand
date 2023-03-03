@@ -33,7 +33,7 @@
             <h1 class="fw-bolder">Q&A</h1>
         </div>
         <form action="<%=request.getContextPath()%>/qnaWriter" >
-             <div class="buttons" style="text-align: right;" font-size:20px; background-color: #FFC007; border-radius: 10px">
+             <div class="buttons" style="text-align: right; font-size:20px; background-color: #FFC007; border-radius: 10px">
               <c:choose>
                  <c:when test="${login!=null}">
                       <button id="QaBtn" type ="submit">글쓰기</button>
@@ -41,6 +41,7 @@
                           </c:choose>
              </div>
         </form>
+
         <form action="${contextPath}/qnaResult" method="get">
             <div class="search_wrap">
                 <div class="search_area">
@@ -68,7 +69,6 @@
             </div>
             <button type="submit">검색</button>
         </form>
-
         <div class="ListView">
             <table id="qnaList" style="width:100%">
 
@@ -94,7 +94,7 @@
 
           	<div style="display: block; text-align: center;">
             		<c:if test="${paging.startPage != 1 }">
-            			<a href="/qna?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+            			<a href="/qna?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&lt;</a>
             		</c:if>
             		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
             			<c:choose>
@@ -102,12 +102,12 @@
             					<b>${p }</b>
             				</c:when>
             				<c:when test="${p != paging.nowPage }">
-            					<a href="/qna?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+            					<a href="/qna?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">${p }</a>
             				</c:when>
             			</c:choose>
             		</c:forEach>
             		<c:if test="${paging.endPage != paging.lastPage}">
-            			<a href="/qna?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+            			<a href="/qna?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&gt;</a>
             		</c:if>
             	</div>
         </div>

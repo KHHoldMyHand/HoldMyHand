@@ -2,22 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<!--<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-$("#joinBtn").click(function(){
-// 업로드 파일 전부 append
-var str="";
-$(".deleteFile").each(function(index){
-var that = $(this);
-var data = that.attr("data-src");
-str += "<input type='file' name='files["+index+"]' value='"+data+"' >";
-});
-
-$("form").append(str);
-$("form").submit();
-});
-</script>-->
-
 
 <section class="py-5" id="features">
     <div class="container px-5 my-5">
@@ -32,7 +16,7 @@ $("form").submit();
                     <form id="joinForm" action="${contextPath}/submitCreditInfo" method="post"
                           name="frm" enctype="multipart/form-data">
                         <h1 class="tit30B">신용정보 입력</h1>
-                        <!-- -->
+                        <!-- userNo -->
                         <input style="display: none" type="text" name="userNo" value="${login.userNo}"/>
                         <!-- 설립자 -->
                         <div class="gold_line">
@@ -110,9 +94,9 @@ $("form").submit();
                     </form>
                 </div>
             </div>
+        </body>
         </div>
     </div>
-        </body>
 </section>
 
 <style>
@@ -148,13 +132,14 @@ $("form").submit();
     .tit17 {
         font-size: 17px;
         font-weight: 600;
-        margin-top: 15px;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-left: 10px;
     }
 
     .gold_line {
         border-top: 5px solid gold;
-        margin-bottom: 50px;
+        margin: 0 50px;
+        margin-bottom: 25px;
     }
 
     .hometax_link img {

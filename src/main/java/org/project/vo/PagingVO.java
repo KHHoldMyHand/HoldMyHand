@@ -11,6 +11,8 @@ public class PagingVO {
 
     private String keyword;
 
+    private String searchType;
+
     public PagingVO() {
     }
     public PagingVO(int total, int nowPage, int cntPerPage) {
@@ -21,11 +23,11 @@ public class PagingVO {
         calcStartEndPage(getNowPage(), cntPage);
         calcStartEnd(getNowPage(), getCntPerPage());
     }
-    // Á¦ÀÏ ¸¶Áö¸· ÆäÀÌÁö °è»ê
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public void calcLastPage(int total, int cntPerPage) {
         setLastPage((int) Math.ceil((double)total / (double)cntPerPage));
     }
-    // ½ÃÀÛ, ³¡ ÆäÀÌÁö °è»ê
+    // ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public void calcStartEndPage(int nowPage, int cntPage) {
         setEndPage(((int)Math.ceil((double)nowPage / (double)cntPage)) * cntPage);
         if (getLastPage() < getEndPage()) {
@@ -36,7 +38,7 @@ public class PagingVO {
             setStartPage(1);
         }
     }
-    // DB Äõ¸®¿¡¼­ »ç¿ëÇÒ start, end°ª °è»ê
+    // DB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ start, endï¿½ï¿½ ï¿½ï¿½ï¿½
     public void calcStartEnd(int nowPage, int cntPerPage) {
         setEnd(nowPage * cntPerPage);
         setStart(getEnd() - cntPerPage + 1);
@@ -50,5 +52,15 @@ public class PagingVO {
         calcStartEndPage(getNowPage(), cntPage);
         calcStartEnd(getNowPage(), getCntPerPage());
         this.keyword=keyword;
+    }
+    public PagingVO(int total, int nowPage, int cntPerPage, String keyword, String searchType) {
+        setNowPage(nowPage);
+        setCntPerPage(cntPerPage);
+        setTotal(total);
+        calcLastPage(getTotal(), getCntPerPage());
+        calcStartEndPage(getNowPage(), cntPage);
+        calcStartEnd(getNowPage(), getCntPerPage());
+        this.keyword=keyword;
+        this.searchType=searchType;
     }
 }

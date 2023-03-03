@@ -63,17 +63,39 @@ public class BoardController {
         int total = boardService.countBoard();
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
-            cntPerPage = "5";
+            cntPerPage = "10";
         } else if (nowPage == null) {
             nowPage = "1";
         } else if (cntPerPage == null) {
-            cntPerPage = "5";
+            cntPerPage = "10";
         }
         vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging", vo);
         model.addAttribute("viewAll", boardService.selectBoard(vo));
         return "board/qna";
         }
+
+    @RequestMapping(value ="/qnaResult", method = RequestMethod.GET)
+    public String boardResultList(PagingVO vo, Model model
+            , @RequestParam(value="nowPage", required=false)String nowPage
+            , @RequestParam(value="cntPerPage", required=false)String cntPerPage
+    , @RequestParam(value = "keyword", required = false)String keyword
+    , @RequestParam(value = "searchType", required = false) String searchType) throws Exception {
+
+        int total = boardService.countSearchBoard(keyword,searchType);
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "10";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "10";
+        }
+        vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),vo.getKeyword(),vo.getSearchType());
+        model.addAttribute("paging", vo);
+        model.addAttribute("viewAll", boardService.selectSearchBoard(vo));
+        return "board/qnaResult";
+    }
 
 //    @RequestMapping(value = "/qnaInfo", method = RequestMethod.GET)
 //    public String detail(Model model, @RequestParam int QANo){
