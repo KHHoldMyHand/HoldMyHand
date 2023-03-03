@@ -50,4 +50,9 @@ public interface CustomerService {
 
     // 아이디 중복체크
     public int idCheck(String userID) throws Exception;
+
+    public int countCustomerByKeyword(String keyword) throws Exception;
+
+    public List<CustomerVO> selectCustomerByKeyword(PagingVO vo) throws Exception;
+
 }

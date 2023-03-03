@@ -54,5 +54,10 @@ public interface CustomerDAO {
 
     //회원가입 - 중복확인
     public int idCheck(String userID) throws Exception;
+
+    public int countCustomerByKeyword(Map<String,Object> paramMap) throws Exception;
+
+    public List<CustomerVO> selectCustomerByKeyword(PagingVO vo) throws Exception;
+
 }
 

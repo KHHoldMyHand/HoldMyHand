@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -205,5 +206,18 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("result = dao.idCheck(userID)?: " + result);
         return result;
     }
+    @Override
+    public int countCustomerByKeyword(String keyword) throws Exception{
+        System.out.println("service 실행됨"+keyword);
+        Map<String,Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("keyword",keyword);
+        return dao.countCustomerByKeyword(paramMap);
+    }
+
+    @Override
+    public List<CustomerVO> selectCustomerByKeyword(PagingVO vo) throws Exception{
+        return dao.selectCustomerByKeyword(vo);
+    }
+
 
 }

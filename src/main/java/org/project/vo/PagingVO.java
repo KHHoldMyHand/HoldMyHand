@@ -9,6 +9,8 @@ public class PagingVO {
     private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
     private int cntPage = 5;
 
+    private String keyword;
+
     public PagingVO() {
     }
     public PagingVO(int total, int nowPage, int cntPerPage) {
@@ -38,5 +40,15 @@ public class PagingVO {
     public void calcStartEnd(int nowPage, int cntPerPage) {
         setEnd(nowPage * cntPerPage);
         setStart(getEnd() - cntPerPage + 1);
+    }
+
+    public PagingVO(int total, int nowPage, int cntPerPage, String keyword) {
+        setNowPage(nowPage);
+        setCntPerPage(cntPerPage);
+        setTotal(total);
+        calcLastPage(getTotal(), getCntPerPage());
+        calcStartEndPage(getNowPage(), cntPage);
+        calcStartEnd(getNowPage(), getCntPerPage());
+        this.keyword=keyword;
     }
 }
