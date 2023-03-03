@@ -61,8 +61,10 @@
                         <option value="tc"
                                 <c:out value="${param.searchType eq 'tc'?'selected':''}"/>>
                             제목+내용</option>
+                        <option value="cw" <c:out value="${param.searchType eq 'cw'?'selected':'' }"/>>
+                            내용+작성자</option>
                         <option value="tw" <c:out value="${param.searchType eq 'tw'?'selected':'' }"/>>
-                            제목 + 작성자</option>
+                            제목+작성자</option>
                     </select>
                     <input type="text" name="keyword" value="${param.keyword}">
                 </div>
@@ -94,7 +96,7 @@
 
           	<div style="display: block; text-align: center;">
             		<c:if test="${paging.startPage != 1 }">
-            			<a href="/qna?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&lt;</a>
+            			<a href="/qnaResult?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&lt;</a>
             		</c:if>
             		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
             			<c:choose>
@@ -102,12 +104,12 @@
             					<b>${p }</b>
             				</c:when>
             				<c:when test="${p != paging.nowPage }">
-            					<a href="/qna?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">${p }</a>
+            					<a href="/qnaResult?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">${p }</a>
             				</c:when>
             			</c:choose>
             		</c:forEach>
             		<c:if test="${paging.endPage != paging.lastPage}">
-            			<a href="/qna?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&gt;</a>
+            			<a href="/qnaResult?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchType=${param.searchType}&keyword=${param.keyword}">&gt;</a>
             		</c:if>
             	</div>
         </div>
