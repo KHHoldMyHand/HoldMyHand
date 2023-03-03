@@ -1,7 +1,6 @@
 package org.project.service;
 
 import org.project.dao.CorporationDAO;
-import org.project.dao.CustomerDAO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
 import org.project.vo.CorporationVO;
@@ -49,5 +48,10 @@ public class CorporationServiceImpl implements CorporationService{
     @Override
     public List<CustomerVO> selectSubmitCustomer(PagingVO vo) {
         return dao.selectSubmitCustomer(vo);
+    }
+    // 등록 정보 가져오기
+    @Override
+    public CorporationVO getCustomerInfo(Integer userno) {
+        return dao.getCustomerInfo(userno);
     }
 }

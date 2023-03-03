@@ -3,6 +3,7 @@ package org.project.dao;
 import org.project.dto.CorporationBoardDTO;
 import org.project.dto.CorporationDTO;
 import org.project.dto.EvaluateSuccessDTO;
+import org.project.vo.CorporationVO;
 import org.project.vo.CustomerVO;
 import org.project.vo.FileVO;
 import org.project.vo.PagingVO;
@@ -30,4 +31,6 @@ public interface CorporationDAO {
     int countCorporation() throws Exception;
     List<CustomerVO> selectSubmitCustomer(PagingVO vo);
 
+    // 등록 정보 가져오기
+    CorporationVO getCustomerInfo(Integer userno);
 }

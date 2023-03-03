@@ -25,4 +25,6 @@ public interface CorporationService {
     int countCorporation()throws Exception;
     List<CustomerVO> selectSubmitCustomer(PagingVO vo);
 
+    // 등록 정보 가져오기
+    CorporationVO getCustomerInfo(Integer userno);
 }
