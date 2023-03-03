@@ -2,11 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
-
 <section class="py-5" id="features" style="display: flex; justify-content: center;">
-
-
-               <meta charset="UTF-8">
                <title>로그인화면</title>
                <link href="../resources/css/login.css" rel="stylesheet" type="text/css">
 
@@ -18,7 +14,7 @@
                    <h2>Hold My Hand</h2>
                    <form action="/user/loginPost" method="post">
                        <div class="login-area">
-                           <input type="text" name="userID" id="userID" autocomplete="off" required="">
+                           <input class="" type="text" name="userID" id="userID" autocomplete="off" required="">
                            <label for="userID">사업자등록번호(ID)</label>
                        </div>
                        <div class="login-area">
@@ -27,7 +23,8 @@
                        </div>
                        <div class="auto-login p-3 px-7" style="text-align:center;">
                        <label>
-                           <input type="checkbox" name="useCookie">자동로그인
+                           <input type="checkbox" name="미구현"> 아이디 저장
+                           <input type="checkbox" name="useCookie"> 자동 로그인
                        </label>
                        </div>
                        <div class="button-area">
