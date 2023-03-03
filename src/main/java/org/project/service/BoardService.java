@@ -31,4 +31,8 @@ public interface BoardService {
 
     // 글 수정
     public void update(BoardWriteDTO dto) throws Exception;
+
+    public int countSearchBoard(String keyword,String searchType)throws Exception;
+
+    public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception;
 }

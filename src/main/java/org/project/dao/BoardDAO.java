@@ -5,6 +5,7 @@ import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoardDAO {
 
@@ -14,10 +15,11 @@ public interface BoardDAO {
     public void write(BoardWriteDTO dto) throws Exception;
 
     int countBoard();
+
     // 리스트
     List<BoardVO> selectBoard(PagingVO vo);
 
-   // BoardVO detail(Integer QANo);
+    // BoardVO detail(Integer QANo);
 
 
     void boardCnt(Integer QANo);
@@ -31,4 +33,8 @@ public interface BoardDAO {
 
     // 글 수정
     void update(BoardWriteDTO dto) throws Exception;
+
+    int countSearchBoard(Map<String, Object> paramMap) throws Exception;
+
+    public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception;
 }
