@@ -14,6 +14,7 @@ import org.project.service.CustomerService;
 import org.project.vo.CorporationVO;
 import org.project.vo.CustomerVO;
 import org.project.vo.FileVO;
+import org.project.vo.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,17 +37,11 @@ import java.util.UUID;
 public class CreditController {
 
     @Autowired
-    CorporationDAO corporationDAO;
-    @Autowired
-    CustomerDAO CustomerDAO;
-    @Autowired
-    private CreditEvaluationDAO creditEvaluationDAO;
+    CreditEvaluationDAO creditEvaluationDAO;
     @Inject
     CustomerService customerService;
     @Inject
     CorporationService corporationService;
-    @Inject
-    CreditEvaluationService creditEvaluationService;
 
     //약관
     @RequestMapping(value="/credit", method = RequestMethod.GET)
@@ -71,9 +66,20 @@ public class CreditController {
 
     /* 평가 진행 목록 */
     @RequestMapping(value="/creditManage", method = RequestMethod.GET)
-    public String crbGET(Model model) {
-        List<CorporationBoardDTO> list = corporationDAO.listCorporation();
-        model.addAttribute("list", list);
+    public String crbGET(Model model, PagingVO vo, @RequestParam(value = "nowPage", required = false) String nowPage,
+                         @RequestParam(value = "cntPerPage", required = false) String cntPerPage) throws Exception {
+        int total = corporationService.countCorporation();
+        if(nowPage==null&&cntPerPage==null){
+            nowPage="1";
+            cntPerPage="5";
+        }else if(nowPage==null){
+            nowPage="1";
+        } else if (cntPerPage==null) {
+            cntPerPage="5";
+        }
+        vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging",vo);
+        model.addAttribute("list", corporationService.selectSubmitCustomer(vo));
         return "credit/creditManage";
     }
 
@@ -96,6 +102,8 @@ public class CreditController {
 //            fileName = dto.getCompanyName() + originalFileName.replaceAll(" ", "_") //저장파일 이름 설정
 //                    .substring(0, originalFileName.length() - 4) + "." + ext;
             fileName = uuid + "." + ext;
+
+            // 경로 없으면 만들기 필요할듯
             uploadFile.transferTo(new File("C:\\dev\\Project\\src\\main\\resources\\upload\\" + fileName)); //저장경로
         }
         dto.setFileName(fileName);
@@ -108,18 +116,21 @@ public class CreditController {
     }
 
     @RequestMapping(value = "/evaluationPage",method = RequestMethod.GET)
-    public String evalGET(@RequestParam("userNo") int userno, Model model,CorporationDTO dto){
+    public String evalGET(@RequestParam("userNo") Integer userno, Model model,CorporationDTO dto, HttpSession session){
         model.addAttribute("userNo",userno);
         model.addAttribute("FileInfo", corporationService.getFileName(dto));
         FileVO fileName = corporationService.getFileName(dto);
         model.addAttribute("FileInfo", fileName);
+
+        CorporationVO info = corporationService.getCustomerInfo(userno);
+        model.addAttribute("info", info);
         return "credit/evaluationPage";
     }
 
     @RequestMapping(value = "/evaluateSuccess", method = RequestMethod.POST)
     public String evalPOST(EvaluateSuccessDTO dto) throws Exception{
         Integer userNo = dto.getUserNo();
-        System.out.println(dto.toString());
+        System.out.println("====================="+ dto.toString());
         //여기에는 신용평가완료 되었을 시에 작용할 것들.
         //dto를 매개변수로 받아내고 서비스 2개 연결.
         //서비스에서는 user의 정보변경, corporation의 정보변경.(userNo 알고있으니 가능)
