@@ -68,8 +68,6 @@ public class CreditController {
     @RequestMapping(value="/creditManage", method = RequestMethod.GET)
     public String crbGET(Model model, PagingVO vo, @RequestParam(value = "nowPage", required = false) String nowPage,
                          @RequestParam(value = "cntPerPage", required = false) String cntPerPage) throws Exception {
-//        List<CorporationBoardDTO> list = corporationDAO.listCorporation();
-//        model.addAttribute("list", list);
         int total = corporationService.countCorporation();
         if(nowPage==null&&cntPerPage==null){
             nowPage="1";
@@ -82,9 +80,6 @@ public class CreditController {
         vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging",vo);
         model.addAttribute("list", corporationService.selectSubmitCustomer(vo));
-
-
-
         return "credit/creditManage";
     }
 
@@ -121,11 +116,14 @@ public class CreditController {
     }
 
     @RequestMapping(value = "/evaluationPage",method = RequestMethod.GET)
-    public String evalGET(@RequestParam("userNo") int userno, Model model,CorporationDTO dto){
+    public String evalGET(@RequestParam("userNo") Integer userno, Model model,CorporationDTO dto, HttpSession session){
         model.addAttribute("userNo",userno);
         model.addAttribute("FileInfo", corporationService.getFileName(dto));
         FileVO fileName = corporationService.getFileName(dto);
         model.addAttribute("FileInfo", fileName);
+
+        CorporationVO info = corporationService.getCustomerInfo(userno);
+        model.addAttribute("info", info);
         return "credit/evaluationPage";
     }
 

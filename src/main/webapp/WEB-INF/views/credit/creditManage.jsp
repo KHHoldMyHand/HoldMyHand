@@ -10,98 +10,18 @@
 
 <style>
     body {
-        background-color: beige
-    }
-
-    .qnaMain {
-    }
-
-    /*    .qnaList{*/
-    /*                line-height: 3em;*/
-    /*                width: 100%;*/
-    /*                list-style:none;*/
-    /*                padding:0;*/
-    /*                text-align: center;*/
-
-    /*    }*/
-
-    /*    .qnaList>li:first-child>ul>li {*/
-    /*        background-color: #ffda70;*/
-    /*        font-weight: bold;*/
-    /*        text-align: center;*/
-    /*        font-size: 11pt;*/
-    /*    }*/
-
-    /*    .qnaList>li>ul>li {*/
-    /*        float: left;*/
-    /*        font-size: 10pt;*/
-    /*        border-bottom: 1.5px solid silver;*/
-    /*        vertical-align: baseline;*/
-    /*        background-color: #fff;*/
-    /*    }*/
-
-    /*    .qnaList>li>ul>li:first-child {*/
-    /*        width: 10%;*/
-    /*                list-style:none;*/
-
-    /*    }*/
-
-    /*    .qnaList>li>ul>li:first-child+li {*/
-    /*        width: 50%;*/
-    /*                list-style:none;*/
-
-    /*    }*/
-
-    /*    .qnaList>li>ul>li:first-child+li+li {*/
-    /*        width: 12%;*/
-    /*                list-style:none;*/
-
-    /*    }*/
-
-    /*    .qnaList>li>ul>li:first-child+li+li+li {*/
-    /*        width: 12%;*/
-    /*                list-style:none;*/
-
-    /*    }*/
-
-    /*    .qnaList>li>ul>li:first-child+li+li+li+li {*/
-    /*        width: 15%;*/
-    /*                list-style:none;*/
-
-    /*    }*/
-
-    /*.buttons {*/
-    /*  display: flex;*/
-    /*  justify-content: right;*/
-    /*  align-items: right;*/
-    /*}*/
-
-    /*.btn { margin: 1rem; height: 30px; }*/
-
-
-    /*.left {*/
-    /*        text-align : left;*/
-    /*}*/
-
-
-</style>
-<style>
-    body {
         background: rgba(255, 247, 137, 0.132);
     }
-
     .qnaMain {
         max-width: 1200px;
         margin: 0 auto;
     }
-
     .contain {
         background: rgba(255, 247, 137, 0.132);
         box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
         margin: 70px 0;
         padding: 50px;
     }
-
     .table tr {
         text-align: center;
     }
@@ -109,7 +29,9 @@
     .table tr:first-child {
         border-top: 3px solid gold;
     }
-
+    .table tr th {
+        border-bottom: 1px solid #ddd;
+    }
     .table tr td {
         border-bottom: 1px solid #ddd;
     }
@@ -128,10 +50,10 @@
 <section class="qnaMain py-5">
     <article class="contain">
         <div class="text-center">
-            <h1 class="fw-bolder">평가 페이지입니다.</h1>
+            <h2 class="fw-bolder">신용 정보 등록 평가</h2>
         </div>
-        <div style="float: right;">
-            <select id="cntPerPage" name="sel" onchange="selChange()">
+        <div style="float: right; margin-bottom: 10px;">
+            <select id="cntPerPage" name="sel" onchange="selChange()" style="border-radius: 5px;">
                 <option value="5"
                         <c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기
                 </option>
@@ -145,7 +67,8 @@
                         <c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기
                 </option>
             </select>
-        </div> <!-- 옵션선택 끝 -->
+        </div>
+        <!-- 옵션선택 끝 -->
         <table class="table table-hover">
             <tr>
                 <th>유저번호</th>
@@ -160,8 +83,7 @@
                 <td>${crbGET.establishmentName}</td>
                 <td>${crbGET.companyName}</td>
                 <td><a href="<%=request.getContextPath()%>/evaluationPage?userNo=${crbGET.userNo}">
-                    <button class="table_btn">평가하기</button>
-                </a></td>
+                    <button class="table_btn">평가하기</button></a></td>
             </tr>
             </c:forEach>
         </table>
