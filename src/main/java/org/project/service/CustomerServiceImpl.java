@@ -6,14 +6,14 @@ import org.project.dto.CustomerModifyDTO;
 import org.project.dto.JoinDTO;
 import org.project.dto.LoginDTO;
 import org.project.vo.CustomerVO;
-
+import org.project.vo.PagingVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-
+import java.util.List;
 import java.util.Map;
 
 @Service
