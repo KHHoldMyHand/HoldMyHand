@@ -4,28 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<%--<style>
-    body {
-        background-color: beige
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: right;
-        align-items: right;
-    }
-
-    .btn {
-        margin: 1rem;
-        height: 30px;
-    }
-
-
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-</style>--%>
 <style>
     body {
         background: rgba(255, 247, 137, 0.132);
@@ -111,8 +89,7 @@
                     </select>
                     <input type="text" name="keyword" value="${param.keyword}" style="height: 25px">
                     <button type="submit" style="border: 1px solid #999; border-radius: 4px;
-                                    background-color: #ffda70">검색
-                    </button>
+                                    background-color: #ffda70">검색</button>
                 </div>
             </div>
         </form>
@@ -130,7 +107,7 @@
             </div>
         </form>
 
-        <table class="table table-hover">
+        <table id="qnaList" class="table table-hover">
             <tr>
                 <th>No</th>
                 <th>제목</th>
@@ -151,7 +128,7 @@
             </c:forEach>
         </table>
 
-        <div style="display: block; text-align: center; font-size: 20px;">
+        <div style="display: block; text-align: center;">
             <c:if test="${paging.startPage != 1 }">
                 <a href="/qna?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
             </c:if>
