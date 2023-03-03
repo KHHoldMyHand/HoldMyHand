@@ -65,7 +65,9 @@
                     <option value="e">신용평가진행중</option>
                     <option value="f">신용평가완료</option>
                 </select>
-                <button type="submit" value="검색">검색</button>
+                <button type="submit" value="검색"
+                        style="border: 1px solid #999; border-radius: 4px;
+                            background-color: #ffda70">검색</button>
             </form>
         </div>
         <!-- 옵션선택 끝 -->
