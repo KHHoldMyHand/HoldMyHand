@@ -487,9 +487,11 @@
             if (pass1 == pass2) {
                 $("#checkPw").html('패스워드가 일치합니다.');
                 $("#checkPw").attr('color', 'green');
+                $("#checkPw").css('color', 'green', 'important');
             } else {
                 $("#checkPw").html('패스워드가 불일치합니다.');
                 $("#checkPw").attr('color', 'red');
+                $("#checkPw").css('color', 'red', 'important');
                 $('#pw2').val('');
                 $('#pw2').focus();
             }
