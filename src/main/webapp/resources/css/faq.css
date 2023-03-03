@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Mynerve&display=swap');
 
 body{
-font-family: 'Jua', sans-serif;
+font-family: 'Pretendard', sans-serif;
 }
 
 *{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Jua', sans-serif;}
@@ -22,7 +22,7 @@ body{background-color: beige;}
 .Accordion_wrap { width: 80%; height:400px; margin-bottom:100px; }
 .que:first-child{ border-top: 1.5px solid white; }
 .que{ position: relative; padding: 20px 0; cursor: pointer; font-size: 15px; border-bottom:1px solid #dddddd; background-color:white; border-radius: 10px;}
-.que::before{dis#play: inline-block; content: 'Q'; font-size: 20px; font-weight: bold;  color: #006633; margin: 0 30px; }
+.que::before{display: inline-block; content: 'Q'; font-size: 20px; font-weight: bold;  color: #006633; margin: 0 30px; }
 .que.on>span{ color: #006633;}
 .anw {display: none; overflow: hidden; font-size: 14px; background-color: #f4f4f2; padding: 20px 0; border-radius: 10px;}
 .anw::before {display: inline-block; content: 'A'; font-size: 20px; font-weight: bold; color: #666; margin: 0 30px;}
