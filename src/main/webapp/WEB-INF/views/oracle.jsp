@@ -7,7 +7,6 @@
         location.href="oracle?nowPage=${paging.nowPage}&cntPerPage="+sel;
     }
 </script>
-
 <style>
     body {
         background: rgba(255, 247, 137, 0.132);
@@ -54,11 +53,11 @@
 <section class="qnaMain py-5">
     <article class="contain">
         <div class="text-center">
-            <h2 class="fw-bolder">누적 회원</h2>
+            <h2 class="fw-bolder">전체 회원</h2>
         </div>
         <div style="border-radius: 5px; margin-bottom: 10px;">
             <form action="${contextPath}/oracle2" method="get">
-                <select name="keyword" >
+                <select name="keyword">
                     <option value="a">전체</option>
                     <option value="b">고객</option>
                     <option value="c">관리자</option>
@@ -68,16 +67,6 @@
                 </select>
                 <button type="submit" value="검색">검색</button>
             </form>
-            <select id="cntPerPage" name="sel" onchange="selChange()" style="float: right;">
-                <option value="5"
-                        <c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-                <option value="10"
-                        <c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-                <option value="15"
-                        <c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-                <option value="20"
-                        <c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-            </select>
         </div>
         <!-- 옵션선택 끝 -->
         <table class="table table-hover">
