@@ -113,4 +113,13 @@ SELECT *
         ]]>
     </select>
 
+    <insert id="saveReply" parameterType="org.project.vo.ReplyVO">
+        INSERT INTO REPLY(REPLYNO, REPLYCONTENT, QANO, USERNO, REWRITER)
+        VALUES(REPLYNO.NEXTVAL,#{replyContent},#{qaNo},#{userNo},#{reWriter})
+    </insert>
+
+    <select id="getReplyList" parameterType="org.project.vo.ReplyVO" resultType="org.project.dto.ReplyDTO">
+        select * from REPLY
+        where QANO = #{qaNo}
+    </select>
 </mapper>

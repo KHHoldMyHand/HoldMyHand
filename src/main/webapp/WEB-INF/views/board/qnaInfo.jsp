@@ -31,6 +31,13 @@
         #comment {
             width: 100%;
         }
+
+        #write {
+            width: 100%;
+            height : 300px;
+            border : 1px solid black;
+            margin : 1% 0;
+        }
     </style>
 
     <section class="py-5">
@@ -77,6 +84,12 @@
             </table>
         </div>
 
+        <div id="write" readonly>
+        <c:forEach items="${getReplyList}" var="li">
+            <div>${li.reWriter} : ${li.replyContent} </div>
+        </c:forEach>
+        </div>
+
 
 
         <br><br>
@@ -97,20 +110,20 @@
                         <!-- 본문 작성-->
                         <td>
                             <div>
-                                <textarea name="comment_content" rows="4" cols="150"></textarea>
+                                <textarea name="comment_content" id="commentInput" rows="4" cols="124"></textarea>
                             </div>
                         </td>
                         <!-- 댓글 등록 버튼 -->
                         <td>
                             <div id="btn">
-                                <p><a href="#" style="color: blue;">[댓글등록]</a></p>
+                                <p><div class="btn btn-success" id="replyRegistration">[댓글등록]</div> </p>
                             </div>
                         </td>
                     </form>
                 </tr>
             </table>
             <table width="100%" border="3" bordercolor="skyblue" >
-                <c:forEach items="${replyList}" var="replyList">
+                <c:forEach items="${readReply}" var="replyList">
                 <div>
                 <input type="text" name="ReplyNo" value="${replyList.ReplyNo}" style="display:none">
                 <input type="text" name="QANo" value="${replyList.QANo}" style="display:none">
@@ -133,9 +146,10 @@
 
     </div>
     </section>
-
     <script>
     $(document).ready(function(){
+
+
         let formObj = $("form[role='form']");
 
         <!-- 삭제 -->
@@ -154,6 +168,38 @@
 
 
     })
+
+    $("#replyRegistration").click(function(){
+        // 작성자, 댓글 ,
+        let commentInput = $("#commentInput").val();
+
+        console.log("commentInput : "+commentInput);
+        let jsonObj = {
+            "replyContent" : commentInput,
+            "qaNo" : parseInt("${QANo}")
+        }
+        $.ajax({
+            type : "POST",
+            url : "/saveReply",
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(jsonObj),
+            success : function(data){
+            let qy = ``;
+
+            for(let dt of data){
+            qy += `
+                <div>\${dt.reWriter} : \${dt.replyContent}</div>
+            `
+            }
+            $("#write").html(qy);
+
+            },error : function(data){
+            alert("실패");
+            }
+        })
+    })
+
+
     </script>
 
 

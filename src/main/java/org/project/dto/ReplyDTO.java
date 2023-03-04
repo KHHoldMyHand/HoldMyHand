@@ -1,9 +1,12 @@
-package org.project.vo;
+package org.project.dto;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
-public class ReplyVO {
+@ToString
+public class ReplyDTO {
+
     private Integer replyNo;
     private String replyContent;
     private Integer qaNo;

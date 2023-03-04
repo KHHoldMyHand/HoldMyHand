@@ -2,8 +2,10 @@ package org.project.service;
 
 import org.project.dao.BoardDAO;
 import org.project.dto.BoardWriteDTO;
+import org.project.dto.ReplyDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
+import org.project.vo.ReplyVO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -79,5 +81,14 @@ public class BoardServiceImpl implements BoardService{
         return boardDAO.selectSearchBoard(vo);
     }
 
+    @Override
+    public int saveReply(ReplyVO vo) throws Exception {
+        return boardDAO.saveReply(vo);
+    }
+
+    @Override
+    public List<ReplyDTO> getReplyList(ReplyVO vo) throws Exception {
+        return boardDAO.getReplyList(vo);
+    }
 
 }
