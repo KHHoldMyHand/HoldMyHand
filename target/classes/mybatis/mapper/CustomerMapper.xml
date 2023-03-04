@@ -167,7 +167,7 @@
     <select id="selectCustomer" resultType="org.project.vo.CustomerVO">
         select *
         from (select rownum rn, A.*
-              from (select * from Customer where managerClassification = 0 order by userJoinDate desc) A)
+              from (select * from Customer order by userJoinDate desc) A)
         where rn between #{start} and #{end}
     </select>
 

@@ -71,15 +71,25 @@
         <!-- 옵션선택 끝 -->
         <table class="table table-hover">
             <tr>
-                <th>기업이름</th>
-                <th>유저ID</th>
-                <th>휴대전화</th>
+                <th>유저번호</th>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>주소</th>
+                <th>전화번호</th>
+                <th>기업명</th>
+                <th>업종</th>
             </tr>
             <c:forEach items="${list}" var="dept">
             <tr>
-                <td>${dept.corpName}</td>
+                <td>${dept.userNo}</td>
                 <td>${dept.userID}</td>
+                <td>${dept.corpManager}</td>
+                <td>${dept.userEmail}</td>
+                <td>${dept.userAddress}</td>
                 <td>${dept.phoneNo}</td>
+                <td>${dept.corpName}</td>
+                <td>${dept.corpType}</td>
             </tr>
             </c:forEach>
         </table>
