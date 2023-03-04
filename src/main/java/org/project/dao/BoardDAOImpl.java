@@ -2,8 +2,10 @@ package org.project.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.project.dto.BoardWriteDTO;
+import org.project.dto.ReplyDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
+import org.project.vo.ReplyVO;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
@@ -76,5 +78,15 @@ public class BoardDAOImpl implements BoardDAO{
     @Override
     public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception {
         return session.selectList(namespace + ".selectSearchBoard", vo);
+    }
+
+    @Override
+    public int saveReply(ReplyVO vo) throws Exception {
+        return session.insert(namespace + ".saveReply", vo);
+    }
+
+    @Override
+    public List<ReplyDTO> getReplyList(ReplyVO vo) throws Exception {
+        return session.selectList(namespace + ".getReplyList", vo);
     }
 }
