@@ -3,18 +3,7 @@
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<style>
-    * {font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 600; color: #111;}
-
-    .tit15M {font-size: 15px; font-weight: 500;}
-    .tit19 {font-size: 19px; font-weight: 600; margin-top: 15px;}
-    .tit23B {font-size: 25px; font-weight: 700;}
-    .tit30B {font-size: 30px; font-weight: 700;}
-    .agr_subject {overflow-y:scroll; overflow-x: hidden; width: 900px; height: 300px; padding: 15px 20px; border: 1px solid #ababab; background: #fff; margin: 0 auto;}
-    .gold_btn {width: 100px; height: 40px; color: #333; background: gold; margin: 10px; border-radius: 10px; display: inline-block;}
-
-</style>
-
+<link rel="../resources/css/exam.css">
 <script type="text/javascript">
     function AgreementYesNoCheck() {
         if(document.querySelector("input[name='AgreementYesNo']:checked").value == "y") {

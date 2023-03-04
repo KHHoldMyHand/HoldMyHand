@@ -3,11 +3,12 @@
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<section class="py-5" id="features">
+<link rel="../resources/css/exam.css">
+
+<section class="py-5 joinInfoArea" id="features">
     <div class="container px-5 my-5">
         <div class="row gx-5">
             <title>신용정보 입력</title>
-            <link href="../resources/css/join.css" rel="stylesheet" type="text/css">
             <body>
             <div class="outer">
                 <!-- 사업자명 가져오기 -->
@@ -97,88 +98,6 @@
         </div>
     </div>
 </section>
-
-<style>
-    * {
-        font-family: 'Pretendard', sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: #111;
-    }
-
-    .gold_btn {
-        width: 100px;
-        height: 40px;
-        color: #333;
-        background: gold;
-        margin: 10px;
-        border-radius: 10px;
-        display: inline-block;
-        text-align: center;
-        line-height: 40px;
-    }
-
-    .outer {
-        padding: 20px !important;
-    }
-
-    .tit30B {
-        font-size: 30px;
-        font-weight: 700;
-        margin-bottom: 25px;
-    }
-
-    .tit17 {
-        font-size: 17px;
-        font-weight: 600;
-        margin-top: 20px;
-        margin-left: 10px;
-    }
-
-    .gold_line {
-        border-top: 5px solid gold;
-        margin: 0 50px;
-        margin-bottom: 25px;
-    }
-
-    .hometax_link img {
-        max-width: 100%;
-        width: 114px;
-        height: 57px;
-    }
-
-    .insert_input {
-        background: #fff;
-        border-radius: 10px;
-        outline: none;
-        border: 2px solid #ddd;
-        padding: 7px 10px;
-        font-size: 15px;
-        font-weight: 500;
-        color: #444;
-    }
-
-    .in_area {
-        display: inline-block;
-    }
-
-    .insert_input::placeholder {
-        color: #888;
-    }
-
-    #joinForm {
-        width: 500px !important;
-    }
-
-    .hidden {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        visibility: hidden;
-        opacity: 0;
-    }
-</style>
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
