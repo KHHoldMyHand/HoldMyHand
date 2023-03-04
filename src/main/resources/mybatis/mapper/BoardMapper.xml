@@ -89,6 +89,9 @@
             <if test="searchType == 'cw'.toString()">
                 and ( content like '%' ||  #{keyword} || '%' OR writer like '%' ||  #{keyword} || '%')
             </if>
+            <if test="searchType == 'tw'.toString()">
+                and ( title like '%' ||  #{keyword} || '%' OR writer like '%' ||  #{keyword} || '%')
+            </if>
         </if>
     </sql>
 

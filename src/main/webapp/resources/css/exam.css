@@ -1,0 +1,102 @@
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 600; color: #111;}
+ul, ol, li {list-style: none;}
+a {text-decoration: none; color: #111;}
+button {cursor: pointer; outline: none;}
+select {outline: none; border: 1px solid #ddd; border-radius: 7px; padding: 4px 0px; font-size: 14px; font-weight: 500;}
+input {border:none; outline: none;}
+table {border-collapse: collapse; width: 100%; border-spacing: 0;}
+body {background: rgba(255, 247, 137, 0.132);}
+
+/* 공통 폰트 */
+.tit15M {font-size: 15px; font-weight: 500;}
+.tit15B {font-size: 15px; font-weight: 700;}
+.tit17B {font-size: 17px; font-weight: 700;}
+.tit19 {font-size: 19px; font-weight: 600;}
+.tit23B {font-size: 25px; font-weight: 700;}
+.tit30B {font-size: 30px; font-weight: 700;}
+
+/* 공통css */
+.contain {background: rgba(255, 247, 137, 0.132); box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px; margin: 70px 0; padding: 50px;}
+.out {padding: 20px !important;}
+.gold_line {border-top: 5px solid gold; margin: 0 50px; margin-bottom: 25px;}
+.paging {width: 30px; height: 30px; display: inline-block; background: gold; border-radius: 100%; text-align: center; color: #fff; line-height: 30px; margin: 0 6px;}
+.gold_btn {width: 80px; height: 33px; color: #333; background: gold; margin: 10px; border-radius: 10px; display: inline-block; font-size: 15px; font-weight: 600; text-align: center; line-height: 33px; transition: 0.3s ease;}
+.gold_btn:hover {background: #fbe878; transition: 0.3s ease;}
+.hidden {position: absolute; top: 0; left: 0; z-index: -1; visibility: hidden; opacity: 0;}
+.table {background: #fefefe;}
+.table tr {text-align: center; border-top: none !important;}
+.table tr:first-child {border-top: 3px solid gold !important;}
+.table tr th {border-bottom: 1px solid #ddd; font-size: 16px; font-weight: 600; color: #222; padding: 18px 10px; line-height: 140%; vertical-align: middle;}
+.table tr td {border-bottom: 1px solid #ddd; padding: 18px 10px; line-height: 140%; font-size: 16px; font-weight: 500; color: #222; vertical-align: middle; word-break: keep-all;}
+.table .table_btn {background: gold; width: 95px; height: 35px; line-height: 35px; font-weight: 500; font-size: 14px; border-radius: 7px;}
+
+/* credit 페이지 */
+.agr_subject {overflow-y:scroll; overflow-x: hidden; width: 900px; height: 300px; padding: 15px 20px; border: 1px solid #ababab; background: #fff; margin: 0 auto;}
+
+/* creditForm 페이지 */
+.joinInfoArea .tit30B {margin-bottom: 25px;}
+.joinInfoArea .tit17 {margin-left: 10px;}
+.joinInfoArea .hometax_link img {max-width: 100%; width: 114px; height: 57px;}
+.insert_input {background: #fff; border-radius: 10px; border: 2px solid #ddd; padding: 7px 10px; font-size: 15px; font-weight: 500; color: #444;}
+.in_area {display: inline-block;}
+.insert_input::placeholder {color: #888;}
+#joinForm {width: 500px !important;}
+
+/* Q&A 문의하기 페이지 */
+.qnaMain {max-width: 1200px; margin: 0 auto;}
+.qnaMain .write_wrp {max-width: 1000px; margin: 0 auto;}
+.qnaMain .row {align-items: center; margin-bottom: 10px;}
+.qnaMain .row:last-child {align-items: flex-start; margin-bottom: 0;}
+.qnaMain .write_input input {width: 100%; border-radius: 7px; border: 1px solid #ddd; padding: 7px 10px; color: #333;}
+.qnaMain .write_input input::placeholder {font-size: 15px; font-weight: 500; color: #ddd;}
+.qnaMain .write_txtArea textarea {width: 100%; height: 200px; border-radius: 7px; border: 1px solid #ddd; padding: 7px 10px; outline: none;}
+.qnaMain .write_txtArea textarea::placeholder {font-size: 15px; font-weight: 500; color: #ddd;}
+.qnaMain .bt_wrap {text-align: center;}
+
+/* Q&A 페이지 */
+.qnaPage .btn_wrp {display: flex; justify-content: center; align-content: center; padding: 20px 0;}
+.qnaPage .btn_wrp .search_wrap {width: auto; margin-left: 0; margin-bottom: 0;}
+.qnaPage .btn_wrp select {border-radius: 5px; height: 33px; width: 100px;}
+.qnaPage .btn_wrp input {height: 33px; border: 1px solid #ddd; font-size: 15px; font-weight: 600; color: #111; width: 250px; border-radius: 5px; padding: 7px 10px;}
+.qnaPage .btn_wrp input::placeholder {font-size: 15px; font-weight: 500; color: #ddd;}
+
+/* creditMange 페이지 */
+#cntPerPage {padding: 4px 5px; border-radius: 5px; font-size: 14px; font-weight: 500;}
+
+/* evolution 페이지 */
+.evolPage .table tr th, .evolPage .table tr td {text-align: left; padding-left: 18px;}
+.evolPage .date_input {border: 1px solid #111; margin: 5px 5px; width: 160px; height: 40px; border-radius: 7px; text-align: center; font-size: 17px; padding-right: 10px;}
+.evolPage .select_input {border: 1px solid #111; width: 160px; height: 80px; margin: 5px 5px; border-radius: 7px; text-align: center; font-size: 45px; outline: none; color: #111;}
+.evolPage .board_write .title {padding: 15px;}
+.evolPage .board_write .cont textarea {display: block; width: 100%; height: 400px; padding: 20px; box-sizing: border-box; resize: vertical;}
+.board_write .title dt, .board_write .title dd {display: inline-block; vertical-align: middle; font-size: 1.4rem;}
+.board_write .title dt {width: 90px;}
+.board_write .title dd {width: 80%}
+.board_write .title input[type="text"] {padding: 10px; box-sizing: border-box;}
+.board_write [type="text"] {width: 100%;}
+.board_write .title dl {font-size: 0;}
+.board_write .title, .cont {border-color: #FFC007; border-style: solid;}
+.bt_wrap {text-align: right; font-size: 20px;}
+
+/* 아이디찾기, 비밀번호찾기 페이지 */
+.mybtn {width:150px; height:40px; padding:0; display:inline; border-radius: 25px; background: #FFD700; color: black; margin-top: 25px; border: solid 2px white; transition: all 0.5s ease-in-out 0s;}
+.mybtn:hover .mybtn:focus {background: white; color: #212529; text-decoration: none;}
+.mybtn:active{position: relative; top:2px;}
+.input-area{width:300px; height:40px; border-radius: 7px; border: 1px solid #ddd; font-size: 15px; font-weight: 500; color: #111; padding: 7px 10px;}
+.findId .tit30B, .findPass .tit30B {text-align: center; margin-bottom: 30px;}
+
+/*기업등급정의 페이지*/
+.creditResult .tit_wrp {display: flex; margin-bottom: 20px;}
+.creditResult .tit_wrp > span {display: inline-block;}
+.creditResult .tit_wrp .ss {background-color: gold; font-size: 30px; font-weight: 700; border: 1px solid #111; border-radius: 10px; padding: 10px 15px; text-align: center;}
+.creditResult .tit_wrp .sb {font-size: 16px; font-weight: 600; padding-left: 10px;}
+.creditResult .text_wrp li {list-style: circle; font-size: 14px; font-weight: 500; line-height: 1.3; margin-bottom: 10px; word-break: keep-all;}
+
+/*기업글보기*/
+.qnaInfo .btn_wrp {display: flex; flex-wrap: wrap; justify-content: center; align-items: center;}
+.qnaInfo .comment {display: flex; flex-wrap: wrap; align-items: center;}
+.qnaInfo .col-8 textarea {outline: none; width: 100%; height: 100%; padding: 7px 10px; border-radius: 7px; border: 1px solid #ddd;}
+.qnaInfo .col-10 textarea {width: 100%; height: 100%; padding: 7px 10px; border-radius: 7px; border: 1px solid #ddd; outline: none;}
+.qnaInfo .comment span {display: inline-block;}
+.qnaInfo .comment span:last-child {text-align: center;}
+#board > * {padding-left: 0;}

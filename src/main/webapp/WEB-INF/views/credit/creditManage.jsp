@@ -8,52 +8,15 @@
     }
 </script>
 
-<style>
-    body {
-        background: rgba(255, 247, 137, 0.132);
-    }
-    .qnaMain {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .contain {
-        background: rgba(255, 247, 137, 0.132);
-        box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
-        margin: 70px 0;
-        padding: 50px;
-    }
-    .table tr {
-        text-align: center;
-    }
-
-    .table tr:first-child {
-        border-top: 3px solid gold;
-    }
-    .table tr th {
-        border-bottom: 1px solid #ddd;
-    }
-    .table tr td {
-        border-bottom: 1px solid #ddd;
-    }
-
-    .table .table_btn {
-        background: gold;
-        padding: 7px 10px;
-        font-weight: 500;
-        font-size: 14px;
-        outline: none;
-        border: none;
-        border-radius: 7px;
-    }
-</style>
+<link rel="../resources/css/exam.css">
 <body>
-<section class="qnaMain py-5">
+<section class="qnaMain creditMange py-5">
     <article class="contain">
         <div class="text-center">
             <h2 class="fw-bolder">신용 정보 등록 평가</h2>
         </div>
         <div style="float: right; margin-bottom: 10px;">
-            <select id="cntPerPage" name="sel" onchange="selChange()" style="border-radius: 5px;">
+            <select id="cntPerPage" name="sel" onchange="selChange()">
                 <option value="5"
                         <c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기
                 </option>
