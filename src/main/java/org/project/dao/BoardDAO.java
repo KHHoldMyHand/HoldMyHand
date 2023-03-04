@@ -1,8 +1,10 @@
 package org.project.dao;
 
 import org.project.dto.BoardWriteDTO;
+import org.project.dto.ReplyDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
+import org.project.vo.ReplyVO;
 
 import java.util.List;
 import java.util.Map;
@@ -37,4 +39,10 @@ public interface BoardDAO {
     int countSearchBoard(Map<String, Object> paramMap) throws Exception;
 
     public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception;
+
+    int saveReply(ReplyVO vo) throws Exception;
+
+
+    List<ReplyDTO> getReplyList(ReplyVO vo) throws Exception;
+
 }

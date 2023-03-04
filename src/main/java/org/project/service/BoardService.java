@@ -1,8 +1,10 @@
 package org.project.service;
 
 import org.project.dto.BoardWriteDTO;
+import org.project.dto.ReplyDTO;
 import org.project.vo.BoardVO;
 import org.project.vo.PagingVO;
+import org.project.vo.ReplyVO;
 
 import java.util.List;
 
@@ -35,4 +37,9 @@ public interface BoardService {
     public int countSearchBoard(String keyword,String searchType)throws Exception;
 
     public List<BoardVO> selectSearchBoard(PagingVO vo) throws Exception;
+
+    int saveReply(ReplyVO vo) throws Exception;
+
+
+    List<ReplyDTO> getReplyList(ReplyVO vo) throws Exception;
 }
