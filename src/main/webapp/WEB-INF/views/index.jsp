@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
+
 <%--   @@@@@@@@@@여기까지 헤더@@@@@@@@@   --%>
       <!-- Header-->
       <header class="bg-warning py-5">
@@ -30,11 +31,11 @@
                   class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
                 >
                   <a
-                    class="btn btn-light btn-lg px-4"
+                    class="btn"
                     href="#features"
                     >시작하기</a
                   >
-                  <a class="btn btn-light btn-lg px-4" href="#!"
+                  <a class="btn" href="#!"
                     >더 보기</a
                   >
                 </div>

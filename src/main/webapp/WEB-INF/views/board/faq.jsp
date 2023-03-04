@@ -9,18 +9,18 @@
 
 <%--<link href="../resources/css/faq.css" rel="stylesheet" type="text/css">--%>
 <link href="../resources/css/join.css" rel="stylesheet" type="text/css">
-<section class="qnaMain py-5">
+<section class="qnaMain faqPage py-5">
     <article class="contain">
         <div class="text-center">
             <h1 class="text-center">자주묻는질문게시판</h1>
         </div>
 
-        <div class="search_wrap"style="margin: 20px 20px; text-align: center">
+        <div class="search_wrap">
             <div class="search_box">
-                <input style="border-radius: 4px; width: 300px; height: 35px;" type="text" class="input" placeholder="검색어를 입력하세요">
-                <div class="btn">
-                    <i class="fas fa-search"></i>
-                </div>
+                <input type="text" class="input" placeholder="검색어를 입력하세요">
+            </div>
+            <div class="btn">
+                <i class="fas fa-search"></i>
             </div>
         </div>
 
@@ -167,53 +167,6 @@
 
     .que.on .arrow-top {
         display: block;
-    }
-</style>
-<style>
-    body {
-        background: rgba(255, 247, 137, 0.132);
-    }
-
-    .qnaMain {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .contain {
-        background: rgba(255, 247, 137, 0.132);
-        box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
-        margin: 70px 0;
-        padding: 50px;
-    }
-
-    .table tr {
-        text-align: center;
-    }
-
-    .table tr:first-child {
-        border-top: 3px solid gold;
-    }
-
-    .table tr th {
-        border-bottom: 1px solid #ddd;
-        height: 35px;
-        line-height: 35px;
-    }
-
-    .table tr td {
-        border-bottom: 1px solid #ddd;
-        height: 35px;
-        line-height: 35px;
-    }
-
-    .table .table_btn {
-        background: gold;
-        padding: 7px 10px;
-        font-weight: 500;
-        font-size: 14px;
-        outline: none;
-        border: none;
-        border-radius: 7px;
     }
 </style>
 

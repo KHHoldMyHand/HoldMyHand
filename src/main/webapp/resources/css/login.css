@@ -1,15 +1,5 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Mynerve&display=swap');
-*{margin:0; padding: 0; box-sizing: border-box;}
-
-#features{
-    background-color: rgba(255, 247, 137, 0.132);
-}
-
-body{
-font-family: 'Pretendard', sans-serif;
-}
-
 .login{position: relative; z-index: 2;}
 .login h1{
     font-size: 32px; color: rgb(0, 0, 0);

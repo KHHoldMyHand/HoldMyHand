@@ -7,48 +7,8 @@
         location.href="oracle?nowPage=${paging.nowPage}&cntPerPage="+sel;
     }
 </script>
-<style>
-    body {
-        background: rgba(255, 247, 137, 0.132);
-    }
-    .qnaMain {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .contain {
-        background: rgba(255, 247, 137, 0.132);
-        box-shadow: rgb(0 0 0 / 6%) 0px 0px 4px 0px;
-        margin: 70px 0;
-        padding: 50px;
-    }
-    .table tr {
-        text-align: center;
-    }
 
-    .table tr:first-child {
-        border-top: 3px solid gold;
-    }
-    .table tr th {
-        border-bottom: 1px solid #ddd;
-        height: 35px;
-        line-height: 35px;
-    }
-    .table tr td {
-        border-bottom: 1px solid #ddd;
-        height: 35px;
-        line-height: 35px;
-    }
-
-    .table .table_btn {
-        background: gold;
-        padding: 7px 10px;
-        font-weight: 500;
-        font-size: 14px;
-        outline: none;
-        border: none;
-        border-radius: 7px;
-    }
-</style>
+<link rel="../resources/css/exam.css">
 <body>
 <section class="qnaMain py-5">
     <article class="contain">
@@ -57,7 +17,7 @@
         </div>
         <div style="border-radius: 5px; margin-bottom: 10px;">
             <form action="${contextPath}/oracle2" method="get">
-                <select name="keyword">
+                <select class="select_btn" name="keyword">
                     <option value="a">전체</option>
                     <option value="b">고객</option>
                     <option value="c">관리자</option>
@@ -65,9 +25,7 @@
                     <option value="e">신용평가진행중</option>
                     <option value="f">신용평가완료</option>
                 </select>
-                <button type="submit" value="검색"
-                        style="border: 1px solid #999; border-radius: 4px;
-                            background-color: #ffda70">검색</button>
+                <button class="gold_btn" type="submit" value="검색">검색</button>
             </form>
         </div>
         <!-- 옵션선택 끝 -->
@@ -85,14 +43,14 @@
             </tr>
             </c:forEach>
         </table>
-        <div style="display: block; text-align: center; font-size: 20px;">
+        <div style="text-align: center; font-size: 20px;">
             <c:if test="${paging.startPage != 1 }">
                 <a href="/oracle?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
             </c:if>
             <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
                 <c:choose>
                     <c:when test="${p == paging.nowPage }">
-                        <b>${p }</b>
+                        <b class="paging">${p }</b>
                     </c:when>
                     <c:when test="${p != paging.nowPage }">
                         <a href="/oracle?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
