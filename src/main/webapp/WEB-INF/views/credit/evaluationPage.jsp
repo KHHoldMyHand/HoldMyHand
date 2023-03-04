@@ -58,17 +58,17 @@
                                 <div class="select">
                                     <select class="select_input" id="score" Type="text" name="score" placeholder="A"
                                             class="necessary insert_input">
-                                        <option value="S">AAA</option>
-                                        <option value="A">AA</option>
-                                        <option value="B">A</option>
-                                        <option value="B">BBB</option>
-                                        <option value="B">BB</option>
+                                        <option value="AAA">AAA</option>
+                                        <option value="AA">AA</option>
+                                        <option value="A">A</option>
+                                        <option value="BBB">BBB</option>
+                                        <option value="BB">BB</option>
                                         <option value="B">B</option>
-                                        <option value="C">CCC</option>
-                                        <option value="C">CC</option>
+                                        <option value="CCC">CCC</option>
+                                        <option value="CC">CC</option>
                                         <option value="C">C</option>
                                         <option value="D">D</option>
-                                        <option value="E">NR</option>
+                                        <option value="NR">NR</option>
                                     </select>
                                 </div>
                             </div>

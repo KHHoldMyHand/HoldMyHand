@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
-
 <link rel="../resources/css/exam.css">
 <section class="qnaMain py-5">
     <article class="contain">
