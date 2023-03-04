@@ -137,14 +137,32 @@
                         <div id="btn">
                             <a href="<%=request.getContextPath()%>/qnaWriter" style="color:blue;">[수정]</a><br>
                             <a href="" style="color: blue;">[삭제]</a>
-                        </div>
-                    </td>
-                </tr>
-                </c:forEach>
-            </table>
-        </div>
 
-    </div>
+                        </div>
+                        <table>
+                            <c:forEach items="${replyList}" var="replyList">
+                                <div>
+                                    <input type="text" name="ReplyNo" value="${replyList.ReplyNo}" style="display:none">
+                                    <input type="text" name="QANo" value="${replyList.QANo}" style="display:none">
+                                    <input type="text" name="userNo" value="${replyList.userNo}" style="display:none">
+                                </div>
+                                <!-- 댓글 읽기/수정/삭제-->
+                                <tr>
+                                    <td> ${replyList.ReWriter} </td>
+                                    <td>${replyList.replyContent}</td>
+                                    <td>
+                                        <div id="btn">
+                                            <a href="<%=request.getContextPath()%>/qnaWriter">[수정]</a><br>
+                                            <a href="">[삭제]</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <script>
     $(document).ready(function(){
