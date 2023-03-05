@@ -32,6 +32,7 @@
         height : 300px;
         border : 1px solid black;
         margin : 1% 0;
+        overflow: scroll;
     }
 </style>
 
