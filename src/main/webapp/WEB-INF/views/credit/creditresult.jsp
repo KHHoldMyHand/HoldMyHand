@@ -2,10 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include/header.jspf" %>
 
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <link rel="../resources/css/exam.css">
 <section class="py-5 qnaMain creditResult" id="features">
-    <div class="contain px-5 my-5">
+    <div class="contain px-5 my-5" id="capture_area">
         <div class="gx-5">
             <div class="row">
                 <div class="col-6" style="margin-bottom: 50px;">
@@ -210,6 +211,20 @@
     </div>
 </section>
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<button type="button" class="btn_download">파일 받기</button>
+
+<script>
+    $(function(){
+        $(".btn_download").click(function(e){
+            html2canvas(document.getElementById("capture_area")).then(function(canvas) {
+                var el = document.createElement("a")
+                el.href = canvas.toDataURL("image/jpeg")
+                el.download = '신용평가보고서.jpg' //다운로드 할 파일명 설정
+                el.click()
+            })
+        })
+    })
+</script>
 <script type="text/javascript">
     let reportRank = document.getElementById("reportRank").textContent;
 
