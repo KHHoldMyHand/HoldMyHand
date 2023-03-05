@@ -15,11 +15,11 @@
                           method="post" onsubmit="return validateForm()">
                         <h1 class="tit30B">회원정보수정</h1>
                         <!-- userNo -->
-                        <input type="text" maxlength="13" value="${login.userNo}" style="display: none">
+                        <input type="text" maxlength="13" name="userNo" value="${login.userNo}" style="display: none">
 
                         <div class="gold_line" style="padding-top: 10px;">
                             <h4 class="tit17">* 아이디</h4>
-                            <span class="in_area"><input class="insert_input" name="userNo" value="${login.userID}"
+                            <span class="in_area"><input class="insert_input" value="${login.userID}"
                                                          readonly>
 
                         </span>
