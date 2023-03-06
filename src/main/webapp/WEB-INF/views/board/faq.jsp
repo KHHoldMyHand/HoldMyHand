@@ -27,14 +27,14 @@
 
         <div class="Accordion_wrap">
             <div class="que">
-                <span>질문1</span>
+                <span>신용을 자바 어떻게 진행하나요??</span>
                 <div class="arrow-wrap" style="margin-right:20px; color: #006633;">
                     <span class="arrow-top" style="font-size:20px" ;>▲</span>
                     <span class="arrow-bottom" style="font-size:20px" ;>▼</span>
                 </div>
             </div>
             <div class="anw">
-                <span>내용1</span>
+                <span>안녕하세요. 신용을 자바 입니다. 먼저 회원가입을 하신 후 신용평가를 눌러 양식에 맞게 작성 및 재무제표 파일을 첨부해주시면, 심사 진행 후 신용평가 결과를 보여드립니다.</span>
             </div>
 
             <div class="que">

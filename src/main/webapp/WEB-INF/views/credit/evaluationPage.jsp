@@ -97,17 +97,19 @@
 </body>
 <script type="text/javascript">
     function Evaluation() {
-        alert("전송")
-        document.getElementById("scoreFrm").submit(); // 전송
+        let score = document.getElementById("score");
+        var check = confirm("점수 : " + score.value + "(으)로 평가합니다.");
+        if(check == true) {
+            document.getElementById("scoreFrm").submit();
+        } else {
+            return false;
+        }
     }
 </script>
 <script>
     let today = new Date().toISOString().slice(0, 10);
     document.getElementById("today-date").max = today;
     document.getElementById("today-date").value = today;
-    // function ho(){
-    //     alert(today);
-    // }
 </script>
 
 <%@ include file="/WEB-INF/views/include/footer.jspf" %>

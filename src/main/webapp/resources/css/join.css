@@ -116,6 +116,17 @@ background: white;
 border-radius: 6px;
 }
 
+#input_area {
+   background: #fff;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid #ddd;
+    padding: 7px 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
 .input_area input:not([type=checkbox]) {
 width: 250px;
 height: 30px;

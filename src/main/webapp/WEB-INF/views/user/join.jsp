@@ -84,31 +84,57 @@
                             <h4 class="tit17">* 대표자명</h4>
                                 <span class="in_area">
                                     <input type="text" maxlength="5" name="corpManager" class="insert_input"
-                                           placeholder="대표자명" required></span>
+                                           placeholder="대표자명" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
 
                             <h4 class="tit17">* 대표 연락처</h4>
                                 <span class="in_area">
                                     <input type="tel" maxlength="11" name="phoneNo" class="insert_input"
-                                           placeholder="(-없이)01012345678" required></span>
+                                           placeholder="(-없이)01012345678" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
 
                             <h4 class="tit17" >* 이메일</h4>
                                 <span class="in_area">
                                     <input type="email" name="userEmail" class="insert_input"
-                                           placeholder="대표 이메일" required></span>
+                                           placeholder="대표 이메일" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
                         </div>
                         <!-- 우편번호, 사업자 등록주소 상세주소 -->
                         <div class="gold_line">
-                            <h4 class="tit17">* 우편번호</h4>
-                                <span class="in_area"><input type="text" name="address"
-                                                                class="insert_input"
-                                                                placeholder="우편번호 검색"></span>
-                                <button type="button" id="postcodify_search_button" required>검색</button>
-                            <h4 class="tit17">* 사업자등록상 주소</h4>
-                                <span class="in_area"><input type="text" name="userAddress"
-                                                                class="insert_input" required></span>
-                            <h4 class="tit17">* 상세주소</h4>
-                                <span class="in_area"><input type="text" class="insert_input"
-                                                                name="userAddress"></span>
+                           <h4>우편번호</h4>
+                           <span id="input_area"><input type="text" name="address"
+                           class="postcodify_postcode5"  placeholder="우편번호 검색"></span>
+                           <button type="button" id="postcodify_search_button" required>검색</button>
+                           <h4>사업자등록상 주소</h4>
+                           <span id="input_area"><input type="text" name="userAddress"
+                           class="postcodify_address" required></span>
+                           <h4>상세주소</h4>
+                           <span id="input_area" ><input type="text" name="userAddress"
+                           class="postcodify_details" required></span>
                         </div>
                         <!-- 이용약관 -->
                         <div class="gold_line">
@@ -369,22 +395,17 @@
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
-<script> $(function () {
-    $("#postcodify_search_button").postcodifyPopUp();
-});
-</script>
+<script> $(function () { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 <script type="text/javascript">
-    var bDisplay = true;
-
-    function doDisplay() {
+var bDisplay = true; function doDisplay(){
         var con = document.getElementById("myDIV");
-        if (con.style.display == 'none') {
+        if(con.style.display=='none'){
             con.style.display = 'block';
-        } else {
+        }else{
             con.style.display = 'none';
         }
-    }
+}
 </script>
 
 <script type="text/javascript">
@@ -529,7 +550,6 @@
             $('#pw').focus();
             return false;
         } else {
-            alert("사용가능한 비밀번호입니다.");
             return true;
         }
 
