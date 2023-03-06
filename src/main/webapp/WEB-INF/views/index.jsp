@@ -56,7 +56,7 @@
         <div class="container px-5 my-5">
           <div class="row gx-5">
             <div class="col-lg-4 mb-5 mb-lg-0">
-              <h2 class="fw-bolder mb-0">A better way to start building.</h2>
+              <h2 class="fw-bolder mb-0">신용을 자바 팀프로젝트</h2>
             </div>
             <div class="col-lg-8">
               <div class="row gx-5 row-cols-1 row-cols-md-2">
@@ -66,10 +66,13 @@
                   >
                     <i class="bi bi-collection"></i>
                   </div>
-                  <h2 class="h5">Featured title</h2>
+                  <h2 class="h5">회원가입</h2>
                   <p class="mb-0">
-                    Paragraph of text beneath the heading to explain the
-                    heading. Here is just a bit more text.
+                    -아이디 중복 확인<br>
+                    -비밀번호 8~15자리<br>
+                    -영문, 숫자, 특수기호 포함<br>
+                    -주소찾기 (우편번호+상세주소 합쳐서 DB에 저장)<br>
+                    -약관동의<br>
                   </p>
                 </div>
                 <div class="col mb-5 h-100">
@@ -78,10 +81,11 @@
                   >
                     <i class="bi bi-building"></i>
                   </div>
-                  <h2 class="h5">Featured title</h2>
+                  <h2 class="h5">로그인</h2>
                   <p class="mb-0">
-                    Paragraph of text beneath the heading to explain the
-                    heading. Here is just a bit more text.
+                    -회원 가입한 아이디 & 비밀번호로 로그인<br>
+                    -비밀번호 찾기 : 이메일로 임시 비밀번호 발송<br>
+                    -자동 로그인<br>
                   </p>
                 </div>
                 <div class="col mb-5 mb-md-0 h-100">
@@ -90,10 +94,11 @@
                   >
                     <i class="bi bi-toggles2"></i>
                   </div>
-                  <h2 class="h5">Featured title</h2>
+                  <h2 class="h5">신용평가</h2>
                   <p class="mb-0">
-                    Paragraph of text beneath the heading to explain the
-                    heading. Here is just a bit more text.
+                    -약관 동의 후 신용정보 입력<br>
+                    -필수서류 제출 후 평가 대기<br>
+                    -평가 결과 확인<br>
                   </p>
                 </div>
                 <div class="col h-100">
@@ -102,10 +107,10 @@
                   >
                     <i class="bi bi-toggles2"></i>
                   </div>
-                  <h2 class="h5">Featured title</h2>
+                  <h2 class="h5">고객센터</h2>
                   <p class="mb-0">
-                    Paragraph of text beneath the heading to explain the
-                    heading. Here is just a bit more text.
+                    -신용평가 Q&A<br>
+                    -자주묻는질문<br>
                   </p>
                 </div>
               </div>
@@ -120,20 +125,22 @@
             <div class="col-lg-10 col-xl-7">
               <div class="text-center">
                 <div class="fs-4 mb-4 fst-italic">
-                  "Working with Start Bootstrap templates has saved me tons of
-                  development time when building new projects! Starting with a
-                  Bootstrap template just makes things easier!"
+                  "어디에 제출 하시나요?
+                   민간기업
+                   공공기관
+                   금융기관
+                   자사진단"
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
                   <img
                     class="rounded-circle me-3"
-                    src="https://dummyimage.com/40x40/ced4da/6c757d"
+                    src="../resources/images/1243928.png"
                     alt="..."
                   />
                   <div class="fw-bold">
-                    Tom Ato
+                    Credit JAVA
                     <span class="fw-bold text-primary mx-1">/</span>
-                    CEO, Pomodoro
+                    CEO
                   </div>
                 </div>
               </div>
@@ -149,8 +156,7 @@
               <div class="text-center">
                 <h2 class="fw-bolder">From our blog</h2>
                 <p class="lead fw-normal text-muted mb-5">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Eaque fugit ratione dicta mollitia. Officiis ad.
+                  Credit JAVA TEAM
                 </p>
               </div>
             </div>
@@ -160,7 +166,7 @@
               <div class="card h-100 shadow border-0">
                 <img
                   class="card-img-top"
-                  src="https://dummyimage.com/600x350/ced4da/6c757d"
+                  src="../resources/images/teamPhoto3.jpg"
                   alt="..."
                 />
                 <div class="card-body p-4">
@@ -170,25 +176,27 @@
                   <a
                     class="text-decoration-none link-dark stretched-link"
                     href="#!"
-                    ><h5 class="card-title mb-3">Blog post title</h5></a
+                    ><h5 class="card-title mb-3">프로젝트 회의</h5></a
                   >
                   <p class="card-text mb-0">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    <요구사항 점검><br>
+                    -신용평가 내용 정리<br>
+                    -ERD 수정<br>
+                    -각 기능 담당자 확정<br>
                   </p>
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                   <div class="d-flex align-items-end justify-content-between">
                     <div class="d-flex align-items-center">
-                      <img
-                        class="rounded-circle me-3"
-                        src="https://dummyimage.com/40x40/ced4da/6c757d"
-                        alt="..."
-                      />
+                             <img
+                                              class="rounded-circle me-3"
+                                              src="../resources/images/1243928.png" width="150"
+                                              alt="..."
+                                            />
                       <div class="small">
-                        <div class="fw-bold">Kelly Rowan</div>
+                        <div class="fw-bold">Credit JAVA TEAM</div>
                         <div class="text-muted">
-                          March 12, 2022 &middot; 6 min read
+                          Feb 20, 2023 &middot;
                         </div>
                       </div>
                     </div>
@@ -200,7 +208,7 @@
               <div class="card h-100 shadow border-0">
                 <img
                   class="card-img-top"
-                  src="https://dummyimage.com/600x350/adb5bd/495057"
+                  src="../resources/images/teamPhoto1.jpg"
                   alt="..."
                 />
                 <div class="card-body p-4">
@@ -210,12 +218,13 @@
                   <a
                     class="text-decoration-none link-dark stretched-link"
                     href="#!"
-                    ><h5 class="card-title mb-3">Another blog post title</h5></a
+                    ><h5 class="card-title mb-3">프로젝트 회의</h5></a
                   >
                   <p class="card-text mb-0">
-                    This text is a bit longer to illustrate the adaptive height
-                    of each card. Some quick example text to build on the card
-                    title and make up the bulk of the card's content.
+                    <기능 점검><br>
+                    -각 담당 기능 설명<br>
+                    -기능 수정 및 보완<br>
+                    -추가 기능 구현<br>
                   </p>
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -223,13 +232,13 @@
                     <div class="d-flex align-items-center">
                       <img
                         class="rounded-circle me-3"
-                        src="https://dummyimage.com/40x40/ced4da/6c757d"
+                        src="../resources/images/1243928.png" width="150"
                         alt="..."
                       />
                       <div class="small">
-                        <div class="fw-bold">Josiah Barclay</div>
+                        <div class="fw-bold">Credit JAVA TEAM</div>
                         <div class="text-muted">
-                          March 23, 2022 &middot; 4 min read
+                          Feb 27, 2023 &middot;
                         </div>
                       </div>
                     </div>
@@ -241,7 +250,7 @@
               <div class="card h-100 shadow border-0">
                 <img
                   class="card-img-top"
-                  src="https://dummyimage.com/600x350/6c757d/343a40"
+                  src="../resources/images/teamPhoto.jpg"
                   alt="..."
                 />
                 <div class="card-body p-4">
@@ -252,13 +261,14 @@
                     class="text-decoration-none link-dark stretched-link"
                     href="#!"
                     ><h5 class="card-title mb-3">
-                      The last blog post title is a little bit longer than the
-                      others
+                      프로젝트 회의
                     </h5></a
                   >
                   <p class="card-text mb-0">
-                    Some more quick example text to build on the card title and
-                    make up the bulk of the card's content.
+                   <최종 점검><br>
+                                       -디자인 수정<br>
+                                       -발표준비<br>
+                                       -간담회<br>
                   </p>
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -266,13 +276,13 @@
                     <div class="d-flex align-items-center">
                       <img
                         class="rounded-circle me-3"
-                        src="https://dummyimage.com/40x40/ced4da/6c757d"
+                        src="../resources/images/1243928.png" width="150"
                         alt="..."
                       />
                       <div class="small">
-                        <div class="fw-bold">Evelyn Martinez</div>
+                        <div class="fw-bold">Credit JAVA TEAM</div>
                         <div class="text-muted">
-                          Feb 18, 2023 &middot; 10 min read
+                          March 06, 2023 &middot;
                         </div>
                       </div>
                     </div>
@@ -288,7 +298,7 @@
             >
               <div class="mb-4 mb-xl-0">
                 <div class="fs-3 fw-bold text-white">
-                  New products, delivered to you.
+                  신용을 자바! 신용 평가를 받으시려면 회원가입을 해주세요.
                 </div>
                 <div class="text-white-50">
                   Sign up for our newsletter for the latest updates.
