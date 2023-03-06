@@ -98,17 +98,16 @@
                         </div>
                         <!-- 우편번호, 사업자 등록주소 상세주소 -->
                         <div class="gold_line">
-                            <h4 class="tit17">* 우편번호</h4>
-                                <span class="in_area"><input type="text" name="address"
-                                                                class="insert_input"
-                                                                placeholder="우편번호 검색"></span>
-                                <button type="button" id="postcodify_search_button" required>검색</button>
-                            <h4 class="tit17">* 사업자등록상 주소</h4>
-                                <span class="in_area"><input type="text" name="userAddress"
-                                                                class="insert_input" required></span>
-                            <h4 class="tit17">* 상세주소</h4>
-                                <span class="in_area"><input type="text" class="insert_input"
-                                                                name="userAddress"></span>
+                           <h4>우편번호</h4>
+                           <span id="input_area"><input type="text" name="address"
+                           class="postcodify_postcode5"  placeholder="우편번호 검색"></span>
+                           <button type="button" id="postcodify_search_button" required>검색</button>
+                           <h4>사업자등록상 주소</h4>
+                           <span id="input_area"><input type="text" name="userAddress"
+                           class="postcodify_address" required></span>
+                           <h4>상세주소</h4>
+                           <span id="input_area" ><input type="text" name="userAddress"
+                           class="postcodify_details" required></span>
                         </div>
                         <!-- 이용약관 -->
                         <div class="gold_line">
@@ -369,22 +368,17 @@
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
-<script> $(function () {
-    $("#postcodify_search_button").postcodifyPopUp();
-});
-</script>
+<script> $(function () { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 <script type="text/javascript">
-    var bDisplay = true;
-
-    function doDisplay() {
+var bDisplay = true; function doDisplay(){
         var con = document.getElementById("myDIV");
-        if (con.style.display == 'none') {
+        if(con.style.display=='none'){
             con.style.display = 'block';
-        } else {
+        }else{
             con.style.display = 'none';
         }
-    }
+}
 </script>
 
 <script type="text/javascript">
