@@ -74,9 +74,9 @@
 
                         <div style="text-align: center; padding-top: 30px; margin-bottom: 20px">
                             <button type="button" href="/index" style="padding: 0; ">취소</button>
-                            <button type="button" style="padding: 0;" href="/user/userDelete"
+                            <a href="<%= request.getContextPath() %>/user/userDelete"><button type="button" style="padding: 0;"
                                     onclick="return confirm('정말로 회원을 탈퇴하시겠습니까? 작성했던 게시물들도 전부 삭제됩니다.')">회원탈퇴
-                            </button>
+                            </button></a>
                             </a>
                         </div>
                     </form>
