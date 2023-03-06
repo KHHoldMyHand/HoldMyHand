@@ -84,17 +84,44 @@
                             <h4 class="tit17">* 대표자명</h4>
                                 <span class="in_area">
                                     <input type="text" maxlength="5" name="corpManager" class="insert_input"
-                                           placeholder="대표자명" required></span>
+                                           placeholder="대표자명" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
 
                             <h4 class="tit17">* 대표 연락처</h4>
                                 <span class="in_area">
                                     <input type="tel" maxlength="11" name="phoneNo" class="insert_input"
-                                           placeholder="(-없이)01012345678" required></span>
+                                           placeholder="(-없이)01012345678" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
 
                             <h4 class="tit17" >* 이메일</h4>
                                 <span class="in_area">
                                     <input type="email" name="userEmail" class="insert_input"
-                                           placeholder="대표 이메일" required></span>
+                                           placeholder="대표 이메일" required style {
+                                           background: #fff;
+                                           border-radius: 10px;
+                                           outline: none;
+                                           border: 2px solid #ddd;
+                                           padding: 7px 10px;
+                                           font-size: 15px;
+                                           font-weight: 500;
+                                           color: #444;
+                                           }></span>
                         </div>
                         <!-- 우편번호, 사업자 등록주소 상세주소 -->
                         <div class="gold_line">
@@ -523,7 +550,6 @@ var bDisplay = true; function doDisplay(){
             $('#pw').focus();
             return false;
         } else {
-            alert("사용가능한 비밀번호입니다.");
             return true;
         }
 
