@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.dao.CreditEvaluationDAO">
+
+    <!-- 유저 조회 -->
+
+
+
+    <select resultType="org.project.dto.CreditEvaluationDTO" parameterType="int" id="creditevaluationdto">
+
+        <!-- join -->
+
+        select
+        b.establishmentName,
+        b.establishmentDate,
+        b.companyName,
+        b.companyScale,
+        b.employeers,
+        b.files,
+        b.tax,
+        a.reportNo,
+        a.reportRank,
+        a.createDate,
+        a.fileDate
+        from CreditEvaluation a , Corporation b
+        where a.userNo = b.userNo and a.userNo=#{userNo} and rownum=1
+    </select>
+
+    <insert id="createReport" parameterType="org.project.dto.EvaluateSuccessDTO">
+        INSERT INTO Creditevaluation (reportNo, reportRank, userNo, createDate, fileDate)
+        VALUES(reportNo.NEXTVAL, #{score}, #{userNo}, sysdate, #{fileDate})
+    </insert>
+
+</mapper>
